@@ -47,6 +47,8 @@ def rec(metodo):
 		#p=re.compile(r"((?:[[]]|[]]|[a-zA-ZñÑ_<>,?])+)(?:(?:[^\w]|_)*)([a-zA-ZñÑ_]+)(?:[;])")
 		#private static String facultad = "";
 		p=re.compile(r"(?:(?:[^\w]|_)*)([a-zA-ZñÑ_]+)(?:(?:[^\w]|_)*)([a-zA-ZñÑ_]+)(?:(?:[^\w]|_)*)((?:[[]]|[]]|[a-zA-ZñÑ_<>,?])+)(?:(?:[^\w]|_)*)([a-zA-ZñÑ_]+)(?:(?:[^\w]|_)*)[=]")
+		#private String facultad = "";
+		p=re.compile(r"(?:(?:[^\w]|_)*)([a-zA-ZñÑ_]+)(?:(?:[^\w]|_)*)((?:[[]]|[]]|[a-zA-ZñÑ_<>,?])+)(?:(?:[^\w]|_)*)([a-zA-ZñÑ_]+)(?:(?:[^\w]|_)*)[=]")
 		#print("paso")
 		#p=re.compile(r"(\w*)[=]")
 		f=re.findall(p,l)
@@ -54,8 +56,8 @@ def rec(metodo):
 		if(len(f)>0):
 			#nombreV=f[0]
 			print(f)
-			tipoV=f[0][2]
-			nombreV=f[0][3]
+			tipoV=f[0][1]
+			nombreV=f[0][2]
 			nombreP=nombreV[0:1].lower()+nombreV[1:]
 			nombreU=nombreV[0:1].upper()+nombreV[1:]
 			metodo(tipoV,nombreV,nombreP,nombreU)
@@ -76,13 +78,13 @@ def ra(metodo):
 	rec(lambda tipoV,nombreV,nombreP,nombreU:append(metodo(tipoV,nombreV,nombreP,nombreU)))
 
 setA("""
-    private static String nombre = "";
-    private static String facultad = "";
-    private static String carrera = "";
+    private  String titulo = "";
+    private  String tema = "";
+    private  String edicion = "";
 
-    private static String descripcion = "";
-    private static int curso=1;
-    private static int semestre=1;
+    private  String programa = "";
+    private Date fechaDeInicio=new Date();
+    private Date fechaDeFin=new Date();
 		
 """)
 

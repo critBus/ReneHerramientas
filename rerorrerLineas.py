@@ -1,31 +1,36 @@
 a="""
-
-    public Users findById(int id) {
-        Users user = null;
-        HttpRequest req = HttpRequest.newBuilder(URI.create(serviceURL+"find/"+id)).GET().build();
-        CompletableFuture<HttpResponse<String>> response = client.sendAsync(req, HttpResponse.BodyHandlers.ofString());
+    public CapasitacionEstudiante createAndGet(CapasitacionEstudiante capasitacionestudiante)throws Exception{
+        String inputJson = null;
+        inputJson = JSONUtils.covertFromObjectToJson(capasitacionestudiante);
+        HttpRequest request = HttpRequest.newBuilder(URI.create(serviceURL+"create"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(inputJson)).build();
+        CompletableFuture<HttpResponse<String>> response = client.sendAsync(request,HttpResponse.BodyHandlers.ofString());
+        capasitacionestudiante=null;
         try {
-            if(response.get().statusCode() == 500){
+            //pq por encima de este numero es una peticion incorrecta
+            if(response.get().statusCode() > 299){
                 response.join();
                 return null;
             }else {
-
                 try {
-                    user = JSONUtils.covertFromJsonToObject(response.get().body(), Users.class);
+                    capasitacionestudiante = JSONUtils.covertFromJsonToObject(response.get().body(), CapasitacionEstudiante.class);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
                 response.join();
-                return user;
+                return capasitacionestudiante;
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
+            
         } catch (ExecutionException e) {
             e.printStackTrace();
+            
         }
-        return user;
+        return capasitacionestudiante;
     }
 
 """
