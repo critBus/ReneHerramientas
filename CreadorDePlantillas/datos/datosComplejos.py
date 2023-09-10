@@ -22,8 +22,22 @@ class DatosDeCampo:
         #print(campo)
         self.descripcion_entrada=campo["descripcion_entrada"]
         self.descripcion_salida = campo["descripcion_salida"]
+class DatoCodigo:
+    def __init__(self):
+        self.codigo=""
+        self.descripcion=""
 
-
+class Codigos:
+    def __init__(self):
+        self.permiso=DatoCodigo()
+        self.pre_save=DatoCodigo()
+class DatosEnpoint:
+    def __init__(self):
+        self.list=Codigos()
+        self.retrive=Codigos()
+        self.create=Codigos()
+        self.update=Codigos()
+        self.delete=Codigos()
 
 class DatosModelo:
     def __init__(self,datosDeModelo):
@@ -35,6 +49,25 @@ class DatosModelo:
         self.primerCampoNumero = None
         self.primerCampoDate = None
         self.primerCampoBoolean = None
+
+        self.datosEnpoint=DatosEnpoint()
+        dc=datosDeModelo["codigos"]
+        dc_codigo=dc["create"]
+        self.datosEnpoint.create.permiso.codigo=dc_codigo["permisos"]
+        self.datosEnpoint.create.permiso.descripcion = dc_codigo["permisos_descripcion"]
+        dc_codigo = dc["destroy"]
+        self.datosEnpoint.delete.permiso.codigo = dc_codigo["permisos"]
+        self.datosEnpoint.delete.permiso.descripcion = dc_codigo["permisos_descripcion"]
+        dc_codigo = dc["edit"]
+        self.datosEnpoint.update.permiso.codigo = dc_codigo["permisos"]
+        self.datosEnpoint.update.permiso.descripcion = dc_codigo["permisos_descripcion"]
+        dc_codigo = dc["list"]
+        self.datosEnpoint.list.permiso.codigo = dc_codigo["permisos"]
+        self.datosEnpoint.list.permiso.descripcion = dc_codigo["permisos_descripcion"]
+        dc_codigo = dc["view"]
+        self.datosEnpoint.retrive.permiso.codigo = dc_codigo["permisos"]
+        self.datosEnpoint.retrive.permiso.descripcion = dc_codigo["permisos_descripcion"]
+
 
         self.listaCampos:List[DatosDeCampo]=[]
         for campo in datosDeModelo["campos"]:

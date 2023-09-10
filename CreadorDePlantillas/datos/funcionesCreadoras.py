@@ -189,6 +189,69 @@ def crearParametrosSalida_Post_crear_lista(D: DatosModelo):
 
     return p.r
 dicFuncionesCreadoras['parametros_salida_post_descripcion_crear']=crearParametrosSalida_Post_crear_lista
+
+SEPARACION_PERMISOS=1
+
+def crear_Permisos_List(D:DatosModelo):
+    p=Imprimidor(SEPARACION_PERMISOS)
+    p.pr0(D.datosEnpoint.list.permiso.codigo)
+    return p.r
+dicFuncionesCreadoras['permisos_list']=crear_Permisos_List
+def crear_Permisos_Create(D:DatosModelo):
+    p=Imprimidor(SEPARACION_PERMISOS)
+    p.pr0(D.datosEnpoint.create.permiso.codigo)
+    return p.r
+dicFuncionesCreadoras['permisos_create']=crear_Permisos_Create
+def crear_Permisos_Retrieve(D:DatosModelo):
+    p=Imprimidor(SEPARACION_PERMISOS)
+    p.pr0(D.datosEnpoint.retrive.permiso.codigo)
+    return p.r
+dicFuncionesCreadoras['permisos_retrieve']=crear_Permisos_Retrieve
+def crear_Permisos_Delete(D:DatosModelo):
+    p=Imprimidor(SEPARACION_PERMISOS)
+    p.pr0(D.datosEnpoint.delete.permiso.codigo)
+    return p.r
+dicFuncionesCreadoras['permisos_destroy']=crear_Permisos_Delete
+def crear_Permisos_Update(D:DatosModelo):
+    p=Imprimidor(SEPARACION_PERMISOS)
+    p.pr0(D.datosEnpoint.update.permiso.codigo)
+    return p.r
+dicFuncionesCreadoras['permisos_update']=crear_Permisos_Update
+
+#-----------------------------------------
+
+SEPARACION_PERMISOS_DESCRIPCION=2
+
+def crear_Permisos_descripcion_List(D:DatosModelo):
+    p=Imprimidor(SEPARACION_PERMISOS_DESCRIPCION)
+    p.pr0(D.datosEnpoint.list.permiso.descripcion)
+    return p.r
+dicFuncionesCreadoras['permisos_descripcion_list']=crear_Permisos_descripcion_List
+def crear_Permisos_descripcion_Create(D:DatosModelo):
+    p=Imprimidor(SEPARACION_PERMISOS_DESCRIPCION)
+    p.pr0(D.datosEnpoint.create.permiso.descripcion)
+    return p.r
+dicFuncionesCreadoras['permisos_descripcion_create']=crear_Permisos_descripcion_Create
+def crear_Permisos_descripcion_Retrieve(D:DatosModelo):
+    p=Imprimidor(SEPARACION_PERMISOS_DESCRIPCION)
+    p.pr0(D.datosEnpoint.retrive.permiso.descripcion)
+    return p.r
+dicFuncionesCreadoras['permisos_descripcion_retrieve']=crear_Permisos_descripcion_Retrieve
+def crear_Permisos_descripcion_Delete(D:DatosModelo):
+    p=Imprimidor(SEPARACION_PERMISOS_DESCRIPCION)
+    p.pr0(D.datosEnpoint.delete.permiso.descripcion)
+    return p.r
+dicFuncionesCreadoras['permisos_descripcion_destroy']=crear_Permisos_descripcion_Delete
+def crear_Permisos_descripcion_Update(D:DatosModelo):
+    p=Imprimidor(SEPARACION_PERMISOS_DESCRIPCION)
+    p.pr0(D.datosEnpoint.update.permiso.descripcion)
+    return p.r
+dicFuncionesCreadoras['permisos_descripcion_update']=crear_Permisos_descripcion_Update
+
+dicFuncionesCreadoras['save_create']=lambda a:""
+dicFuncionesCreadoras['save_update']=lambda a:""
+dicFuncionesCreadoras['save_destroy']=lambda a:""
+
 # def saltoExtra(d):
 #     p = Imprimidor(1)
 #     p.pr1("")

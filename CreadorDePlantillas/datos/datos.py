@@ -298,7 +298,7 @@ key_valores={
                     "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"",
-                    "permisos":"(IsAuthenticated,)"
+                    "permisos":"permission_classes = (IsAuthenticated,)"
                     },
                 "list":{
                         "save":"",
@@ -309,13 +309,13 @@ key_valores={
                         "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"Solo puede ser editado por su creador u otro usuario que tengo un Rol de Negocio asociado a este Negocio con este permiso ",
-                    "permisos":"(IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
                     },
                 "destroy":{
                         "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"Solo puede ser eliminado por su creador u otro usuario que tengo un Rol de Negocio asociado a este Negocio con este permiso ",
-                    "permisos":"(IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
                     },
                 "view":{
                     "save":"",
@@ -477,7 +477,7 @@ key_valores={
                     "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"",
-                    "permisos":"(IsAuthenticated,)"
+                    "permisos":"permission_classes = (IsAuthenticated,)"
                     },
                 "list":{
                         "save":"",
@@ -488,13 +488,13 @@ key_valores={
                         "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"Solo puede ser editado por un usuario que tenga un Rol de Negocio asociado a al Negocio que le corresponde con este permiso ",
-                    "permisos":"(IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
                     },
                 "destroy":{
                         "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"Solo puede ser eliminado por un usuario que tenga un Rol de Negocio asociado a al Negocio que le corresponde con este permiso ",
-                    "permisos":"(IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
                     },
                 "view":{
                     "save":"",
@@ -538,7 +538,7 @@ key_valores={
                     "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"",
-                    "permisos":"(IsAuthenticated,)"
+                    "permisos":"permission_classes = (IsAuthenticated,)"
                     },
                 "list":{
                         "save":"",
@@ -549,13 +549,13 @@ key_valores={
                         "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"Solo puede ser editado por un usuario que tenga un Rol de Negocio asociado a al Negocio que le corresponde con este permiso ",
-                    "permisos":"(IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
                     },
                 "destroy":{
                         "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"Solo puede ser eliminado por un usuario que tenga un Rol de Negocio asociado a al Negocio que le corresponde con este permiso ",
-                    "permisos":"(IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
                     },
                 "view":{
                     "save":"",
@@ -627,7 +627,7 @@ key_valores={
                     "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"",
-                    "permisos":"(IsAuthenticated,)"
+                    "permisos":"permission_classes = (IsAuthenticated,)"
                     },
                 "list":{
                         "save":"",
@@ -638,13 +638,13 @@ key_valores={
                         "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"Solo puede ser editado por un usuario que tenga un Rol de Negocio asociado a al Negocio que le corresponde con este permiso ",
-                    "permisos":"(IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
                     },
                 "destroy":{
                         "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"Solo puede ser eliminado por un usuario que tenga un Rol de Negocio asociado a al Negocio que le corresponde con este permiso ",
-                    "permisos":"(IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
                     },
                 "view":{
                     "save":"",
@@ -768,7 +768,7 @@ key_valores={
                     "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"",
-                    "permisos":"(IsAuthenticated,)"
+                    "permisos":"permission_classes = (IsAuthenticated,)"
                     },
                 "list":{
                         "save":"",
@@ -779,13 +779,13 @@ key_valores={
                         "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"Solo puede ser editado por un usuario que tenga un Rol de Negocio asociado a al Negocio que le corresponde con este permiso ",
-                    "permisos":"(IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
                     },
                 "destroy":{
                         "save":"",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                             +"Solo puede ser eliminado por un usuario que tenga un Rol de Negocio asociado a al Negocio que le corresponde con este permiso ",
-                    "permisos":"(IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
                     },
                 "view":{
                     "save":"",
@@ -986,7 +986,7 @@ key_valores={
             "modeloLower_labelPlurar": "Resenna",
             "codigos":{
                 "create":{
-                    "save":"(IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'add'))",
+                    "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'add'))",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                     +"Requiere que el usuario tenga permitido realizar esta acción ",
                     "permisos":""
@@ -997,13 +997,13 @@ key_valores={
                     "permisos":""
                     },
                 "edit":{
-                        "save":"(IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'change'))",
+                        "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'change'))",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                            + "Requiere que el usuario tenga permitido realizar esta acción ",
                         "permisos":""
                     },
                 "destroy":{
-                        "save":"(IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'delete'))",
+                        "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'delete'))",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                            + "Requiere que el usuario tenga permitido realizar esta acción ",
                         "permisos":""
@@ -1120,7 +1120,7 @@ key_valores={
             "modeloLower_labelPlurar": "Favorito",
             "codigos":{
                 "create":{
-                    "save":"(IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'add'))",
+                    "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'add'))",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                     +"Requiere que el usuario tenga permitido realizar esta acción ",
                     "permisos":""
@@ -1131,13 +1131,13 @@ key_valores={
                     "permisos":""
                     },
                 "edit":{
-                        "save":"(IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'change'))",
+                        "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'change'))",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                            + "Requiere que el usuario tenga permitido realizar esta acción ",
                         "permisos":""
                     },
                 "destroy":{
-                        "save":"(IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'delete'))",
+                        "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'delete'))",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                            + "Requiere que el usuario tenga permitido realizar esta acción ",
                         "permisos":""

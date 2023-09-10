@@ -40,13 +40,15 @@ def imprimir_linea(kv,i,linea):
 
 
 
-listAPintar=[d]
+listAPintar=[g]
 for texto in listAPintar:
     for key in key_valores['models']:
         key_valores_actual=key_valores['models'][key].copy()
         key_valores_actual['modelo']=key
         crearAtributosNuevos(key_valores_actual,dic_DC[key])
         key_valores_actual.pop("campos")
+
+        key_valores_actual.pop("codigos")
         procesar_lineas(texto,lambda i,linea:imprimir_linea(key_valores_actual,i,linea))
 
 
