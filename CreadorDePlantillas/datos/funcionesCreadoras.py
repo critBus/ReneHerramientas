@@ -11,75 +11,117 @@
 from typing import TYPE_CHECKING, Dict, List, NoReturn, Optional, Union, Tuple, cast, ClassVar
 from .datosComplejos import *
 
-class DatosDeCampo:
-    def __init__(self,campo):
-        self.tipo = campo["type"]
-        self.nombreCampo = campo["name"]
-        self.esID = self.nombreCampo == 'id'
-        self.esNumero =not self.esID and (self.tipo == "BigAutoField" or self.tipo == "FloatField")
-        self.esBoolean = self.tipo == "BooleanField"
-        self.esTexto = self.tipo == "CharField"
-        self.esLlave = self.tipo == "ForeignKey"
-        self.esArchivo = self.tipo == "ImageField"
+def crearParametrosPostCrear(D:DatosModelo):
+    p=Imprimidor(4)
+
+    for d in D.listaCampos:
+        p.pr0("'" + d.nombreCampo + "' : '" + d.descripcion_entrada + "',")
+
+    return p.r
+
+dicFuncionesCreadoras['parametros_post_descripcion_crear']=crearParametrosPostCrear
+
+def crearParametrosGetFiltroLista(D:DatosModelo):
+    p=Imprimidor(3)
+
+    LD = [D]
+    CD = [""]
+    for d in D.listaCampos:
+        if d.esMany or d.esLlave:
+            LD.append(d.modeloReferencia)
+            CD.append(d.nombreCampo)
+
+    for i, DD in enumerate(LD):
+        prefijo = CD[i] + "__" if i != 0 else ""
+        for d in DD.listaCampos:
+            if d.esTexto or d.esNumero or d.esBoolean:
+                parametros=[]
+                if d.esTexto:
+                    parametros=['contains','exact']
+                    #p.pr0("'" + prefijo + d.nombreCampo + "' : ['contains','exact'],")
+                elif d.esNumero:
+                    parametros = ['gte', 'lte','exact']
+                    #p.pr0("'" + prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
+                elif d.esBoolean:
+                    parametros = ['exact']
+                    #p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
+
+                for pa in parametros:
+                    extra="__"+pa if pa!='exact' else ""
+                    descripcion=""
+                    if pa == 'exact':
+                        descripcion="que coincidan exactamente con el valor proporcionado"
+                    elif pa == 'contains':
+                        descripcion="que contengan el valor proporcionado"
+                    elif pa == 'gte':
+                        descripcion="que sean mayores o igual que el valor proporcionado"
+                    elif pa == 'lte':
+                        descripcion="que sean menores o igual que el valor proporcionado"
+                    p.pr1("- '" + prefijo + d.nombreCampo+extra + "' : '"+descripcion+"',")
+
+    return p.r
+
+dicFuncionesCreadoras['paremetros_get_filtro_lista']=crearParametrosGetFiltroLista
+
+def crearParametrosGetOrdenamientoLista(D:DatosModelo):
+    p=Imprimidor(4)
+    p.pr0("- 'pk': 'Ordena por su clave primaria (id)',")
+    if D.hayUnCampoTexto or D.hayUnCampoNumero:
+
+        for d in D.listaCampos:
+            if d.esTexto or d.esNumero:
+                if d.esTexto:
+                    descripcion = "Ordena alfabéticamente por el "+d.nombreCampo
+                else:
+                    descripcion = "Ordena de forma asendente o desendente por el "+d.nombreCampo
+                p.pr0("- '" +  d.nombreCampo + "' : '" + descripcion + "',")
+    return p.r
+dicFuncionesCreadoras['paremetros_get_ordenamiento_lista']=crearParametrosGetOrdenamientoLista
 
 
+def crearParametrosGetBusquedaLista(D:DatosModelo):
+    p=Imprimidor(4)
+    if D.hayUnCampoTexto or D.hayUnCampoNumero:
 
-class DatosModelo:
-    def __init__(self,datosDeModelo):
-        self.hayUnCampoTexto = False
-        self.hayUnCampoNumero = False
-        self.hayUnCampoDate = False
-        self.hayUnCampoBoolean = False
-        self.primerCampoTexto = None
-        self.primerCampoNumero = None
-        self.primerCampoDate = None
-        self.primerCampoBoolean = None
+        for d in D.listaCampos:
+            if d.esTexto or d.esNumero:
+                p.pr0("- '" +  d.nombreCampo + "',")
+    return p.r
+dicFuncionesCreadoras['paremetros_get_search_lista']=crearParametrosGetBusquedaLista
 
-        self.listaModelos:List[DatosDeCampo]=[]
-        for campo in datosDeModelo["campos"]:
-            d = DatosDeCampo(campo)
-            if d.esID:
-                continue
-            self.listaModelos.append(d)
-            if d.esTexto:
-                self.hayUnCampoTexto=True
-                if not self.primerCampoTexto:
-                    self.primerCampoTexto=d
-            elif d.esNumero:
-                self.hayUnCampoNumero = True
-                if not self.primerCampoNumero:
-                    self.primerCampoNumero = d
-            if d.esBoolean:
-                self.hayUnCampoBoolean = True
-                if not self.primerCampoTexto:
-                    self.primerCampoTexto = d
-
-
-
-def crearAtributosExtras(datosDeModelo):
+def crearAtributosExtras(D):
     p=Imprimidor(1)
-    D = DatosModelo(datosDeModelo)
+    #D = DatosModelo(datosDeModelo)
+    LD=[D]
+    CD=[""]
+    for d in D.listaCampos:
+        if d.esMany or d.esLlave:
+            LD.append(d.modeloReferencia)
+            CD.append(d.nombreCampo)
 
     if D.hayUnCampoTexto or D.hayUnCampoNumero or D.hayUnCampoBoolean:
         p.pr0("filterset_fields = {")
-
-        for d in D.listaModelos:
-            if d.esTexto:
-                p.pr1("'"+d.nombreCampo+"' : ['contains','exact'],")
-            elif d.esNumero:
-                p.pr1("'"+d.nombreCampo + "' : ['gte', 'lte','exact'],")
-            elif d.esBoolean:
-                p.pr1("'"+d.nombreCampo+"' : ['contains','exact'],")
+        for i,DD in enumerate(LD):
+            prefijo= CD[i]+"__" if i!=0 else ""
+            for d in DD.listaCampos:
+                if d.esTexto:
+                    p.pr1("'"+prefijo + d.nombreCampo + "' : ['contains','exact'],")
+                elif d.esNumero:
+                    p.pr1("'" +prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
+                elif d.esBoolean:
+                    p.pr1("'" +prefijo + d.nombreCampo + "' : ['exact'],")#'contains',
         p.pr0("}")
     if D.hayUnCampoTexto or D.hayUnCampoNumero:
         p.pr0("search_fields=[")
-        for d in D.listaModelos:
-            if d.esTexto or d.esNumero:
-                p.pr("'"+d.nombreCampo+"' ,")
+        for i,DD in enumerate(LD):
+            prefijo= CD[i]+"__" if i!=0 else ""
+            for d in DD.listaCampos:
+                if d.esTexto or d.esNumero:
+                    p.pr("'"+prefijo + d.nombreCampo + "' ,")
         p.pr("]")
 
         p.pr0("ordering_fields=['pk' ,")
-        for d in D.listaModelos:
+        for d in D.listaCampos:
             if d.esTexto or d.esNumero:
                 p.pr("'" + d.nombreCampo + "' ,")
         p.pr("]")
@@ -94,10 +136,73 @@ def crearAtributosExtras(datosDeModelo):
 
 
     if d:
-        p.pr(d.nombreCampo+"']")
+        p.pr(d.nombreCampo + "']")
     else:
         p.pr("pk']")
     p.pr1("")
     return p.r
 
 dicFuncionesCreadoras['atributosExtra']=crearAtributosExtras
+
+
+def crearParametrosSalida_Get_RUD(D: DatosModelo):
+    p = Imprimidor(4)
+
+    for d in D.listaCampos:
+        p.pr0("'" + d.nombreCampo + "' : '" + d.descripcion_salida + "',")
+
+    return p.r
+dicFuncionesCreadoras['parametros_salida_get_RUD']=crearParametrosSalida_Get_RUD
+
+def crearParametrosEntrada_Put_RUD(D: DatosModelo):
+    p = Imprimidor(4)
+
+    for d in D.listaCampos:
+        p.pr0("'" + d.nombreCampo + "' : '" + d.descripcion_entrada + "',")
+
+    return p.r
+dicFuncionesCreadoras['parametros_entrada_put_RUD']=crearParametrosEntrada_Put_RUD
+
+def crearParametrosSalida_Put_RUD(D: DatosModelo):
+    p = Imprimidor(4)
+
+    for d in D.listaCampos:
+        p.pr0("'" + d.nombreCampo + "' : '" + d.descripcion_salida + "',")
+
+    return p.r
+dicFuncionesCreadoras['parametros_salida_put_RUD']=crearParametrosSalida_Put_RUD
+
+def crearParametrosSalida_Get_elemento_lista(D: DatosModelo):
+    p = Imprimidor(4)
+
+    for d in D.listaCampos:
+        p.pr0("'" + d.nombreCampo + "' : '" + d.descripcion_salida + "',")
+
+    return p.r
+dicFuncionesCreadoras['parametros_salida_get_elmento_lista']=crearParametrosSalida_Get_elemento_lista
+
+def crearParametrosSalida_Post_crear_lista(D: DatosModelo):
+    p = Imprimidor(4)
+
+    for d in D.listaCampos:
+        p.pr0("'" + d.nombreCampo + "' : '" + d.descripcion_salida + "',")
+
+    return p.r
+dicFuncionesCreadoras['parametros_salida_post_descripcion_crear']=crearParametrosSalida_Post_crear_lista
+# def saltoExtra(d):
+#     p = Imprimidor(1)
+#     p.pr1("")
+#     return p.r
+# dicFuncionesCreadoras['se']=saltoExtra
+#
+# def saltoExtra0(d):
+#     p = Imprimidor(1)
+#     p.pr0("")
+#     return p.r
+# dicFuncionesCreadoras['se0']=saltoExtra
+#
+# def saltoExtra2(d):
+#     p = Imprimidor(1)
+#     p.pr2("")
+#     return p.r
+# dicFuncionesCreadoras['se2']=saltoExtra

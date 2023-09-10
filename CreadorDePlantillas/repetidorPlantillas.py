@@ -2,6 +2,8 @@ from datos.datos import *
 from datos.plantillas import *
 from datos.datosComplejos import *
 from datos.funcionesCreadoras import *
+from typing import TYPE_CHECKING, Dict, List, NoReturn, Optional, Union, Tuple, cast, ClassVar
+
 
 def procesar_lineas(texto, funcion):
     lineas = texto.split('\n')
@@ -10,33 +12,40 @@ def procesar_lineas(texto, funcion):
 
 
 
+lista_DC:List[DatosModelo]=[]
+dic_DC:Dict[str,DatosModelo]={}
 
+for key in key_valores['models']:
+    key_valores_actual=key_valores['models'][key].copy()
+    key_valores_actual['modelo']=key
+    D = DatosModelo(key_valores_actual)
+    lista_DC.append(D)
+    dic_DC[key]=D
 
-# for modelo in key_valores["modelo"]:
-#     key_valores["modeloLower"].append(modelo.lower())
+for D in lista_DC:
+    for campo in D.listaCampos:
+        if campo.esMany or campo.esLlave:
+            campo.modeloReferencia=dic_DC[campo.nombreModeloReferencia]
+        if campo.nombreCampo in key_valores['descripcionesAutomaticas']:
+            campo.descripcion_entrada=key_valores['descripcionesAutomaticas'][campo.nombreCampo]
+        if campo.descripcion_salida=="":
+            campo.descripcion_salida=campo.descripcion_entrada
 
 def imprimir_linea(kv,i,linea):
     for key in kv:
         valor=kv[key]
         linea = linea.replace("{" + key + "}", valor)
-        # for valor in valores:
-        #     linea=linea.replace("{"+key+"}",valor)
+
     print(linea)
 
-# list_key_valores=[]
-# for key in key_valores['models']:
-#     valores=key_valores[key]
-#     for i,valor in enumerate(valores):
-#         if len(list_key_valores)==i:
-#             list_key_valores.append({})
-#         list_key_valores[i][key]=valor
 
-listAPintar=[e]
+
+listAPintar=[d]
 for texto in listAPintar:
     for key in key_valores['models']:
         key_valores_actual=key_valores['models'][key].copy()
         key_valores_actual['modelo']=key
-        crearAtributosNuevos(key_valores_actual)
+        crearAtributosNuevos(key_valores_actual,dic_DC[key])
         key_valores_actual.pop("campos")
         procesar_lineas(texto,lambda i,linea:imprimir_linea(key_valores_actual,i,linea))
 
