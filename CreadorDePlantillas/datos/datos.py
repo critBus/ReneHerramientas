@@ -97,8 +97,8 @@ key_valores={
             "codigos":{
                 "create":{
                     "save":"",
-                    "permisos_descripcion":"{- IsAuthenticated -}",
-                    "permisos":"permission_classes = (IsAuthenticated,)"
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermiso_PuedeAgregar_Modelo -}",
+                    "permisos":"permission_classes = (IsAuthenticated,getPermiso_PuedeAgregar_Modelo(PalabraClave),)"
                     
                     },
                 "list":{
@@ -164,8 +164,8 @@ key_valores={
             "codigos":{
                 "create":{
                     "save":"",
-                    "permisos_descripcion":"{- IsAuthenticated -}",
-                    "permisos":"permission_classes = (IsAuthenticated,)"
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermiso_PuedeAgregar_Modelo -}",
+                    "permisos":"permission_classes = (IsAuthenticated,getPermiso_PuedeAgregar_Modelo(CategoriaDeNegocio),)"
                     
                     },
                 "list":{
@@ -224,8 +224,8 @@ key_valores={
             "codigos":{
                 "create":{
                     "save":"",
-                    "permisos_descripcion":"{- IsAuthenticated -}",
-                    "permisos":"permission_classes = (IsAuthenticated,)"
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermiso_PuedeAgregar_Modelo -}",
+                    "permisos":"permission_classes = (IsAuthenticated,getPermiso_PuedeAgregar_Modelo(CategoriaDeNegocio),)"#
 
                     },
                 "list":{
@@ -237,13 +237,13 @@ key_valores={
                         "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}"
                                             +"{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
-                    "permisos":"permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuDuenno_User,)"
+                    "permisos":"permission_classes = (IsAuthenticated,)"#SoloPuedeModificarseElMismo_OEsSuDuenno_User,
                     },
                 "destroy":{
                         "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}"
                                             +"{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
-                    "permisos":"permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuDuenno_User,)"
+                    "permisos":"permission_classes = (IsAuthenticated,)"#SoloPuedeModificarseElMismo_OEsSuDuenno_User,
                     },
                 "view":{
                     "save":"",
@@ -477,7 +477,7 @@ key_valores={
                 "create":{
                     "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
-                    "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('add'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,  PuedeModificarANegocio_idDirecto,)"
                     
                     },
                 "list":{
@@ -520,10 +520,10 @@ key_valores={
                     "descripcion_salida":"",
                 },
                 {
-                    "name": "Negocio",
+                    "name": "user",
                     "type": "ForeignKey",
-                    "related_model": "Negocio",
-                    "descripcion_entrada":"id del negocio",
+                    "related_model": "User",
+                    "descripcion_entrada":"usuario que al pertenece esta entidad",
                     "descripcion_salida":"",
                 },{
                     "name": "esPublica",
@@ -542,7 +542,7 @@ key_valores={
                 "create":{
                     "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
-                    "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('add'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,  getPermiso_PuedeAgregar_Modelo(CategoriaDeServicio),)"
 
                     },
                 "list":{
@@ -553,12 +553,12 @@ key_valores={
                 "edit":{
                         "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
-                    "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,  getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'change'),)"
                     },
                 "destroy":{
                         "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET delete -}",
-                    "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,  getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'delete'),)"
                     },
                 "view":{
                     "save":"",
@@ -585,10 +585,10 @@ key_valores={
                     "descripcion_salida":"",
                 },
                 {
-                    "name": "Negocio",
+                    "name": "user",
                     "type": "ForeignKey",
-                    "related_model": "Negocio",
-                    "descripcion_entrada":"id del negocio",
+                    "related_model": "User",
+                    "descripcion_entrada":"usuario que al pertenece esta entidad",
                     "descripcion_salida":"",
                 },{
                     "name": "esPublica",
@@ -607,7 +607,7 @@ key_valores={
                 "create":{
                     "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
-                    "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('add'),)"
+                    "permisos":"permission_classes = (IsAuthenticated, getPermiso_PuedeAgregar_Modelo(CategoriaDeProducto),)"
 
                     },
                 "list":{
@@ -618,12 +618,12 @@ key_valores={
                 "edit":{
                         "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
-                    "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,)"#  getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeProducto,'change'),
                     },
                 "destroy":{
                         "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET delete -}",
-                    "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,)"#,  getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeProducto,'delete'),
                     },
                 "view":{
                     "save":"",
@@ -683,6 +683,13 @@ key_valores={
                     "related_model": "CategoriaDeProducto",
                     "descripcion_entrada":"id de la categoria del producto",
                     "descripcion_salida":"",
+                },
+                {
+                    "name": "Negocio",
+                    "type": "ForeignKey",
+                    "related_model": "Negocio",
+                    "descripcion_entrada":"id del negocio",
+                    "descripcion_salida":"",
                 }
             ],
             "modeloLower": "producto",
@@ -694,7 +701,7 @@ key_valores={
                 "create":{
                     "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
-                    "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('add'),)"
+                    "permisos":"permission_classes = (IsAuthenticated,  getPermiso_PuedeModificarANegocio(CategoriaDeProducto,'Categoria'),)"
 
                     },
                 "list":{
@@ -745,9 +752,9 @@ key_valores={
             "codigos":{
                 "create":{
                     "save":"",
-                    "permisos_descripcion":"",
-                    "permisos":""
-                    
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- EsSuperUsuario -}",
+                    "permisos":"permission_classes = (IsAuthenticated, EsSuperUsuario,)"
+
                     },
                 "list":{
                         "save":"",
@@ -756,13 +763,13 @@ key_valores={
                     },
                 "edit":{
                         "save":"",
-                    "permisos_descripcion":"",
-                    "permisos":""
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- EsSuperUsuario -}",
+                    "permisos":"permission_classes = (IsAuthenticated, EsSuperUsuario,)"
                     },
                 "destroy":{
                         "save":"",
-                    "permisos_descripcion":"",
-                    "permisos":""
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- EsSuperUsuario -}",
+                    "permisos":"permission_classes = (IsAuthenticated, EsSuperUsuario,)"
                     },
                 "view":{
                     "save":"",
@@ -822,6 +829,13 @@ key_valores={
                     "related_model": "CategoriaDeServicio",
                     "descripcion_entrada":"id del la categoria del servicio",
                     "descripcion_salida":"",
+                },
+                {
+                    "name": "Negocio",
+                    "type": "ForeignKey",
+                    "related_model": "Negocio",
+                    "descripcion_entrada":"id del negocio",
+                    "descripcion_salida":"",
                 }
             ],
             "modeloLower": "servicio",
@@ -832,9 +846,9 @@ key_valores={
             "codigos":{
                 "create":{
                     "save":"",
-                    "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
-                                            +"",
-                    "permisos":"permission_classes = (IsAuthenticated,)"
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
+                    "permisos":"permission_classes = (IsAuthenticated,  getPermiso_PuedeModificarANegocio(CategoriaDeServicio,'Categoria'),,)"
+
                     },
                 "list":{
                         "save":"",
@@ -843,15 +857,13 @@ key_valores={
                     },
                 "edit":{
                         "save":"",
-                    "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
-                                            +"Solo puede ser editado por un usuario que tenga un Rol de Negocio asociado a al Negocio que le corresponde con este permiso ",
-                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
+                    "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)"
                     },
                 "destroy":{
                         "save":"",
-                    "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
-                                            +"Solo puede ser eliminado por un usuario que tenga un Rol de Negocio asociado a al Negocio que le corresponde con este permiso ",
-                    "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET delete -}",
+                    "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)"
                     },
                 "view":{
                     "save":"",
@@ -966,9 +978,9 @@ key_valores={
             "codigos":{
                 "create":{
                     "save":"",
-                    "permisos_descripcion":"",
-                    "permisos":""
-                    
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- EsSuperUsuario -}",
+                    "permisos":"permission_classes = (IsAuthenticated, EsSuperUsuario,)"
+
                     },
                 "list":{
                         "save":"",
@@ -977,13 +989,13 @@ key_valores={
                     },
                 "edit":{
                         "save":"",
-                    "permisos_descripcion":"",
-                    "permisos":""
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- EsSuperUsuario -}",
+                    "permisos":"permission_classes = (IsAuthenticated, EsSuperUsuario,)"
                     },
                 "destroy":{
                         "save":"",
-                    "permisos_descripcion":"",
-                    "permisos":""
+                    "permisos_descripcion":"{- IsAuthenticated -}\n{- EsSuperUsuario -}",
+                    "permisos":"permission_classes = (IsAuthenticated, EsSuperUsuario,)"
                     },
                 "view":{
                     "save":"",
@@ -1052,7 +1064,7 @@ key_valores={
             "modeloLower_labelPlurar": "Resenna",
             "codigos":{
                 "create":{
-                    "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'add'))",
+                    "save":"permission_classes = (IsAuthenticated,)",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                     +"Requiere que el usuario tenga permitido realizar esta acción ",
                     "permisos":""
@@ -1186,7 +1198,7 @@ key_valores={
             "modeloLower_labelPlurar": "Favorito",
             "codigos":{
                 "create":{
-                    "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'add'))",
+                    "save":"permission_classes = (IsAuthenticated,)",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                     +"Requiere que el usuario tenga permitido realizar esta acción ",
                     "permisos":""
@@ -1197,13 +1209,13 @@ key_valores={
                     "permisos":""
                     },
                 "edit":{
-                        "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'change'))",
+                        "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'change'),)",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                            + "Requiere que el usuario tenga permitido realizar esta acción ",
                         "permisos":""
                     },
                 "destroy":{
-                        "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'delete'))",
+                        "save":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Tiene_GET(Resenna,'delete'),)",
                     "permisos_descripcion":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
                                            + "Requiere que el usuario tenga permitido realizar esta acción ",
                         "permisos":""

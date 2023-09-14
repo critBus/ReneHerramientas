@@ -8,4 +8,5 @@ datos_internos={
     ,"SoloPuedeModificarseElMismo_OEsSuDuenno_User":"Para utilizar este endpoint el usuario debe ser el mismo que esta relacionado con la entidad o tener permisos de super usuario"
     ,"Es Publica salida":"True o False, representando si es visible para todos los usuarios, por defectos las creadas por usuarios que no sean superusuarios deberian de ser privadas."
     ,"Es Publica entrada":"True o False, representando si es visible para todos los usuarios, por defectos las creadas por usuarios que no sean superusuarios deberian de ser privadas."
+    ,"getPermiso_PuedeAgregar_Modelo":"Puede agregar esta entidad solo si tiene los permisos adecuados "
 }
