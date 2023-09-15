@@ -194,27 +194,27 @@ SEPARACION_PERMISOS=1
 
 def crear_Permisos_List(D:DatosModelo):
     p=Imprimidor(SEPARACION_PERMISOS)
-    p.pr0(D.datosEnpoint.list.permiso.codigo)
+    p.pr(D.datosEnpoint.list.permiso.codigo)
     return p.r
 dicFuncionesCreadoras['permisos_list']=crear_Permisos_List
 def crear_Permisos_Create(D:DatosModelo):
     p=Imprimidor(SEPARACION_PERMISOS)
-    p.pr0(D.datosEnpoint.create.permiso.codigo)
+    p.pr(D.datosEnpoint.create.permiso.codigo)
     return p.r
 dicFuncionesCreadoras['permisos_create']=crear_Permisos_Create
 def crear_Permisos_Retrieve(D:DatosModelo):
     p=Imprimidor(SEPARACION_PERMISOS)
-    p.pr0(D.datosEnpoint.retrive.permiso.codigo)
+    p.pr(D.datosEnpoint.retrive.permiso.codigo)
     return p.r
 dicFuncionesCreadoras['permisos_retrieve']=crear_Permisos_Retrieve
 def crear_Permisos_Delete(D:DatosModelo):
     p=Imprimidor(SEPARACION_PERMISOS)
-    p.pr0(D.datosEnpoint.delete.permiso.codigo)
+    p.pr(D.datosEnpoint.delete.permiso.codigo)
     return p.r
 dicFuncionesCreadoras['permisos_destroy']=crear_Permisos_Delete
 def crear_Permisos_Update(D:DatosModelo):
     p=Imprimidor(SEPARACION_PERMISOS)
-    p.pr0(D.datosEnpoint.update.permiso.codigo)
+    p.pr(D.datosEnpoint.update.permiso.codigo)
     return p.r
 dicFuncionesCreadoras['permisos_update']=crear_Permisos_Update
 
@@ -248,9 +248,62 @@ def crear_Permisos_descripcion_Update(D:DatosModelo):
     return p.r
 dicFuncionesCreadoras['permisos_descripcion_update']=crear_Permisos_descripcion_Update
 
-dicFuncionesCreadoras['save_create']=lambda a:""
-dicFuncionesCreadoras['save_update']=lambda a:""
-dicFuncionesCreadoras['save_destroy']=lambda a:""
+#----------------------------------------------------
+SEPARACION_SAVE=2
+def crear_save_codigo_create(D:DatosModelo):
+    c = D.datosEnpoint.create.pre_save
+    if len(c) > 0:
+        p=Imprimidor(SEPARACION_SAVE)
+        p.pr0(c)
+        return p.r
+    return ""
+dicFuncionesCreadoras['save_create']=crear_save_codigo_create
+def crear_save_codigo_Update(D:DatosModelo):
+    c = D.datosEnpoint.update.pre_save
+    if len(c) > 0:
+        p = Imprimidor(SEPARACION_SAVE)
+        p.pr0(c)
+        return p.r
+    return ""
+dicFuncionesCreadoras['save_update']=crear_save_codigo_Update
+def crear_save_codigo_delete(D:DatosModelo):
+    c = D.datosEnpoint.delete.pre_save
+    if len(c) > 0:
+        p = Imprimidor(SEPARACION_SAVE)
+        p.pr0(c)
+        return p.r
+    return ""
+dicFuncionesCreadoras['save_destroy']=crear_save_codigo_delete
+
+
+#----------------------------------------
+SEPARACION_SERIALIZER=1
+
+def crear_Serrializer_List(D:DatosModelo):
+    p=Imprimidor(SEPARACION_SERIALIZER)
+    p.pr(D.datosEnpoint.list.serializer)
+    return p.r
+dicFuncionesCreadoras['modeloSerializer_list']=crear_Serrializer_List
+def crear_Serrializer_Create(D:DatosModelo):
+    p=Imprimidor(SEPARACION_SERIALIZER)
+    p.pr(D.datosEnpoint.create.serializer)
+    return p.r
+dicFuncionesCreadoras['modeloSerializer_create']=crear_Serrializer_Create
+def crear_Serrializer_Retrieve(D:DatosModelo):
+    p=Imprimidor(SEPARACION_SERIALIZER)
+    p.pr(D.datosEnpoint.retrive.serializer)
+    return p.r
+dicFuncionesCreadoras['modeloSerializer_retrieve']=crear_Serrializer_Retrieve
+def crear_Serrializer_Delete(D:DatosModelo):
+    p=Imprimidor(SEPARACION_SERIALIZER)
+    p.pr(D.datosEnpoint.delete.serializer)
+    return p.r
+dicFuncionesCreadoras['modeloSerializer_destroy']=crear_Serrializer_Delete
+def crear_Serrializer_Update(D:DatosModelo):
+    p=Imprimidor(SEPARACION_SERIALIZER)
+    p.pr(D.datosEnpoint.update.serializer)
+    return p.r
+dicFuncionesCreadoras['modeloSerializer_update']=crear_Serrializer_Update
 
 # def saltoExtra(d):
 #     p = Imprimidor(1)

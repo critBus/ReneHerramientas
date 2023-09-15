@@ -847,7 +847,7 @@ key_valores={
                 "create":{
                     "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
-                    "permisos":"permission_classes = (IsAuthenticated,  getPermiso_PuedeModificarANegocio(CategoriaDeServicio,'Categoria'),,)"
+                    "permisos":"permission_classes = (IsAuthenticated,  getPermiso_PuedeModificarANegocio(CategoriaDeServicio,'Categoria'),)"
 
                     },
                 "list":{

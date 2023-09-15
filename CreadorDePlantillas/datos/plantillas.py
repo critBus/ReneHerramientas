@@ -242,7 +242,7 @@ class {modelo}_List(Base_List):
 
     \"\"\"
     {permisos_list} 
-    serializer_class = {modelo}Serializer
+    serializer_class = {modeloSerializer_list}
     filter_backends = [DjangoFilterBackend,
                        SearchFilter,
                        OrderingFilter,
@@ -274,8 +274,7 @@ class {modelo}_Retrieve(Base_Retrieve):
         
     \"\"\"
     {permisos_retrieve} 
-    serializer_class = {modelo}Serializer
-
+    serializer_class = {modeloSerializer_retrieve}
 
 class {modelo}_Create(Base_Create):
     \"\"\"
@@ -302,13 +301,13 @@ class {modelo}_Create(Base_Create):
                 "campo erroneo": "descripción del error"
             }
 
-
-       
-
+        
     \"\"\"
     {permisos_create} 
-    serializer_class = {modelo}Serializer
+    serializer_class = {modeloSerializer_create}
+
     {save_create}
+
 
 class {modelo}_Update(Base_Update):
     \"\"\"
@@ -346,7 +345,8 @@ class {modelo}_Update(Base_Update):
         
 
     \"\"\"
-    serializer_class = {modelo}Serializer
+
+    serializer_class = {modeloSerializer_update}
     {permisos_update} 
     {save_update}
 
@@ -370,7 +370,7 @@ class {modelo}_Destroy(Base_Destroy):
 
     \"\"\"
     {permisos_destroy} 
-    serializer_class = {modelo}Serializer
+    serializer_class = {modeloSerializer_destroy}
     {save_destroy}
 
 

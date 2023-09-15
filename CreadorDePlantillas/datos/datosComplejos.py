@@ -31,6 +31,17 @@ class Codigos:
     def __init__(self):
         self.permiso=DatoCodigo()
         self.pre_save=DatoCodigo()
+        self.serializer=""
+    def inicializar(self,D,dc_codigo):
+        self.permiso.codigo = dc_codigo["permisos"]
+        self.permiso.descripcion = dc_codigo["permisos_descripcion"]
+        self.pre_save = dc_codigo["save"]
+        if "serializer" in dc_codigo:
+            sr = dc_codigo["serializer"]
+            self.serializer = sr if len(sr) > 0 else D.serializerDefault
+        else:
+            self.serializer=D.serializerDefault
+
 class DatosEnpoint:
     def __init__(self):
         self.list=Codigos()
@@ -50,23 +61,21 @@ class DatosModelo:
         self.primerCampoDate = None
         self.primerCampoBoolean = None
 
+        self.nombreModelo=datosDeModelo["modelo"]
+        self.serializerDefault=self.nombreModelo+"Serializer"
+
         self.datosEnpoint=DatosEnpoint()
         dc=datosDeModelo["codigos"]
         dc_codigo=dc["create"]
-        self.datosEnpoint.create.permiso.codigo=dc_codigo["permisos"]
-        self.datosEnpoint.create.permiso.descripcion = dc_codigo["permisos_descripcion"]
+        self.datosEnpoint.create.inicializar(self,dc_codigo)
         dc_codigo = dc["destroy"]
-        self.datosEnpoint.delete.permiso.codigo = dc_codigo["permisos"]
-        self.datosEnpoint.delete.permiso.descripcion = dc_codigo["permisos_descripcion"]
+        self.datosEnpoint.delete.inicializar(self, dc_codigo)
         dc_codigo = dc["edit"]
-        self.datosEnpoint.update.permiso.codigo = dc_codigo["permisos"]
-        self.datosEnpoint.update.permiso.descripcion = dc_codigo["permisos_descripcion"]
+        self.datosEnpoint.update.inicializar(self, dc_codigo)
         dc_codigo = dc["list"]
-        self.datosEnpoint.list.permiso.codigo = dc_codigo["permisos"]
-        self.datosEnpoint.list.permiso.descripcion = dc_codigo["permisos_descripcion"]
+        self.datosEnpoint.list.inicializar(self, dc_codigo)
         dc_codigo = dc["view"]
-        self.datosEnpoint.retrive.permiso.codigo = dc_codigo["permisos"]
-        self.datosEnpoint.retrive.permiso.descripcion = dc_codigo["permisos_descripcion"]
+        self.datosEnpoint.retrive.inicializar(self, dc_codigo)
 
 
         self.listaCampos:List[DatosDeCampo]=[]

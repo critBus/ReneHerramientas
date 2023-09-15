@@ -1,6 +1,7 @@
 from datos.datos import *
 from datos.plantillas import *
 from datos.datosComplejos import *
+from datos.datos_internos import *
 from datos.funcionesCreadoras import *
 from typing import TYPE_CHECKING, Dict, List, NoReturn, Optional, Union, Tuple, cast, ClassVar
 
@@ -10,7 +11,28 @@ def procesar_lineas(texto, funcion):
     for i, linea in enumerate(lineas):
         funcion(i, linea)
 
+def procesar_string(dato):
+    kv=datos_internos
+    for key in kv:
+        valor=kv[key]
+        dato = dato.replace("{- " + key + " -}", valor)
+    return dato
 
+def procesar_dic(dic):
+    for clave, valor in dic.items():
+        if isinstance(valor, dict):
+            procesar_dic(valor)
+        elif isinstance(valor, list):
+            for i in range(len(valor)):
+                if isinstance(valor[i], dict):
+                    procesar_dic(valor[i])
+                elif isinstance(valor[i], str):
+                    # Procesar el string aquí
+                    valor[i] = procesar_string(valor[i])
+        elif isinstance(valor, str):
+            # Procesar el string aquí
+            dic[clave] = procesar_string(valor)
+procesar_dic(key_valores)
 
 lista_DC:List[DatosModelo]=[]
 dic_DC:Dict[str,DatosModelo]={}
@@ -40,7 +62,7 @@ def imprimir_linea(kv,i,linea):
 
 
 
-listAPintar=[g]
+listAPintar=[f]
 for texto in listAPintar:
     for key in key_valores['models']:
         key_valores_actual=key_valores['models'][key].copy()
