@@ -9,8 +9,8 @@ datos_internos={
     ,"Es Publica salida":"True o False, representando si es visible para todos los usuarios, por defectos las creadas por usuarios que no sean superusuarios deberian de ser privadas."
     ,"Es Publica entrada":"True o False, representando si es visible para todos los usuarios, por defectos las creadas por usuarios que no sean superusuarios deberian de ser privadas."
     ,"getPermiso_PuedeAgregar_Modelo":"Puede agregar esta entidad solo si tiene los permisos adecuados "
-    ,"PuedeCrear_RolNegocio":""
-    ,"PuedeModificar_RolNegocio":""
-    ,"PuedeEliminar_RolNegocio":""
-    ,"Puede_Manipular_Imagenes_De_Negocio":""
+    ,"PuedeCrear_RolNegocio":"Solo puede utilizar este endpoint para crear roles que no sean propietarios y donde el usuario autenticado sea el creador del negocio relacionado, a excepción del superusuario el que si puede manipular este tipo de roles"
+    ,"PuedeModificar_RolNegocio":"Solo puede utilizar este endpoint para modificar roles que no sean propietarios y donde el usuario autenticado sea el creador del negocio relacionado, a excepción del superusuario el que si puede manipular este tipo de roles"
+    ,"PuedeEliminar_RolNegocio":"Solo puede utilizar este endpoint para eliminar roles que no sean propietarios y donde el usuario autenticado sea el creador del negocio relacionado, a excepción del superusuario el que si puede manipular este tipo de roles"
+    ,"Puede_Manipular_Imagenes_De_Negocio":"Solo puede manipular las imágenes relacionadas a una entidad en la cual el usuario autenticado tenga permisos para modificar la entidad relacionada  "
 }

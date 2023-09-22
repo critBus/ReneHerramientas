@@ -224,27 +224,46 @@ SEPARACION_PERMISOS_DESCRIPCION=2
 
 def crear_Permisos_descripcion_List(D:DatosModelo):
     p=Imprimidor(SEPARACION_PERMISOS_DESCRIPCION)
-    p.pr0(D.datosEnpoint.list.permiso.descripcion)
+    permiso_str=D.datosEnpoint.list.permiso.descripcion
+    l=permiso_str.split("\n")
+    for ps in l:
+        p.pr0(ps)
     return p.r
 dicFuncionesCreadoras['permisos_descripcion_list']=crear_Permisos_descripcion_List
 def crear_Permisos_descripcion_Create(D:DatosModelo):
     p=Imprimidor(SEPARACION_PERMISOS_DESCRIPCION)
-    p.pr0(D.datosEnpoint.create.permiso.descripcion)
+    #p.pr0(D.datosEnpoint.create.permiso.descripcion)
+    permiso_str = D.datosEnpoint.create.permiso.descripcion
+    l = permiso_str.split("\n")
+    for ps in l:
+        p.pr0(ps)
     return p.r
 dicFuncionesCreadoras['permisos_descripcion_create']=crear_Permisos_descripcion_Create
 def crear_Permisos_descripcion_Retrieve(D:DatosModelo):
     p=Imprimidor(SEPARACION_PERMISOS_DESCRIPCION)
-    p.pr0(D.datosEnpoint.retrive.permiso.descripcion)
+    #p.pr0(D.datosEnpoint.retrive.permiso.descripcion)
+    permiso_str = D.datosEnpoint.retrive.permiso.descripcion
+    l = permiso_str.split("\n")
+    for ps in l:
+        p.pr0(ps)
     return p.r
 dicFuncionesCreadoras['permisos_descripcion_retrieve']=crear_Permisos_descripcion_Retrieve
 def crear_Permisos_descripcion_Delete(D:DatosModelo):
     p=Imprimidor(SEPARACION_PERMISOS_DESCRIPCION)
-    p.pr0(D.datosEnpoint.delete.permiso.descripcion)
+    #p.pr0(D.datosEnpoint.delete.permiso.descripcion)
+    permiso_str = D.datosEnpoint.delete.permiso.descripcion
+    l = permiso_str.split("\n")
+    for ps in l:
+        p.pr0(ps)
     return p.r
 dicFuncionesCreadoras['permisos_descripcion_destroy']=crear_Permisos_descripcion_Delete
 def crear_Permisos_descripcion_Update(D:DatosModelo):
     p=Imprimidor(SEPARACION_PERMISOS_DESCRIPCION)
-    p.pr0(D.datosEnpoint.update.permiso.descripcion)
+    #p.pr0(D.datosEnpoint.update.permiso.descripcion)
+    permiso_str = D.datosEnpoint.update.permiso.descripcion
+    l = permiso_str.split("\n")
+    for ps in l:
+        p.pr0(ps)
     return p.r
 dicFuncionesCreadoras['permisos_descripcion_update']=crear_Permisos_descripcion_Update
 
