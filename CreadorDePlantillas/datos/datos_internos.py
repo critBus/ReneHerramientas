@@ -9,4 +9,8 @@ datos_internos={
     ,"Es Publica salida":"True o False, representando si es visible para todos los usuarios, por defectos las creadas por usuarios que no sean superusuarios deberian de ser privadas."
     ,"Es Publica entrada":"True o False, representando si es visible para todos los usuarios, por defectos las creadas por usuarios que no sean superusuarios deberian de ser privadas."
     ,"getPermiso_PuedeAgregar_Modelo":"Puede agregar esta entidad solo si tiene los permisos adecuados "
+    ,"PuedeCrear_RolNegocio":""
+    ,"PuedeModificar_RolNegocio":""
+    ,"PuedeEliminar_RolNegocio":""
+    ,"Puede_Manipular_Imagenes_De_Negocio":""
 }

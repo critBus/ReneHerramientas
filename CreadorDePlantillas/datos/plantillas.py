@@ -387,5 +387,189 @@ g="""
 
 """
 
+h="""
+        ----------------------------------------------------------------------------
+
+        {modelo}
+
+        ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        {modeloLower}/list/
+
+        GET:
+
+        {permisos_descripcion_list} 
+
+       Endpoint para el listado de {modelo_labelPlurar}.
+
+       
+       Obtiene una lista de todas las entidades de {modelo_labelSingular} existentes, opcionalmente filtradas y ordenadas.
+
+        Ejemplo de salida de solicitud GET:
+           {
+            "count": "cantidad de elementos en la lista",
+            "next": "url del siguiente conjunto de elementos en la paginacion o null si no hay un siguinete conjunto de elementos",
+            "previous": url del  conjunto anterior de elementos en la paginacion o null si no hay un conjunto anterior de elementos,
+            "results": [
+                    {
+                        {parametros_salida_get_elmento_lista}
+                    },
+
+                    ...
+                    
+                ]
+            }
+
+       Parámetros de filtro:
+                Ejemplo: &parametro de filtor1=valor a buscar1&parametro de filtor2=valor a buscar2
+       {paremetros_get_filtro_lista} 
+
+       Parámetros de busqueda:
+            No utilizar junto a los parámetros de filtro  
+           Parametro Principial: "search", busca cualquier coincidencia que incluye el valor pasado en el parametro secundario
+                Ejemplo: &search=valor a buscar
+           Parametro Secundarios por los que busca:
+           {paremetros_get_search_lista} 
+
+       Parámetros de ordenamiento: 
+           Parametro Principial: "ordering", incluir un "-" delante del parametro secundario si se desea ordenar de forma desendiente
+                Ejemplo: &ordering=-parametro secundario
+           Parametro Secundarios:
+           {paremetros_get_ordenamiento_lista} 
+
+   
+        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+        {modeloLower}/findById/<int:pk>/
+
+        GET:
+
+
+        {permisos_descripcion_retrieve}
+
+        Endpoint para la obtención de una entidad de {modelo_labelSingular} específica.
+
+        Parámetros de entrada:
+        - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+
+        - 404 (Not Found):
+            {
+                "detail": "No encontrado."
+            }
+
+        
+        Obtiene la entidad de {modelo_labelSingular} con el id proporcionado.
+
+            Ejemplo de salida de solicitud GET:
+            {
+                {parametros_salida_get_RUD}
+            }
+
+        
+  
+        ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+        {modeloLower}/create/
+
+        POST:
+
+
+        {permisos_descripcion_create}
+
+       Endpoint para la creación de {modelo_labelSingular}.
+
+       
+       Crea una nueva entidad de {modelo_labelSingular} con los datos proporcionados en el cuerpo de la solicitud.
+       Header: 'Content-Type': 'application/json'
+       Formato de entrada POST:
+            {
+                {parametros_post_descripcion_crear} 
+
+            }
+
+        Formato de Salida POST:
+            - 201 (Created): Creado con éxito
+            {
+                {parametros_salida_post_descripcion_crear}
+            }
+            - 400 (Bad Request): Los datos de entrada no son válidos
+            {
+                "campo erroneo": "descripción del error"
+            }
+
+        
+
+        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+        {modeloLower}/update/<int:pk>/
+
+        PUT:
+
+        {permisos_descripcion_update}
+
+        Endpoint para la actualización de una entidad de {modelo_labelSingular} específica.
+
+        Parámetros de entrada:
+        - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+
+        - 404 (Not Found):
+            {
+                "detail": "No encontrado."
+            }
+
+        
+        
+        Actualiza la entidad de {modelo_labelSingular} con el id proporcionado con los datos proporcionados en el cuerpo de la solicitud.
+
+            Ejemplo de solicitud PUT:
+            {
+                {parametros_entrada_put_RUD}
+            }
+
+            Ejemplo de salida de solicitud PUT:
+            {
+                {parametros_salida_put_RUD}
+            }
+
+            - 400 (Bad Request): Los datos de entrada no son válidos
+            {
+                "campo erroneo": "descripción del error"
+            }
+
+        
+
+        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+        {modeloLower}/delete/<int:pk>/
+
+        DELETE:
+
+        {permisos_descripcion_destroy}
+
+        Endpoint para la eliminación de una entidad de {modelo_labelSingular} específica.
+
+        Parámetros de entrada:
+        - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+
+        - 404 (Not Found):
+            {
+                "detail": "No encontrado."
+            }
+
+        
+        DELETE:
+        Elimina la entidad de {modelo_labelSingular} con el id proporcionado.
+
+    
+        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+"""
+
 # Ejemplo de solicitud GET:
 #        {ejemplo_get_lista} 
