@@ -44,7 +44,37 @@ key_valores={
                     
                     },
                 "list":{
-                        "save":"",
+                        "save":"""
+    def get(self, request, *args, **kwargs):
+        #return self.list(request, *args, **kwargs)
+
+        try:
+            #usuario = request.user
+            data = getData(request)
+
+
+            # print(data)
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+        # orginal
+        response = self.list(request, *args, **kwargs)
+        # fin original
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                if "results" in datos:
+                    for datos_negocio in datos["results"]:
+                        toJsonRolNegocio_DatosSimple(datos_negocio)
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+                        """,
                     "permisos_descripcion":"",
                     "permisos":""
 
@@ -60,7 +90,35 @@ key_valores={
                     "permisos":"permission_classes = (IsAuthenticated, PuedeEliminar_RolNegocio,)  #"
                     },
                 "view":{
-                    "save":"",
+                    "save":"""
+    def get(self, request, *args, **kwargs):
+        try:
+            #usuario = request.user
+            data = getData(request)
+
+
+            # print(data)
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+
+        response = self.retrieve(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonRolNegocio_DatosSimple(datos)
+
+
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+                    """,
                     "permisos_descripcion":"",
                     "permisos":""
                     
@@ -428,7 +486,36 @@ key_valores={
                     "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
                     },
                 "view":{
-                    "save":"",
+                    "save":"""
+    def get(self, request, *args, **kwargs):
+        try:
+            usuario = request.user
+            data = getData(request)
+
+
+            # print(data)
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+
+        response = self.retrieve(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonNeogocio_DatosSimple(datos)
+
+
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+
+                    """,
                     "permisos_descripcion":"",
                     "permisos":""
                     
