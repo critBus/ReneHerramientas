@@ -684,7 +684,41 @@ key_valores={
             "modeloLower_labelPlurar": "CategoriaDeServicio",
             "codigos":{
                 "create":{
-                    "save":"",
+                    "save":"""
+    def post(self, request, *args, **kwargs):
+        usuarioAutenticado = None
+        try:
+            usuarioAutenticado = request.user
+            data = getData(request)
+
+            if "Negocio" in data and "nombre" in data:
+                idNegocio=data["Negocio"]
+                nombre=data["nombre"]
+                if (not strNulo(idNegocio)) and (not strNulo(nombre))\
+                    and esIntStr(idNegocio):
+                    if CategoriaDeServicio.objects.filter(
+                        nombre=nombre
+                        ,Negocio_id=idNegocio
+                    ).exists():
+                        return JsonResponse({'status': 'error',
+                                             'message': 'No se puede repetir en un mismo negocio una categoría de Servicio'}
+                                            , status=400)
+
+
+
+
+            # print(data)
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+        # orginal
+        response = self.create(request, *args, **kwargs)
+        # fin original
+
+        return response
+
+                    """,
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
                     "permisos":"permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(CategoriaDeServicio),)"
 
@@ -698,6 +732,7 @@ key_valores={
                         "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
                     "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)#getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'change'),)"
+                    ,"serializer":"CategoriaDeServicio_Update_Serializer"
                     },
                 "destroy":{
                         "save":"",
@@ -756,7 +791,40 @@ key_valores={
             "modeloLower_labelPlurar": "CategoriaDeProducto",
             "codigos":{
                 "create":{
-                    "save":"",
+                    "save":"""
+    def post(self, request, *args, **kwargs):
+        usuarioAutenticado = None
+        try:
+            usuarioAutenticado = request.user
+            data = getData(request)
+
+            if "Negocio" in data and "nombre" in data:
+                idNegocio=data["Negocio"]
+                nombre=data["nombre"]
+                if (not strNulo(idNegocio)) and (not strNulo(nombre))\
+                    and esIntStr(idNegocio):
+                    if CategoriaDeProducto.objects.filter(
+                        nombre=nombre
+                        ,Negocio_id=idNegocio
+                    ).exists():
+                        return JsonResponse({'status': 'error',
+                                             'message': 'No se puede repetir en un mismo negocio una categoría de Producto'}
+                                            , status=400)
+
+
+
+
+            # print(data)
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+        # orginal
+        response = self.create(request, *args, **kwargs)
+        # fin original
+
+        return response
+                    """,
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
                     "permisos":"permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(CategoriaDeProducto),)"
 
@@ -770,6 +838,7 @@ key_valores={
                         "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
                     "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)#getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'change'),)"
+                    ,"serializer":"CategoriaDeProducto_Update_Serializer"
                     },
                 "destroy":{
                         "save":"",
@@ -850,18 +919,77 @@ key_valores={
             "modeloLower_labelPlurar": "Producto",
             "codigos":{
                 "create":{
-                    "save":"",
+                    "save":"""
+    def post(self, request, *args, **kwargs):
+        response= self.create(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonProducto_DatosSimple(datos)
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+                    """,
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
                     "permisos":"permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(Producto),)"
 
                     },
                 "list":{
-                        "save":"",
+                        "save":"""
+    def get(self, request, *args, **kwargs):
+        #return self.list(request, *args, **kwargs)
+
+        try:
+            #usuario = request.user
+            data = getData(request)
+
+
+            # print(data)
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+        # orginal
+        response = self.list(request, *args, **kwargs)
+        # fin original
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                if "results" in datos:
+                    for datos_negocio in datos["results"]:
+                        toJsonProducto_DatosSimple(datos_negocio)
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+                        """,
                     "permisos_descripcion":"",
                     "permisos":""
                     },
                 "edit":{
-                        "save":"",
+                        "save":"""
+    def put(self, request, *args, **kwargs):
+        response= self.update(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonProducto_DatosSimple(datos)
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+                        """,
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
                     "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)"
                     },
@@ -871,7 +999,23 @@ key_valores={
                     "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)"
                     },
                 "view":{
-                    "save":"",
+                    "save":"""
+    def get(self, request, *args, **kwargs):
+        response = self.retrieve(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonProducto_DatosSimple(datos)
+
+
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+                    """,
                     "permisos_descripcion":"",
                     "permisos":""
                     
@@ -996,18 +1140,76 @@ key_valores={
             "modeloLower_labelPlurar": "Servicio",
             "codigos":{
                 "create":{
-                    "save":"",
+                    "save":"""
+    def post(self, request, *args, **kwargs):
+        response= self.create(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonServicio_DatosSimple(datos)
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+                    """,
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
                     "permisos":"permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(Servicio),)"
 
                     },
                 "list":{
-                        "save":"",
+                        "save":"""
+    def get(self, request, *args, **kwargs):
+        #return self.list(request, *args, **kwargs)
+
+        try:
+            #usuario = request.user
+            data = getData(request)
+
+
+            # print(data)
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+        # orginal
+        response = self.list(request, *args, **kwargs)
+        # fin original
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                if "results" in datos:
+                    for datos_negocio in datos["results"]:
+                        toJsonServicio_DatosSimple(datos_negocio)
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+                        """,
                     "permisos_descripcion":"",
                     "permisos":""
                     },
                 "edit":{
-                        "save":"",
+                        "save":"""
+    def put(self, request, *args, **kwargs):
+        response= self.update(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonServicio_DatosSimple(datos)
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+                        """,
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
                     "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)"
                     },
@@ -1017,7 +1219,23 @@ key_valores={
                     "permisos":"permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)"
                     },
                 "view":{
-                    "save":"",
+                    "save":"""
+    def get(self, request, *args, **kwargs):
+        response = self.retrieve(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonServicio_DatosSimple(datos)
+
+
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+                    """,
                     "permisos_descripcion":"",
                     "permisos":""
                     
@@ -1209,7 +1427,13 @@ key_valores={
                     "related_model": "TipoDeResenna",
                     "descripcion_entrada":"id del tipo de reseña",
                     "descripcion_salida":"",
-                }
+                },{
+                    "name": "puntuacion",
+                    "type": "IntegerField",
+                    "related_model": "",
+                    "descripcion_entrada":"clasificacion del usuario",
+                    "descripcion_salida":"",
+                },
             ],
             "modeloLower": "resenna",
             "modelo_labelSingular": "Resenna",
