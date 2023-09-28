@@ -571,5 +571,11 @@ h="""
 
 """
 
+ij="""
+{modelo}
+
+{atributosExtra} 
+
+"""
 # Ejemplo de solicitud GET:
 #        {ejemplo_get_lista} 

@@ -79,10 +79,13 @@ class DatosModelo:
 
 
         self.listaCampos:List[DatosDeCampo]=[]
+        # self.listaCampos.append({
+        #
+        # })
         for campo in datosDeModelo["campos"]:
             d = DatosDeCampo(campo)
-            if d.esID:
-                continue
+            # if d.esID:
+            #     continue
             self.listaCampos.append(d)
             if d.esTexto:
                 self.hayUnCampoTexto=True
@@ -92,7 +95,7 @@ class DatosModelo:
                 self.hayUnCampoNumero = True
                 if not self.primerCampoNumero:
                     self.primerCampoNumero = d
-            if d.esBoolean:
+            elif d.esBoolean:
                 self.hayUnCampoBoolean = True
                 if not self.primerCampoTexto:
                     self.primerCampoTexto = d

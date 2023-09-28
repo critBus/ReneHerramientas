@@ -34,7 +34,9 @@ def crearParametrosGetFiltroLista(D:DatosModelo):
     for i, DD in enumerate(LD):
         prefijo = CD[i] + "__" if i != 0 else ""
         for d in DD.listaCampos:
-            if d.esTexto or d.esNumero or d.esBoolean:
+            if d.esTexto or d.esNumero or d.esBoolean or d.esID:
+                if d.nombreCampo in ["password"]:
+                    continue
                 parametros=[]
                 if d.esTexto:
                     parametros=['contains','exact']
@@ -43,6 +45,8 @@ def crearParametrosGetFiltroLista(D:DatosModelo):
                     parametros = ['gte', 'lte','exact']
                     #p.pr0("'" + prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
                 elif d.esBoolean:
+                    parametros = ['exact']
+                elif d.esID:
                     parametros = ['exact']
                     #p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
 
@@ -90,27 +94,70 @@ def crearParametrosGetBusquedaLista(D:DatosModelo):
 dicFuncionesCreadoras['paremetros_get_search_lista']=crearParametrosGetBusquedaLista
 
 def crearAtributosExtras(D):
-    p=Imprimidor(1)
-    #D = DatosModelo(datosDeModelo)
-    LD=[D]
-    CD=[""]
+    p = Imprimidor(1)
+    LD = [D]
+    CD = [""]
     for d in D.listaCampos:
         if d.esMany or d.esLlave:
             LD.append(d.modeloReferencia)
             CD.append(d.nombreCampo)
-
-    if D.hayUnCampoTexto or D.hayUnCampoNumero or D.hayUnCampoBoolean:
-        p.pr0("filterset_fields = {")
-        for i,DD in enumerate(LD):
-            prefijo= CD[i]+"__" if i!=0 else ""
-            for d in DD.listaCampos:
+    p.pr0("filterset_fields = {")
+    for i, DD in enumerate(LD):
+        prefijo = CD[i] + "__" if i != 0 else ""
+        for d in DD.listaCampos:
+            if d.nombreCampo in ["password"]:
+                continue
+            if d.esTexto or d.esNumero or d.esBoolean or d.esID:
+                parametros = []
                 if d.esTexto:
-                    p.pr1("'"+prefijo + d.nombreCampo + "' : ['contains','exact'],")
+                    parametros = ['contains', 'exact']
+                    p.pr0("'" + prefijo + d.nombreCampo + "' : ['contains','exact'],")
                 elif d.esNumero:
-                    p.pr1("'" +prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
+                    parametros = ['gte', 'lte', 'exact']
+                    p.pr0("'" + prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
                 elif d.esBoolean:
-                    p.pr1("'" +prefijo + d.nombreCampo + "' : ['exact'],")#'contains',
-        p.pr0("}")
+                    parametros = ['exact']
+                    p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
+                elif d.esID:
+                    parametros = ['exact']
+                    p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
+
+
+                # for pa in parametros:
+                #     extra = "__" + pa if pa != 'exact' else ""
+                #     descripcion = ""
+                #     if pa == 'exact':
+                #         descripcion = "que coincidan exactamente con el valor proporcionado"
+                #     elif pa == 'contains':
+                #         descripcion = "que contengan el valor proporcionado"
+                #     elif pa == 'gte':
+                #         descripcion = "que sean mayores o igual que el valor proporcionado"
+                #     elif pa == 'lte':
+                #         descripcion = "que sean menores o igual que el valor proporcionado"
+                #     p.pr1("- '" + prefijo + d.nombreCampo + extra + "' : '" + descripcion + "',")
+    p.pr0("}")
+
+    # p=Imprimidor(1)
+    # #D = DatosModelo(datosDeModelo)
+    # LD=[D]
+    # CD=[""]
+    # for d in D.listaCampos:
+    #     if d.esMany or d.esLlave:
+    #         LD.append(d.modeloReferencia)
+    #         CD.append(d.nombreCampo)
+
+    # if D.hayUnCampoTexto or D.hayUnCampoNumero or D.hayUnCampoBoolean:
+    #     p.pr0("filterset_fields = {")
+    #     for i,DD in enumerate(LD):
+    #         prefijo= CD[i]+"__" if i!=0 else ""
+    #         for d in DD.listaCampos:
+    #             if d.esTexto:
+    #                 p.pr1("'"+prefijo + d.nombreCampo + "' : ['contains','exact'],")
+    #             elif d.esNumero:
+    #                 p.pr1("'" +prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
+    #             elif d.esBoolean:
+    #                 p.pr1("'" +prefijo + d.nombreCampo + "' : ['exact'],")#'contains',
+    #     p.pr0("}")
     if D.hayUnCampoTexto or D.hayUnCampoNumero:
         p.pr0("search_fields=[")
         for i,DD in enumerate(LD):
