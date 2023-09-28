@@ -38,7 +38,21 @@ key_valores={
             "modeloLower_labelPlurar": "RolNegocio",
             "codigos":{
                 "create":{
-                    "save":"",
+                    "save":"""
+    def post(self, request, *args, **kwargs):
+        response= self.create(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonRolNegocio_DatosSimple(datos)
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+                    """,
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- PuedeCrear_RolNegocio -}",
                     "permisos":"permission_classes = (IsAuthenticated, PuedeCrear_RolNegocio,)"
                     
@@ -80,7 +94,21 @@ key_valores={
 
                     },
                 "edit":{
-                        "save":"",
+                        "save":"""
+    def put(self, request, *args, **kwargs):
+        response= self.update(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonRolNegocio_DatosSimple(datos)
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+                        """,
                     "permisos_descripcion":"{- IsAuthenticated -}\n{- PuedeModificar_RolNegocio -}",
                     "permisos":"permission_classes = (IsAuthenticated, PuedeModificar_RolNegocio,)"
                     },
@@ -394,43 +422,48 @@ key_valores={
             "codigos":{
                 "create":{
                     "save":"""
-            def post(self, request, *args, **kwargs):
-                usuarioCreadorDelNegocio=None
-                try:
-                    usuarioCreadorDelNegocio=request.user
-                    data = getData(request)
-                    if "user" in data and data["user"]!=usuarioCreadorDelNegocio.id:
-                        return JsonResponse({'status': 'error'
-                                                , 'message': 'El id del usuario pasado por parámetro debe de ser el mismo que el autenticado '}
-                                            , status=400)
-        
-                    # print(data)
-                except:
-                    print(traceback.format_exc())
-                    return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
-        
-                # orginal
-                response = self.create(request, *args, **kwargs)
-                # fin original
-                try:
-        
-                    if response.status_code >= 200 and response.status_code <= 299:
-                        datos = response.data
-                        idDelNegocioCreado=datos["id"]
-                        if not RolNegocio.objects.filter(
-                            Negocio_id=idDelNegocioCreado
-                            ,user=usuarioCreadorDelNegocio
-                            ,rol__name=NOMBRE_ROL_PROPIETARIO
-                        ).exists():
-                            r=RolNegocio()
-                            r.Negocio=Negocio.objects.get(id=idDelNegocioCreado)
-                            r.user=usuarioCreadorDelNegocio
-                            r.rol=get_group(NOMBRE_ROL_PROPIETARIO)
-                            r.save()
-                    return response
-                except:
-                    print(traceback.format_exc())
-                    return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+    def post(self, request, *args, **kwargs):
+        usuarioCreadorDelNegocio = None
+        try:
+            usuarioCreadorDelNegocio = request.user
+            data = getData(request)
+            if "user" in data:
+                idUsuarioData=data["user"]
+                idUsuarioRequest=str(usuarioCreadorDelNegocio.id)
+                if  idUsuarioData!= idUsuarioRequest:
+                    return JsonResponse({'status': 'error'
+                                            ,
+                                         'message': 'El id del usuario pasado por parámetro debe de ser el mismo que el autenticado '}
+                                        , status=400)
+
+            # print(data)
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+        # orginal
+        response = self.create(request, *args, **kwargs)
+        # fin original
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                idDelNegocioCreado = datos["id"]
+                if not RolNegocio.objects.filter(
+                        Negocio_id=idDelNegocioCreado
+                        , user=usuarioCreadorDelNegocio
+                        , rol__name=NOMBRE_ROL_PROPIETARIO
+                ).exists():
+                    r = RolNegocio()
+                    r.Negocio = Negocio.objects.get(id=idDelNegocioCreado)
+                    r.user = usuarioCreadorDelNegocio
+                    r.rol = get_group(NOMBRE_ROL_PROPIETARIO)
+                    r.save()
+                toJsonNeogocio_DatosSimple(datos)
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
 
 
 
@@ -474,7 +507,21 @@ key_valores={
                     "permisos":""
                     },
                 "edit":{
-                        "save":"",
+                        "save":"""
+    def put(self, request, *args, **kwargs):
+        response= self.update(request, *args, **kwargs)
+
+        try:
+
+            if response.status_code >= 200 and response.status_code <= 299:
+                datos = response.data
+                toJsonNeogocio_DatosSimple(datos)
+
+            return response
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+                        """,
                     "permisos_descripcion":"{- IsAuthenticated -}"
                                             +"{- getPermisoEnEndpointEntidad_Can_GET editado -}",
                     "permisos":"permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
@@ -1453,16 +1500,65 @@ key_valores={
                     "permisos":""
                     },
                 "edit":{
-                        "save":"",
+                        "save":"""
+    def put(self, request, *args, **kwargs):
+        instance: Resenna = self.get_object()# no atrapar error pq suelta un 404 si no lo encuentra
+        try:
+            data = getData(request)
+
+
+            if instance:
+                if "user" in data:
+                    idUsuario=data["user"]
+                    if str(instance.user.id)!=str(idUsuario):
+                        return JsonResponse({'status': 'error'
+                                                , 'message': 'En las Reseñas no se puede editar el usuario'
+                                             }
+                                            , status=400)
+
+                if "TipoDeResenna" in data:
+                    idTipoDeResenna=data["TipoDeResenna"]
+                    if str(instance.TipoDeResenna.id)!=str(idTipoDeResenna):
+                        return JsonResponse({'status': 'error'
+                                                , 'message': 'En las Reseñas no se puede editar el Tipo de Reseña'
+                                             }
+                                            , status=400)
+                for key in ["Negocio","Producto","Servicio"]:
+
+                    if key in data:
+                        id = data[key]
+                        atributo =getattr(instance,key)
+                        modifico = str(atributo.id) != str(id) if atributo else not strNulo(id)
+                        if modifico:
+                            return JsonResponse({'status': 'error'
+                                                    , 'message': 'En las Reseñas no se puede editar el ' + key
+                                                 }
+                                                , status=400)
+
+
+
+
+
+
+
+        except:
+            print(traceback.format_exc())
+            return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
+
+        response=self.update(request, *args, **kwargs)
+
+        return response
+
+                        """,
                     "permisos_descripcion":"{- IsAuthenticated -}"
-                                           + "\n{- EsSuperUsuario -}",
-                        "permisos":"permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+                                           + "\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                        "permisos":"permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuDuenno_User,)"
                     },
                 "destroy":{
                         "save":"",
                     "permisos_descripcion":"{- IsAuthenticated -}"
-                                           + "\n{- EsSuperUsuario -}",
-                        "permisos":"permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+                                           + "\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                        "permisos":"permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuDuenno_User,)"
                     },
                 "view":{
                     "save":"",
