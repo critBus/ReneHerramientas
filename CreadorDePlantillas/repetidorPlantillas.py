@@ -62,7 +62,7 @@ def imprimir_linea(kv,i,linea):
 
 
 
-listAPintar=[plantilla_views]#[plantilla_doc]#[plantilla_serializer]#[g]#[f]
+listAPintar=[g]#[plantilla_serializer]#[plantilla_views]#[plantilla_doc]#[f]
 for texto in listAPintar:
     for key in key_valores['models']:
         key_valores_actual=key_valores['models'][key].copy()

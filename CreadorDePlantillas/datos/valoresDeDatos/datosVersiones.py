@@ -4,9 +4,9 @@ datos_versiones={
             "campos": [
                 {
                     "name": "id",
-                    "type": "BigAutoField",
+                    "type": "BigIntegerField",
                     "related_model": "",
-                    "descripcion_entrada": "ID",
+                    "descripcion_entrada": "id",
                     "descripcion_salida": ""
                 },
                 {
@@ -31,8 +31,8 @@ datos_versiones={
                 },
                 "list": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "permisos_descripcion": "",
+                    "permisos": "",
                     "serializer": "PlatformSerializer_List"
                 },
                 "edit": {
@@ -49,9 +49,64 @@ datos_versiones={
                 },
                 "view": {
                     "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "PlatformSerializer_Retrieve"
+                }
+            }
+        },
+        "Application": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "BigIntegerField",
+                    "related_model": "",
+                    "descripcion_entrada": "id",
+                    "descripcion_salida": ""
+                },
+                {
+                    "name": "name",
+                    "type": "CharField",
+                    "related_model": "",
+                    "descripcion_entrada": "Nombre",
+                    "descripcion_salida": ""
+                }
+            ],
+            "modeloLower": "application",
+            "modelo_labelSingular": "Application",
+            "modelo_labelPlurar": "Application",
+            "modeloLower_labelSingular": "Application",
+            "modeloLower_labelPlurar": "Application",
+            "codigos": {
+                "create": {
+                    "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlatformSerializer_Retrieve"
+                    "serializer": "ApplicationSerializer_Create"
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "ApplicationSerializer_List"
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
+                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "serializer": "ApplicationSerializer_Update"
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
+                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "serializer": "ApplicationSerializer_Destroy"
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "ApplicationSerializer_Retrieve"
                 }
             }
         },
@@ -59,9 +114,9 @@ datos_versiones={
             "campos": [
                 {
                     "name": "id",
-                    "type": "BigAutoField",
+                    "type": "BigIntegerField",
                     "related_model": "",
-                    "descripcion_entrada": "ID",
+                    "descripcion_entrada": "id",
                     "descripcion_salida": ""
                 },
                 {
@@ -86,8 +141,8 @@ datos_versiones={
                 },
                 "list": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "permisos_descripcion": "",
+                    "permisos": "",
                     "serializer": "VersionStatusSerializer_List"
                 },
                 "edit": {
@@ -104,8 +159,8 @@ datos_versiones={
                 },
                 "view": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "permisos_descripcion": "",
+                    "permisos": "",
                     "serializer": "VersionStatusSerializer_Retrieve"
                 }
             }
@@ -146,6 +201,13 @@ datos_versiones={
                     "related_model": "VersionStatus",
                     "descripcion_entrada": "Estado",
                     "descripcion_salida": ""
+                },
+                {
+                    "name": "application",
+                    "type": "ForeignKey",
+                    "related_model": "Application",
+                    "descripcion_entrada": "Aplicaci\u00f3n",
+                    "descripcion_salida": ""
                 }
             ],
             "modeloLower": "version",
@@ -162,8 +224,8 @@ datos_versiones={
                 },
                 "list": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "permisos_descripcion": "",
+                    "permisos": "",
                     "serializer": "VersionSerializer_List"
                 },
                 "edit": {
@@ -180,8 +242,8 @@ datos_versiones={
                 },
                 "view": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "permisos_descripcion": "",
+                    "permisos": "",
                     "serializer": "VersionSerializer_Retrieve"
                 }
             }
@@ -224,8 +286,8 @@ datos_versiones={
                 },
                 "list": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "permisos_descripcion": "",
+                    "permisos": "",
                     "serializer": "Version_FeatureSerializer_List"
                 },
                 "edit": {
@@ -242,8 +304,8 @@ datos_versiones={
                 },
                 "view": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "permisos_descripcion": "",
+                    "permisos": "",
                     "serializer": "Version_FeatureSerializer_Retrieve"
                 }
             }
@@ -252,9 +314,9 @@ datos_versiones={
             "campos": [
                 {
                     "name": "id",
-                    "type": "BigAutoField",
+                    "type": "BigIntegerField",
                     "related_model": "",
-                    "descripcion_entrada": "ID",
+                    "descripcion_entrada": "id",
                     "descripcion_salida": ""
                 },
                 {
@@ -300,8 +362,8 @@ datos_versiones={
                 },
                 "list": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "permisos_descripcion": "",
+                    "permisos": "",
                     "serializer": "StoreSerializer_List"
                 },
                 "edit": {
@@ -318,16 +380,17 @@ datos_versiones={
                 },
                 "view": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
+                    "permisos_descripcion": "",
+                    "permisos": "",
                     "serializer": "StoreSerializer_Retrieve"
                 }
             }
         }
     },
     "attribute_types": [
-        "BigAutoField",
+        "BigIntegerField",
         "CharField",
+        "BigAutoField",
         "IntegerField",
         "ForeignKey",
         "TextField",
