@@ -371,6 +371,22 @@ def crear_Serrializer_Update(D:DatosModelo):
     return p.r
 dicFuncionesCreadoras['modeloSerializer_update']=crear_Serrializer_Update
 
+
+
+
+
+
+def crearParametrosSerializer(D:DatosModelo):
+    p = Imprimidor(1)
+    for d in D.listaCampos:
+        if d.esLlave:
+            p.pr0("" + d.nombreCampo + "=" + d.modeloReferencia.serializerDefault + "()")
+
+    return p.r#+"\n"
+
+dicFuncionesCreadoras['parametrosSerializer']=crearParametrosSerializer
+
+
 # def saltoExtra(d):
 #     p = Imprimidor(1)
 #     p.pr1("")
