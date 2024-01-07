@@ -600,38 +600,44 @@ class {modelo}Serializer(serializers.ModelSerializer):
         model = {modelo}
         fields = '__all__'
     
-class {modelo}Serializer_List(serializers.ModelSerializer):
-    {parametrosSerializer}
-    class Meta:
-        model = {modelo}
-        fields = '__all__'
-    
-class {modelo}Serializer_Retrieve(serializers.ModelSerializer):
-    {parametrosSerializer}
-    class Meta:
-        model = {modelo}
-        fields = '__all__'
-    
-class {modelo}Serializer_Create(serializers.ModelSerializer):
+class {modelo}Serializer_Representation(serializers.ModelSerializer):
     class Meta:
         model = {modelo}
         fields = '__all__'
     def to_representation(self, value):
         return {modelo}Serializer(value).data
+class {modelo}Serializer_List(serializers.ModelSerializer):
+    class Meta:
+        model = {modelo}
+        fields = '__all__'
+    def to_representation(self, value):
+        return {modelo}Serializer_Representation(value).data
+class {modelo}Serializer_Retrieve(serializers.ModelSerializer):
+    class Meta:
+        model = {modelo}
+        fields = '__all__'
+    def to_representation(self, value):
+        return {modelo}Serializer_Representation(value).data
+class {modelo}Serializer_Create(serializers.ModelSerializer):
+    class Meta:
+        model = {modelo}
+        fields = '__all__'
+    def to_representation(self, value):
+        return {modelo}Serializer_Representation(value).data
     
 class {modelo}Serializer_Update(serializers.ModelSerializer):
     class Meta:
         model = {modelo}
         fields = '__all__'
     def to_representation(self, value):
-        return {modelo}Serializer(value).data
+        return {modelo}Serializer_Representation(value).data
     
 class {modelo}Serializer_Destroy(serializers.ModelSerializer):
-    {parametrosSerializer}
     class Meta:
         model = {modelo}
         fields = '__all__'
-    
+    def to_representation(self, value):
+        return {modelo}Serializer_Representation(value).data
 """
 
 plantilla_views="""
@@ -659,6 +665,7 @@ class {modelo}_List(Base_List):
                     
                 ]
             }
+            
 
        Parámetros de filtro:
                 Ejemplo: &parametro de filtor1=valor a buscar1&parametro de filtor2=valor a buscar2
@@ -676,6 +683,14 @@ class {modelo}_List(Base_List):
                 Ejemplo: &ordering=-parametro secundario
            Parametro Secundarios:
            {paremetros_get_ordenamiento_lista} 
+           
+        - 404 (Not Found):
+        - 400 (Bad Request): Los datos de entrada no son válidos
+        - 500 (Internal Server Error): Error en el servidor
+        {
+            'status': 'error'
+            'message': "descripción del error"
+        }
 
     \"\"\"
     {permisos_list} 
@@ -695,10 +710,7 @@ class {modelo}_Retrieve(Base_Retrieve):
         Parámetros de entrada:
         - id: Identificador único de la entidad a obtener, actualizar o eliminar.
 
-        - 404 (Not Found):
-            {
-                "detail": "No encontrado."
-            }
+        
 
         GET:
         Obtiene la entidad de {modelo_labelSingular} con el id proporcionado.
@@ -707,6 +719,14 @@ class {modelo}_Retrieve(Base_Retrieve):
             {
                 {parametros_salida_get_RUD}
             }
+            
+        - 404 (Not Found):
+        - 400 (Bad Request): Los datos de entrada no son válidos
+        - 500 (Internal Server Error): Error en el servidor
+        {
+            'status': 'error'
+            'message': "descripción del error"
+        }
 
         
     \"\"\"
@@ -733,10 +753,14 @@ class {modelo}_Create(Base_Create):
             {
                 {parametros_salida_post_descripcion_crear}
             }
-            - 400 (Bad Request): Los datos de entrada no son válidos
-            {
-                "campo erroneo": "descripción del error"
-            }
+        
+        - 404 (Not Found):
+        - 400 (Bad Request): Los datos de entrada no son válidos
+        - 500 (Internal Server Error): Error en el servidor
+        {
+            'status': 'error'
+            'message': "descripción del error"
+        }
 
         
     \"\"\"
@@ -755,10 +779,7 @@ class {modelo}_Update(Base_Update):
         Parámetros de entrada:
         - id: Identificador único de la entidad a obtener, actualizar o eliminar.
 
-        - 404 (Not Found):
-            {
-                "detail": "No encontrado."
-            }
+        
 
         
         PUT:
@@ -774,10 +795,13 @@ class {modelo}_Update(Base_Update):
                 {parametros_salida_put_RUD}
             }
 
-            - 400 (Bad Request): Los datos de entrada no son válidos
-            {
-                "campo erroneo": "descripción del error"
-            }
+        - 404 (Not Found):
+        - 400 (Bad Request): Los datos de entrada no son válidos
+        - 500 (Internal Server Error): Error en el servidor
+        {
+            'status': 'error'
+            'message': "descripción del error"
+        }
 
         
 
@@ -796,15 +820,18 @@ class {modelo}_Destroy(Base_Destroy):
         Parámetros de entrada:
         - id: Identificador único de la entidad a obtener, actualizar o eliminar.
 
-        - 404 (Not Found):
-            {
-                "detail": "No encontrado."
-            }
-
         
         DELETE:
         Elimina la entidad de {modelo_labelSingular} con el id proporcionado.
-
+        
+        - 404 (Not Found):
+        - 400 (Bad Request): Los datos de entrada no son válidos
+        - 500 (Internal Server Error): Error en el servidor
+        {
+            'status': 'error'
+            'message': "descripción del error"
+        }
+        
     \"\"\"
     {permisos_destroy} 
     serializer_class = {modeloSerializer_destroy}
@@ -1013,5 +1040,31 @@ plantilla_doc = """
 
 """
 
+
+plantilla_viewSets="""
+
+class {modelo}_ViewSet(Base_List):
+    
+    serializer_class = {modelo}_Serializer
+    filter_backends = [DjangoFilterBackend,
+                       SearchFilter,
+                       OrderingFilter,
+                       ]
+    {atributosExtra} 
+"""
+
 # Ejemplo de solicitud GET:
-#        {ejemplo_get_lista} 
+#        {ejemplo_get_lista}
+
+
+plantilla_serializer_imagen = """
+
+class {modelo}Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = {modelo}
+        fields = '__all__'
+    def to_representation(self, value):
+        request=self.context['request']
+        return {modelo}RepresentationSerializer(value, context={'request': request}).data
+
+"""

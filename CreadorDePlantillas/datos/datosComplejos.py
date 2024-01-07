@@ -7,16 +7,17 @@ class DatosDeCampo:
         self.nombreCampo = campo["name"]
 
         self.esID = self.nombreCampo == 'id'
-        self.esNumero =not self.esID and (self.tipo == "BigAutoField" or self.tipo == "FloatField")
+        self.esNumero =not self.esID and (self.tipo == "BigAutoField" or self.tipo == "FloatField" or self.tipo == "DecimalField" or self.tipo == "IntegerField")
         self.esBoolean = self.tipo == "BooleanField"
-        self.esTexto = self.tipo == "CharField"
+        self.esTexto = self.tipo == "CharField" or self.tipo == "EmailField"
         self.esLlave = self.tipo == "ForeignKey"
         self.esArchivo = self.tipo == "ImageField"
         self.esMany = self.tipo == 'ManyToManyField'
+        self.esExtraReferencia= self.tipo == 'Extra_ManyToManyField'or self.tipo == 'Extra_ForeignKey'
 
 
         self.nombreModeloReferencia = None
-        if self.esMany or self.esLlave:
+        if self.esMany or self.esLlave or self.esExtraReferencia:
             self.nombreModeloReferencia =campo["related_model"]
         self.modeloReferencia=None
         #print(campo)

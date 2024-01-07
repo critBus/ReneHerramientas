@@ -46,7 +46,7 @@ for key in key_valores['models']:
 
 for D in lista_DC:
     for campo in D.listaCampos:
-        if campo.esMany or campo.esLlave:
+        if campo.esMany or campo.esLlave or campo.esExtraReferencia:
             campo.modeloReferencia=dic_DC[campo.nombreModeloReferencia]
         if campo.nombreCampo in key_valores['descripcionesAutomaticas']:
             campo.descripcion_entrada=key_valores['descripcionesAutomaticas'][campo.nombreCampo]
@@ -62,7 +62,9 @@ def imprimir_linea(kv,i,linea):
 
 
 
-listAPintar=[g]#[plantilla_serializer]#[plantilla_views]#[plantilla_doc]#[f]
+listAPintar=[plantilla_doc]#[g]#[plantilla_views]#[plantilla_serializer_imagen]#[plantilla_viewSets]#[plantilla_doc]#[plantilla_serializer]#[f]
+# def aplicar(key, key_valores):
+
 for texto in listAPintar:
     for key in key_valores['models']:
         key_valores_actual=key_valores['models'][key].copy()
