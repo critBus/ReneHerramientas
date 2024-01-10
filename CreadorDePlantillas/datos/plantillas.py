@@ -1068,3 +1068,254 @@ class {modelo}Serializer(serializers.ModelSerializer):
         return {modelo}RepresentationSerializer(value, context={'request': request}).data
 
 """
+
+plantilla_viewset_own="""
+class {modelo}ViewSet(viewsets.ModelViewSet):
+    serializer_class = {modelo}_Serializer
+    filter_backends = [DjangoFilterBackend,
+                       SearchFilter,
+                       OrderingFilter,
+                       ]
+    {atributosExtra}
+
+    def get_permissions(self):
+        \"\"\"
+        Instantiates and returns the list of permissions that this
+        view requires.
+        \"\"\"
+        if self.action == "list":
+            permission_classes = [
+                IsAuthenticated,
+                IsTokenValid,
+                EmailHasBeenConfirmed,
+                IsSuperUserOrIsItTheOwner{modelo},
+            ]
+        elif self.action == "create":
+            permission_classes = [
+                IsAuthenticated,
+                IsTokenValid,
+                EmailHasBeenConfirmed,
+            ]
+        elif self.action == "update":
+            permission_classes = [
+                IsAuthenticated,
+                IsTokenValid,
+                EmailHasBeenConfirmed,
+                IsSuperUserOrIsItTheOwnerObj{modelo},
+            ]
+        elif self.action == "retrieve":
+            permission_classes = [
+                IsAuthenticated,
+                IsTokenValid,
+                EmailHasBeenConfirmed,
+            ]
+        elif self.action == "partial_update":
+            permission_classes = [
+                IsAuthenticated,
+                IsTokenValid,
+                EmailHasBeenConfirmed,
+                IsSuperUserOrIsItTheOwnerObj{modelo},
+            ]
+        elif self.action == "destroy":
+            permission_classes = [
+                IsAuthenticated,
+                IsTokenValid,
+                EmailHasBeenConfirmed,
+                IsSuperUserOrIsItTheOwnerObj{modelo},
+            ]
+        else:
+            permission_classes = []
+        return [permission() for permission in permission_classes]
+
+    @extend_schema(
+        responses={201: {modelo}RepresentationSerializer},
+    )
+    def create(self, request, *args, **kwargs):
+        \"\"\"
+        This method requires the user to be authenticated in order to be
+        used. Authentication is done by using a JWT (JSON Web Token)
+        that is included in the header of the HTTP request. The JWT includes
+        information about the authenticated user, such as their identity
+        and the permissions they have been granted.
+
+        The authenticated user must be a superuser or the creator of this
+        entity
+        \"\"\"
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = request.user
+        user_id = serializer.validated_data["user"]
+        if not user.is_superuser:
+            if str(user_id.id) != str(user.id):
+                error = {
+                    "user": [
+                        "The user ID must be the same as"
+                        " the one who is authenticated"
+                    ]
+                }
+                return JsonResponse(
+                    {
+                        "status": "error",
+                        "message": error,
+                    },
+                    status=400,
+                )
+
+        card = self.perform_create(serializer)
+
+        user_own_card = (
+            user
+            if str(user.id) == str(user_id.id)
+            else User.objects.filter(id=user_id.id).first()
+        )
+
+        own_card = OwnCard()
+        own_card.user = user_own_card
+        own_card.card = card
+        own_card.save()
+
+        headers = self.get_success_headers(serializer.data)
+        return Response(
+            serializer.data, status=status.HTTP_201_CREATED, headers=headers
+        )
+
+    @extend_schema(
+        responses={200: {modelo}RepresentationSerializer},
+    )
+    def list(self, request, *args, **kwargs):
+        \"\"\"
+        This method requires the user to be authenticated in order to be
+        used. Authentication is done by using a JWT (JSON Web Token)
+        that is included in the header of the HTTP request. The JWT
+        includes information about the authenticated user, such as their
+        identity and the permissions they have been granted.
+
+        The authenticated user must be a superuser or the creator of
+        these entities
+
+        If you are not a superuser, you must include in the query the
+        following 'query parameter' that refers to the ID of the authenticated
+        user, in this way only the information corresponding to this user is
+        accessed, otherwise access will not be allowed
+
+        user__id = id
+        \"\"\"
+        return super().list(request, *args, **kwargs)
+
+    @extend_schema(
+        responses={200: {modelo}RepresentationSerializer},
+    )
+    def update(self, request, *args, **kwargs):
+        \"\"\"
+        This method requires the user to be authenticated in order to be used.
+        Authentication is done by using a JWT (JSON Web Token) that is included
+        in the header of the HTTP request. The JWT includes information about
+        the authenticated user, such as their identity and the permissions they
+        have been granted.
+
+        The authenticated user must be a superuser or the creator of this entity
+        \"\"\"
+        return super().update(request, *args, **kwargs)
+
+    @extend_schema(
+        responses={200: {modelo}RepresentationSerializer},
+    )
+    def retrieve(self, request, *args, **kwargs):
+        \"\"\"
+        This method requires the user to be authenticated in order to be used.
+        Authentication is done by using a JWT (JSON Web Token) that is included
+        in the header of the HTTP request. The JWT includes information about
+        the authenticated user, such as their identity and the permissions they
+        have been granted.
+
+        The authenticated user must be a superuser or the creator of this entity
+        \"\"\"
+        return super().retrieve(request, *args, **kwargs)
+
+    @extend_schema(
+        responses={200: {modelo}RepresentationSerializer},
+    )
+    def partial_update(self, request, *args, **kwargs):
+        \"\"\"
+        This method requires the user to be authenticated in order to be used.
+        Authentication is done by using a JWT (JSON Web Token) that is included
+        in the header of the HTTP request. The JWT includes information about
+        the authenticated user, such as their identity and the permissions they
+        have been granted.
+
+        The authenticated user must be a superuser or the creator of this entity
+        \"\"\"
+        return super().partial_update(request, *args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        \"\"\"
+        This method requires the user to be authenticated in order to be used.
+        Authentication is done by using a JWT (JSON Web Token) that is included
+        in the header of the HTTP request. The JWT includes information about
+        the authenticated user, such as their identity and the permissions they
+        have been granted.
+
+        The authenticated user must be a superuser or the creator of this entity
+        \"\"\"
+        return super().destroy(request, *args, **kwargs)
+
+    def get_queryset(self):
+        own_cards = OwnCard.objects.all()
+        cards = {modelo}.objects.filter(owncard__in=own_cards)
+        return cards
+
+    def perform_create(self, serializer):
+        return serializer.save()
+
+"""
+
+
+plantilla_doc_parametros_list = """
+        
+        {modelo} ============================================================================================
+        
+       Parámetros de filtro:
+                Ejemplo: &parametro de filtor1=valor a buscar1&parametro de filtor2=valor a buscar2
+       {paremetros_get_filtro_lista}
+       
+       Parámetros de busqueda:
+            No utilizar junto a los parámetros de filtro  
+           Parametro Principial: "search", busca cualquier coincidencia que incluye el valor pasado en el parametro secundario
+                Ejemplo: &search=valor a buscar
+           Parametro Secundarios por los que busca:
+           {paremetros_get_search_lista} 
+
+       Parámetros de ordenamiento: 
+           Parametro Principial: "ordering", incluir un "-" delante del parametro secundario si se desea ordenar de forma desendiente
+                Ejemplo: &ordering=-parametro secundario
+           Parametro Secundarios:
+           {paremetros_get_ordenamiento_lista} 
+        
+        Paginación:
+            Para el paginado, se puede utilizar el parámetro "page" en la URL para especificar la página que se desea mostrar. Por ejemplo, "/entidad?page=2" mostrará la segunda página de productos.
+            El primer índice de la lista es ‘page=1’.
+            Además para definir el tamaño del paginado se puede utilizar a el parámetro “page_size”. Por ejemplo, "/entidad? page_size=3"
+            En la respuesta el parámetro "count" representa la cantidad total de elementos resultantes (no la cantidad de elementos en la lista productos del page_size )
+        
+        Rangos numéricos 
+            "/entidad?nombre=nombreABuscar&atributo__gte=10& atributo__lt=16&ordering=nombre"
+            Usar 'gte', 'lte','gt', 'lt'
+
+        
+        
+
+
+        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+"""
+
+plantillas_filtros="""
+{modelo} ============================================================================================
+
+    {atributosExtra}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"""

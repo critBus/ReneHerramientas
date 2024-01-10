@@ -11,6 +11,9 @@
 from typing import TYPE_CHECKING, Dict, List, NoReturn, Optional, Union, Tuple, cast, ClassVar
 from .datosComplejos import *
 
+con_postgres=True
+
+
 def crearParametrosPostCrear(D:DatosModelo):
     p=Imprimidor(4)
 
@@ -21,6 +24,8 @@ def crearParametrosPostCrear(D:DatosModelo):
     return p.r
 
 dicFuncionesCreadoras['parametros_post_descripcion_crear']=crearParametrosPostCrear
+
+
 
 def crearParametrosGetFiltroLista(D:DatosModelo):
     p=Imprimidor(3)
@@ -33,6 +38,8 @@ def crearParametrosGetFiltroLista(D:DatosModelo):
             CD.append(d.nombreCampo)
 
     for i, DD in enumerate(LD):
+        if CD[i] in saltar_campos:
+            continue
         prefijo = CD[i] + "__" if i != 0 else ""
         for d in DD.listaCampos:
             if d.esTexto or d.esNumero or d.esBoolean or d.esID:
@@ -40,10 +47,12 @@ def crearParametrosGetFiltroLista(D:DatosModelo):
                     continue
                 parametros=[]
                 if d.esTexto:
-                    parametros=['contains','exact']
+                    parametros=['contains', 'exact','icontains']
+                    if con_postgres:
+                        parametros+=['search']
                     #p.pr0("'" + prefijo + d.nombreCampo + "' : ['contains','exact'],")
                 elif d.esNumero:
-                    parametros = ['gte', 'lte','exact']
+                    parametros = ['gte', 'lte','gt', 'lt','exact']
                     #p.pr0("'" + prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
                 elif d.esBoolean:
                     parametros = ['exact']
@@ -58,10 +67,18 @@ def crearParametrosGetFiltroLista(D:DatosModelo):
                         descripcion="que coincidan exactamente con el valor proporcionado"
                     elif pa == 'contains':
                         descripcion="que contengan el valor proporcionado"
+                    elif pa == 'icontains':
+                        descripcion="que contengan el valor proporcionado ignorando mayusculas y minusculas"
+                    elif pa == 'search':
+                        descripcion="se realiza una búsqueda de texto completo básica en el campo especificado. Esto significa que se buscarán todas las instancias que contengan al menos una palabra que coincida parcial o completamente con el término de búsqueda proporcionado. No se tienen en cuenta las diferencias de mayúsculas y minúsculas, ni las tildes"
                     elif pa == 'gte':
                         descripcion="que sean mayores o igual que el valor proporcionado"
                     elif pa == 'lte':
                         descripcion="que sean menores o igual que el valor proporcionado"
+                    elif pa == 'gte':
+                        descripcion="que sean mayores que el valor proporcionado"
+                    elif pa == 'lte':
+                        descripcion="que sean menores que el valor proporcionado"
                     p.pr1("- '" + prefijo + d.nombreCampo+extra + "' : '"+descripcion+"',")
 
     return p.r
@@ -94,34 +111,50 @@ def crearParametrosGetBusquedaLista(D:DatosModelo):
     return p.r
 dicFuncionesCreadoras['paremetros_get_search_lista']=crearParametrosGetBusquedaLista
 
+
 def crearAtributosExtras(D):
     p = Imprimidor(1)
     LD = [D]
     CD = [""]
+#    LNombreRelacion=[None]
     for d in D.listaCampos:
-        if d.esMany or d.esLlave or d.esExtraReferencia:
+        if d.esMany or d.esLlave or (d.esExtraReferencia and d.related_name):
             LD.append(d.modeloReferencia)
             CD.append(d.nombreCampo)
     p.pr0("filterset_fields = {")
-    for i, DD in enumerate(LD):
-        prefijo = CD[i] + "__" if i != 0 else ""
-        for d in DD.listaCampos:
-            if d.nombreCampo in ["password"]:
+    produndidadMaxima=2
+    def agregarCampos(nombreCampo,modelo,nivel,prefijo):
+        if nombreCampo in saltar_campos:#modelo.nombreModelo==D.nombreModelo or
+            return
+        prefijo =  prefijo+nombreCampo + "__" if nivel !=0 else ""#i != 0 else ""
+        for d in modelo.listaCampos:
+            if d.nombreCampo in saltar_campos:
                 continue
-            if d.esTexto or d.esNumero or d.esBoolean or d.esID:
+            if d.esTexto or d.esNumero or d.esBoolean or d.esID or d.esDate:
                 parametros = []
                 if d.esTexto:
-                    parametros = ['contains', 'exact']
-                    p.pr0("'" + prefijo + d.nombreCampo + "' : ['contains','exact'],")
-                elif d.esNumero:
-                    parametros = ['gte', 'lte', 'exact']
-                    p.pr0("'" + prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
+                    parametros = ['contains', 'exact', 'icontains']
+                    if con_postgres:
+                        parametros += ['search']
+                    p.pr0("'" + prefijo + d.nombreCampo + "' : " + str(parametros) + ",")
+                elif d.esNumero or d.esDate:
+                    parametros = ['gte', 'lte', 'gt', 'lt', 'exact']
+                    p.pr0("'" + prefijo + d.nombreCampo + "' : ['gte', 'lte','gt', 'lt','exact'],")
                 elif d.esBoolean:
                     parametros = ['exact']
                     p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
                 elif d.esID:
                     parametros = ['exact']
                     p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
+
+            if nivel<produndidadMaxima and (d.esMany or d.esLlave or (d.esExtraReferencia and d.related_name)):
+                if d.nombreCampo!=nombreCampo and d.modeloReferencia.nombreModelo!= D.nombreModelo:
+                    prefijo= nombreCampo+"__" if nivel>0 else ""
+                    agregarCampos(d.nombreCampo,d.modeloReferencia,nivel+1,prefijo)#"nombreCampo+"__""
+
+    agregarCampos(CD[0], LD[0], 0, "")
+    # for i, DD in enumerate(LD):
+    #     agregarCampos(CD[i],DD,0,"")
 
 
 
@@ -130,18 +163,23 @@ def crearAtributosExtras(D):
 
     if D.hayUnCampoTexto or D.hayUnCampoNumero:
         p.pr0("search_fields=[")
-        for i,DD in enumerate(LD):
-            prefijo= CD[i]+"__" if i!=0 else ""
-            for d in DD.listaCampos:
-                if d.esTexto or d.esNumero:
-                    p.pr("'"+prefijo + d.nombreCampo + "' ,")
+        for d in D.listaCampos:
+            if d.nombreCampo in saltar_campos:
+                continue
+            if d.esTexto or d.esNumero:
+                p.pr("'"  + d.nombreCampo + "' ,")
         p.pr("]")
 
+    if D.hayUnCampoTexto or D.hayUnCampoNumero or D.hayUnCampoDate:
         p.pr0("ordering_fields=['pk' ,")
         for d in D.listaCampos:
-            if d.esTexto or d.esNumero:
+            if d.nombreCampo in saltar_campos:
+                continue
+            if d.esTexto or d.esNumero or d.esDate:
                 p.pr("'" + d.nombreCampo + "' ,")
         p.pr("]")
+    # if D.nombreModelo == "User":
+    #     print("aqui")
     p.pr0("ordering = ['")
     d=None
     if D.hayUnCampoDate:

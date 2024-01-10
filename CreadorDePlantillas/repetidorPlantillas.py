@@ -62,18 +62,25 @@ def imprimir_linea(kv,i,linea):
 
 
 
-listAPintar=[plantilla_doc]#[g]#[plantilla_views]#[plantilla_serializer_imagen]#[plantilla_viewSets]#[plantilla_doc]#[plantilla_serializer]#[f]
-# def aplicar(key, key_valores):
+listAPintar=[plantillas_filtros]#[plantilla_doc_parametros_list]#[plantilla_viewset_own]#[plantilla_doc]#[g]#[plantilla_views]#[plantilla_serializer_imagen]#[plantilla_viewSets]#[plantilla_doc]#[plantilla_serializer]#[f]
+def aplicar(key, key_valores):
+    key_valores_actual = key_valores['models'][key].copy()
+    key_valores_actual['modelo'] = key
+    crearAtributosNuevos(key_valores_actual, dic_DC[key])
+    key_valores_actual.pop("campos")
+
+    key_valores_actual.pop("codigos")
+    procesar_lineas(texto, lambda i, linea: imprimir_linea(key_valores_actual, i, linea))
+
+modelos_seleccionados=[]#['CardContact']#['Contact']
 
 for texto in listAPintar:
-    for key in key_valores['models']:
-        key_valores_actual=key_valores['models'][key].copy()
-        key_valores_actual['modelo']=key
-        crearAtributosNuevos(key_valores_actual,dic_DC[key])
-        key_valores_actual.pop("campos")
-
-        key_valores_actual.pop("codigos")
-        procesar_lineas(texto,lambda i,linea:imprimir_linea(key_valores_actual,i,linea))
+    if len(modelos_seleccionados)==0:
+        for key in key_valores['models']:
+            aplicar(key,key_valores)
+    else:
+        for key in modelos_seleccionados:
+            aplicar(key, key_valores)
 
 
 

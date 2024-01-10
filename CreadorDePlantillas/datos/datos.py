@@ -1,7 +1,8 @@
 # from .valoresDeDatos.datosNegocio import datos_negocio
 #from .valoresDeDatos.datosVersiones import datos_versiones
 # from .valoresDeDatos_Remesas.datos import datos_todo
-from .valoresDeDatos_2.datos2 import datos
+# from .valoresDeDatos_2.datos2 import datos
+from .valoresDeDatos.datos3 import datos
 key_valores=datos
 
 

@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING, Dict, List, NoReturn, Optional, Union, Tuple, cast, ClassVar
 
-
+saltar_campos=['content_type',"password"]
 class DatosDeCampo:
     def __init__(self,campo):
         self.tipo = campo["type"]
@@ -13,6 +13,7 @@ class DatosDeCampo:
         self.esLlave = self.tipo == "ForeignKey"
         self.esArchivo = self.tipo == "ImageField"
         self.esMany = self.tipo == 'ManyToManyField'
+        self.esDate=self.tipo=="DateTimeField"
         self.esExtraReferencia= self.tipo == 'Extra_ManyToManyField'or self.tipo == 'Extra_ForeignKey'
 
 
@@ -23,6 +24,7 @@ class DatosDeCampo:
         #print(campo)
         self.descripcion_entrada=campo["descripcion_entrada"]
         self.descripcion_salida = campo["descripcion_salida"]
+        self.related_name=campo["related_name"]
 class DatoCodigo:
     def __init__(self):
         self.codigo=""
@@ -85,9 +87,12 @@ class DatosModelo:
         # })
         for campo in datosDeModelo["campos"]:
             d = DatosDeCampo(campo)
+
             # if d.esID:
             #     continue
             self.listaCampos.append(d)
+            if d.nombreCampo in saltar_campos:
+                continue
             if d.esTexto:
                 self.hayUnCampoTexto=True
                 if not self.primerCampoTexto:
@@ -98,8 +103,12 @@ class DatosModelo:
                     self.primerCampoNumero = d
             elif d.esBoolean:
                 self.hayUnCampoBoolean = True
-                if not self.primerCampoTexto:
-                    self.primerCampoTexto = d
+                if not self.primerCampoBoolean:
+                    self.primerCampoBoolean = d
+            elif d.esDate:
+                self.hayUnCampoDate = True
+                if not self.primerCampoDate:
+                    self.primerCampoDate = d
 
 def getS(cant):
     se = "\n"
