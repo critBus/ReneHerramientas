@@ -62,7 +62,7 @@ def imprimir_linea(kv,i,linea):
 
 
 
-listAPintar=[plantillas_filtros]#[plantilla_doc_parametros_list]#[plantilla_viewset_own]#[plantilla_doc]#[g]#[plantilla_views]#[plantilla_serializer_imagen]#[plantilla_viewSets]#[plantilla_doc]#[plantilla_serializer]#[f]
+listAPintar=[plantilla_doc_parametros_list]#[plantillas_filtros]#[plantilla_viewset_own]#[plantilla_doc]#[g]#[plantilla_views]#[plantilla_serializer_imagen]#[plantilla_viewSets]#[plantilla_doc]#[plantilla_serializer]#[f]
 def aplicar(key, key_valores):
     key_valores_actual = key_valores['models'][key].copy()
     key_valores_actual['modelo'] = key

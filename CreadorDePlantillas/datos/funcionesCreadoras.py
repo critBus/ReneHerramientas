@@ -29,36 +29,38 @@ dicFuncionesCreadoras['parametros_post_descripcion_crear']=crearParametrosPostCr
 
 def crearParametrosGetFiltroLista(D:DatosModelo):
     p=Imprimidor(3)
+    produndidadMaxima = 2
 
     LD = [D]
     CD = [""]
-    for d in D.listaCampos:
-        if d.esMany or d.esLlave or d.esExtraReferencia:
-            LD.append(d.modeloReferencia)
-            CD.append(d.nombreCampo)
+    # for d in D.listaCampos:
+    #     if d.esMany or d.esLlave or d.esExtraReferencia:
+    #         LD.append(d.modeloReferencia)
+    #         CD.append(d.nombreCampo)
 
-    for i, DD in enumerate(LD):
-        if CD[i] in saltar_campos:
-            continue
-        prefijo = CD[i] + "__" if i != 0 else ""
-        for d in DD.listaCampos:
-            if d.esTexto or d.esNumero or d.esBoolean or d.esID:
-                if d.nombreCampo in ["password"]:
-                    continue
-                parametros=[]
+    def agregarCampos(nombreCampo,modelo,nivel,prefijo):
+        if nombreCampo in saltar_campos:#modelo.nombreModelo==D.nombreModelo or
+            return
+        prefijo =  prefijo+nombreCampo + "__" if nivel !=0 else ""#i != 0 else ""
+        for d in modelo.listaCampos:
+            if d.nombreCampo in saltar_campos:
+                continue
+            if d.esTexto or d.esNumero or d.esBoolean or d.esID or d.esDate:
+                parametros = []
                 if d.esTexto:
-                    parametros=['contains', 'exact','icontains']
+                    parametros = ['contains', 'exact', 'icontains']
                     if con_postgres:
-                        parametros+=['search']
-                    #p.pr0("'" + prefijo + d.nombreCampo + "' : ['contains','exact'],")
-                elif d.esNumero:
-                    parametros = ['gte', 'lte','gt', 'lt','exact']
-                    #p.pr0("'" + prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
+                        parametros += ['search']
+                    # p.pr0("'" + prefijo + d.nombreCampo + "' : " + str(parametros) + ",")
+                elif d.esNumero or d.esDate:
+                    parametros = ['gte', 'lte', 'gt', 'lt', 'exact']
+                    # p.pr0("'" + prefijo + d.nombreCampo + "' : ['gte', 'lte','gt', 'lt','exact'],")
                 elif d.esBoolean:
                     parametros = ['exact']
+                    # p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
                 elif d.esID:
                     parametros = ['exact']
-                    #p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
+                    # p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
 
                 for pa in parametros:
                     extra="__"+pa if pa!='exact' else ""
@@ -75,11 +77,61 @@ def crearParametrosGetFiltroLista(D:DatosModelo):
                         descripcion="que sean mayores o igual que el valor proporcionado"
                     elif pa == 'lte':
                         descripcion="que sean menores o igual que el valor proporcionado"
-                    elif pa == 'gte':
+                    elif pa == 'gt':
                         descripcion="que sean mayores que el valor proporcionado"
-                    elif pa == 'lte':
+                    elif pa == 'lt':
                         descripcion="que sean menores que el valor proporcionado"
                     p.pr1("- '" + prefijo + d.nombreCampo+extra + "' : '"+descripcion+"',")
+
+            if nivel<produndidadMaxima and (d.esMany or d.esLlave or (d.esExtraReferencia and d.related_name)):
+                if d.nombreCampo!=nombreCampo and d.modeloReferencia.nombreModelo!= D.nombreModelo:
+                    prefijo= nombreCampo+"__" if nivel>0 else ""
+                    agregarCampos(d.nombreCampo,d.modeloReferencia,nivel+1,prefijo)#"nombreCampo+"__""
+
+    agregarCampos(CD[0], LD[0], 0, "")
+    # for i, DD in enumerate(LD):
+    #     if CD[i] in saltar_campos:
+    #         continue
+    #     prefijo = CD[i] + "__" if i != 0 else ""
+    #     for d in DD.listaCampos:
+    #         if d.esTexto or d.esNumero or d.esBoolean or d.esID:
+    #             if d.nombreCampo in ["password"]:
+    #                 continue
+    #             parametros=[]
+    #             if d.esTexto:
+    #                 parametros=['contains', 'exact','icontains']
+    #                 if con_postgres:
+    #                     parametros+=['search']
+    #                 #p.pr0("'" + prefijo + d.nombreCampo + "' : ['contains','exact'],")
+    #             elif d.esNumero:
+    #                 parametros = ['gte', 'lte','gt', 'lt','exact']
+    #                 #p.pr0("'" + prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
+    #             elif d.esBoolean:
+    #                 parametros = ['exact']
+    #             elif d.esID:
+    #                 parametros = ['exact']
+    #                 #p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
+    #
+    #             for pa in parametros:
+    #                 extra="__"+pa if pa!='exact' else ""
+    #                 descripcion=""
+    #                 if pa == 'exact':
+    #                     descripcion="que coincidan exactamente con el valor proporcionado"
+    #                 elif pa == 'contains':
+    #                     descripcion="que contengan el valor proporcionado"
+    #                 elif pa == 'icontains':
+    #                     descripcion="que contengan el valor proporcionado ignorando mayusculas y minusculas"
+    #                 elif pa == 'search':
+    #                     descripcion="se realiza una búsqueda de texto completo básica en el campo especificado. Esto significa que se buscarán todas las instancias que contengan al menos una palabra que coincida parcial o completamente con el término de búsqueda proporcionado. No se tienen en cuenta las diferencias de mayúsculas y minúsculas, ni las tildes"
+    #                 elif pa == 'gte':
+    #                     descripcion="que sean mayores o igual que el valor proporcionado"
+    #                 elif pa == 'lte':
+    #                     descripcion="que sean menores o igual que el valor proporcionado"
+    #                 elif pa == 'gte':
+    #                     descripcion="que sean mayores que el valor proporcionado"
+    #                 elif pa == 'lte':
+    #                     descripcion="que sean menores que el valor proporcionado"
+    #                 p.pr1("- '" + prefijo + d.nombreCampo+extra + "' : '"+descripcion+"',")
 
     return p.r
 
@@ -88,14 +140,17 @@ dicFuncionesCreadoras['paremetros_get_filtro_lista']=crearParametrosGetFiltroLis
 def crearParametrosGetOrdenamientoLista(D:DatosModelo):
     p=Imprimidor(4)
     p.pr0("- 'pk': 'Ordena por su clave primaria (id)',")
-    if D.hayUnCampoTexto or D.hayUnCampoNumero:
+    if D.hayUnCampoTexto or D.hayUnCampoNumero or D.hayUnCampoDate:
 
         for d in D.listaCampos:
-            if d.esTexto or d.esNumero:
+            if d.esTexto or d.esNumero or d.esDate:
+                descripcion=""
                 if d.esTexto:
                     descripcion = "Ordena alfabéticamente por el "+d.nombreCampo
-                else:
+                elif d.esNumero:
                     descripcion = "Ordena de forma asendente o desendente por el "+d.nombreCampo
+                elif d.esDate:
+                    descripcion = "Ordena de forma cronológica asendente o desendente por la "+d.nombreCampo
                 p.pr0("- '" +  d.nombreCampo + "' : '" + descripcion + "',")
     return p.r
 dicFuncionesCreadoras['paremetros_get_ordenamiento_lista']=crearParametrosGetOrdenamientoLista

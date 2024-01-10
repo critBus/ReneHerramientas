@@ -342,6 +342,22 @@ datos={
                     "related_name": None
                 },
                 {
+                    "name": "created",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "created",
+                    "descripcion_salida": "",
+                    "related_name": None
+                },
+                {
+                    "name": "edited",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "edited",
+                    "descripcion_salida": "",
+                    "related_name": None
+                },
+                {
                     "name": "useAppBusiness",
                     "type": "BooleanField",
                     "related_model": "",
@@ -1635,6 +1651,14 @@ datos={
                     "related_name": None
                 },
                 {
+                    "name": "fecha_edicion",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha edicion",
+                    "descripcion_salida": "",
+                    "related_name": None
+                },
+                {
                     "name": "Negocio",
                     "type": "ForeignKey",
                     "related_model": "Negocio",
@@ -1793,6 +1817,14 @@ datos={
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "fecha creacion",
+                    "descripcion_salida": "",
+                    "related_name": None
+                },
+                {
+                    "name": "fecha_edicion",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha edicion",
                     "descripcion_salida": "",
                     "related_name": None
                 },
@@ -2421,5 +2453,4 @@ datos={
         "BigIntegerField"
     ]
 }
-
 

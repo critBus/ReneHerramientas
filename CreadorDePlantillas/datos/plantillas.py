@@ -1297,8 +1297,9 @@ plantilla_doc_parametros_list = """
             Además para definir el tamaño del paginado se puede utilizar a el parámetro “page_size”. Por ejemplo, "/entidad? page_size=3"
             En la respuesta el parámetro "count" representa la cantidad total de elementos resultantes (no la cantidad de elementos en la lista productos del page_size )
         
-        Rangos numéricos 
+        Rangos numéricos y cronológicos:
             "/entidad?nombre=nombreABuscar&atributo__gte=10& atributo__lt=16&ordering=nombre"
+            "/entidad?nombre=nombreABuscar&atributo__gte=2024-01-09T20:16:01.825736Z& atributo__lt=2024-01-10T16:02:25.432273Z&ordering=nombre"
             Usar 'gte', 'lte','gt', 'lt'
 
         
