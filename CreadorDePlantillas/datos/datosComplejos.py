@@ -13,7 +13,7 @@ class DatosDeCampo:
         self.esLlave = self.tipo == "ForeignKey"
         self.esArchivo = self.tipo == "ImageField"
         self.esMany = self.tipo == 'ManyToManyField'
-        self.esDate=self.tipo=="DateTimeField"
+        self.esDate=self.tipo=="DateTimeField" or self.tipo=="DateField"
         self.esExtraReferencia= self.tipo == 'Extra_ManyToManyField'or self.tipo == 'Extra_ForeignKey'
 
 
@@ -24,7 +24,7 @@ class DatosDeCampo:
         #print(campo)
         self.descripcion_entrada=campo["descripcion_entrada"]
         self.descripcion_salida = campo["descripcion_salida"]
-        self.related_name=campo["related_name"]
+        self.related_name=campo["related_name"] if "related_name" in campo else None
 class DatoCodigo:
     def __init__(self):
         self.codigo=""

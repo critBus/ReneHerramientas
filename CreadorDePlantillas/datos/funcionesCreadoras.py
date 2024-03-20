@@ -25,11 +25,11 @@ def crearParametrosPostCrear(D:DatosModelo):
 
 dicFuncionesCreadoras['parametros_post_descripcion_crear']=crearParametrosPostCrear
 
-
+produndidadMaxima=2
 
 def crearParametrosGetFiltroLista(D:DatosModelo):
     p=Imprimidor(3)
-    produndidadMaxima = 2
+
 
     LD = [D]
     CD = [""]
@@ -45,7 +45,7 @@ def crearParametrosGetFiltroLista(D:DatosModelo):
         for d in modelo.listaCampos:
             if d.nombreCampo in saltar_campos:
                 continue
-            if d.esTexto or d.esNumero or d.esBoolean or d.esID or d.esDate:
+            if d.esTexto or d.esNumero or d.esBoolean or d.esID or d.esDate or d.esLlave:
                 parametros = []
                 if d.esTexto:
                     parametros = ['contains', 'exact', 'icontains']
@@ -61,6 +61,8 @@ def crearParametrosGetFiltroLista(D:DatosModelo):
                 elif d.esID:
                     parametros = ['exact']
                     # p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
+                elif d.esLlave:
+                    parametros = ["isnull"]
 
                 for pa in parametros:
                     extra="__"+pa if pa!='exact' else ""
@@ -81,6 +83,8 @@ def crearParametrosGetFiltroLista(D:DatosModelo):
                         descripcion="que sean mayores que el valor proporcionado"
                     elif pa == 'lt':
                         descripcion="que sean menores que el valor proporcionado"
+                    elif pa == 'isnull':
+                        descripcion="que sean nulos"
                     p.pr1("- '" + prefijo + d.nombreCampo+extra + "' : '"+descripcion+"',")
 
             if nivel<produndidadMaxima and (d.esMany or d.esLlave or (d.esExtraReferencia and d.related_name)):
@@ -89,49 +93,6 @@ def crearParametrosGetFiltroLista(D:DatosModelo):
                     agregarCampos(d.nombreCampo,d.modeloReferencia,nivel+1,prefijo)#"nombreCampo+"__""
 
     agregarCampos(CD[0], LD[0], 0, "")
-    # for i, DD in enumerate(LD):
-    #     if CD[i] in saltar_campos:
-    #         continue
-    #     prefijo = CD[i] + "__" if i != 0 else ""
-    #     for d in DD.listaCampos:
-    #         if d.esTexto or d.esNumero or d.esBoolean or d.esID:
-    #             if d.nombreCampo in ["password"]:
-    #                 continue
-    #             parametros=[]
-    #             if d.esTexto:
-    #                 parametros=['contains', 'exact','icontains']
-    #                 if con_postgres:
-    #                     parametros+=['search']
-    #                 #p.pr0("'" + prefijo + d.nombreCampo + "' : ['contains','exact'],")
-    #             elif d.esNumero:
-    #                 parametros = ['gte', 'lte','gt', 'lt','exact']
-    #                 #p.pr0("'" + prefijo + d.nombreCampo + "' : ['gte', 'lte','exact'],")
-    #             elif d.esBoolean:
-    #                 parametros = ['exact']
-    #             elif d.esID:
-    #                 parametros = ['exact']
-    #                 #p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
-    #
-    #             for pa in parametros:
-    #                 extra="__"+pa if pa!='exact' else ""
-    #                 descripcion=""
-    #                 if pa == 'exact':
-    #                     descripcion="que coincidan exactamente con el valor proporcionado"
-    #                 elif pa == 'contains':
-    #                     descripcion="que contengan el valor proporcionado"
-    #                 elif pa == 'icontains':
-    #                     descripcion="que contengan el valor proporcionado ignorando mayusculas y minusculas"
-    #                 elif pa == 'search':
-    #                     descripcion="se realiza una búsqueda de texto completo básica en el campo especificado. Esto significa que se buscarán todas las instancias que contengan al menos una palabra que coincida parcial o completamente con el término de búsqueda proporcionado. No se tienen en cuenta las diferencias de mayúsculas y minúsculas, ni las tildes"
-    #                 elif pa == 'gte':
-    #                     descripcion="que sean mayores o igual que el valor proporcionado"
-    #                 elif pa == 'lte':
-    #                     descripcion="que sean menores o igual que el valor proporcionado"
-    #                 elif pa == 'gte':
-    #                     descripcion="que sean mayores que el valor proporcionado"
-    #                 elif pa == 'lte':
-    #                     descripcion="que sean menores que el valor proporcionado"
-    #                 p.pr1("- '" + prefijo + d.nombreCampo+extra + "' : '"+descripcion+"',")
 
     return p.r
 
@@ -177,7 +138,6 @@ def crearAtributosExtras(D):
             LD.append(d.modeloReferencia)
             CD.append(d.nombreCampo)
     p.pr0("filterset_fields = {")
-    produndidadMaxima=2
     def agregarCampos(nombreCampo,modelo,nivel,prefijo):
         if nombreCampo in saltar_campos:#modelo.nombreModelo==D.nombreModelo or
             return
@@ -185,7 +145,7 @@ def crearAtributosExtras(D):
         for d in modelo.listaCampos:
             if d.nombreCampo in saltar_campos:
                 continue
-            if d.esTexto or d.esNumero or d.esBoolean or d.esID or d.esDate:
+            if d.esTexto or d.esNumero or d.esBoolean or d.esID or d.esDate or d.esLlave:
                 parametros = []
                 if d.esTexto:
                     parametros = ['contains', 'exact', 'icontains']
@@ -201,6 +161,9 @@ def crearAtributosExtras(D):
                 elif d.esID:
                     parametros = ['exact']
                     p.pr0("'" + prefijo + d.nombreCampo + "' : ['exact'],")
+                elif d.esLlave:
+                    parametros = ["isnull"]
+                    p.pr0("'" + prefijo + d.nombreCampo + "' : ['isnull'],")
 
             if nivel<produndidadMaxima and (d.esMany or d.esLlave or (d.esExtraReferencia and d.related_name)):
                 if d.nombreCampo!=nombreCampo and d.modeloReferencia.nombreModelo!= D.nombreModelo:
@@ -208,8 +171,7 @@ def crearAtributosExtras(D):
                     agregarCampos(d.nombreCampo,d.modeloReferencia,nivel+1,prefijo)#"nombreCampo+"__""
 
     agregarCampos(CD[0], LD[0], 0, "")
-    # for i, DD in enumerate(LD):
-    #     agregarCampos(CD[i],DD,0,"")
+
 
 
 
@@ -448,7 +410,7 @@ def crearParametrosSerializer(D:DatosModelo):
     p = Imprimidor(1)
     for d in D.listaCampos:
         if d.esLlave:
-            p.pr0("" + d.nombreCampo + "=" + d.modeloReferencia.serializerDefault + "()")
+            p.pr0("" + d.nombreCampo + "=" + d.modeloReferencia.serializerDefault+"_Representation" + "()")
 
     return p.r#+"\n"
 

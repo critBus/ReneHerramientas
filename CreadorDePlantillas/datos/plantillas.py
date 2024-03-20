@@ -378,7 +378,7 @@ class {modelo}_Destroy(Base_Destroy):
 
 """
 
-g="""
+urls="""
     path('{modeloLower}/findById/<int:pk>/', {modelo}_Retrieve.as_view()),
     path('{modeloLower}/delete/<int:pk>/', {modelo}_Destroy.as_view()),
     path('{modeloLower}/update/<int:pk>/', {modelo}_Update.as_view()),
@@ -691,6 +691,17 @@ class {modelo}_List(Base_List):
             'status': 'error'
             'message': "descripción del error"
         }
+        
+        Paginación:
+            Para el paginado, se puede utilizar el parámetro "page" en la URL para especificar la página que se desea mostrar. Por ejemplo, "/entidad?page=2" mostrará la segunda página de productos.
+            El primer índice de la lista es ‘page=1’.
+            Además para definir el tamaño del paginado se puede utilizar a el parámetro “page_size”. Por ejemplo, "/entidad? page_size=3"
+            En la respuesta el parámetro "count" representa la cantidad total de elementos resultantes (no la cantidad de elementos en la lista productos del page_size )
+        
+        Rangos numéricos y cronológicos:
+            "/entidad?nombre=nombreABuscar&atributo__gte=10& atributo__lt=16&ordering=nombre"
+            "/entidad?nombre=nombreABuscar&atributo__gte=2024-01-09T20:16:01.825736Z& atributo__lt=2024-01-10T16:02:25.432273Z&ordering=nombre"
+            Usar 'gte', 'lte','gt', 'lt'
 
     \"\"\"
     {permisos_list} 
@@ -891,7 +902,18 @@ plantilla_doc = """
                 Ejemplo: &ordering=-parametro secundario
            Parametro Secundarios:
            {paremetros_get_ordenamiento_lista} 
-
+        
+        Paginación:
+            Para el paginado, se puede utilizar el parámetro "page" en la URL para especificar la página que se desea mostrar. Por ejemplo, "/entidad?page=2" mostrará la segunda página de productos.
+            El primer índice de la lista es ‘page=1’.
+            Además para definir el tamaño del paginado se puede utilizar a el parámetro “page_size”. Por ejemplo, "/entidad? page_size=3"
+            En la respuesta el parámetro "count" representa la cantidad total de elementos resultantes (no la cantidad de elementos en la lista productos del page_size )
+            Si no se incluye el ‘page_size’ se retornaran todos los datos sin paginar 
+            
+        Rangos numéricos y cronológicos:
+            "/entidad?nombre=nombreABuscar&atributo__gte=10& atributo__lt=16&ordering=nombre"
+            "/entidad?nombre=nombreABuscar&atributo__gte=2024-01-09T20:16:01.825736Z& atributo__lt=2024-01-10T16:02:25.432273Z&ordering=nombre"
+            Usar 'gte', 'lte','gt', 'lt'
 
         +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -966,7 +988,9 @@ plantilla_doc = """
 
         {modeloLower}/update/<int:pk>/
 
-        PUT:
+        PUT o PATCH:
+        En el caso PATCH de los campos que no se incluyan no serán modificados,
+        Si se incluye una imagen pero su valor es null, entonces sera eliminada
 
         {permisos_descripcion_update}
 
@@ -1319,4 +1343,521 @@ plantillas_filtros="""
     {atributosExtra}
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+"""
+
+plantilla_views_list_retrieve = """
+
+class {modelo}_List(Base_List):
+    \"\"\"
+        {permisos_descripcion_list} 
+
+       Endpoint para el listado de {modelo_labelPlurar}.
+
+       GET:
+       Obtiene una lista de todas las entidades de {modelo_labelSingular} existentes, opcionalmente filtradas y ordenadas.
+
+        **Parámetros de busqueda:**
+
+    No utilizar junto a los parámetros de filtro
+
+    Parametro Principial:
+
+        "search", busca cualquier coincidencia que incluye el valor pasado en el parametro secundario
+        Ejemplo: &search=valor a buscar
+
+    Parametro Secundarios por los que busca:
+           
+        {paremetros_get_search_lista} 
+
+    **Parámetros de ordenamiento:**
+
+    Parametro Principial:
+
+        "ordering", incluir un "-" delante del parametro secundario si se desea ordenar de forma desendiente
+         Ejemplo: &ordering=-parametro secundario
+
+    Parametro Secundarios:
+    
+        {paremetros_get_ordenamiento_lista} 
+
+    **Paginación:**
+
+    Para el paginado, se puede utilizar el parámetro "page" en la URL para especificar la página que se desea mostrar.
+
+    Por ejemplo, "/entidad?page=2" mostrará la segunda página de productos.
+
+    El primer índice de la lista es ‘page=1’.
+
+    Además para definir el tamaño del paginado se puede utilizar a el parámetro “page_size”.
+
+    Por ejemplo, "/entidad? page_size=3"
+
+    En la respuesta el parámetro "count" representa la cantidad total de elementos resultantes (no la cantidad de elementos en la lista productos del page_size )
+
+    Si no se incluye el ‘page_size’ se retornaran todos los datos sin paginar
+
+    **Rangos numéricos y cronológicos:**
+
+        "/entidad?nombre=nombreABuscar&atributo__gte=10& atributo__lt=16&ordering=nombre"
+        "/entidad?nombre=nombreABuscar&atributo__gte=2024-01-09T20:16:01.825736Z& atributo__lt=2024-01-10T16:02:25.432273Z&ordering=nombre"
+        Usar 'gte', 'lte','gt', 'lt'
+        
+    - 500 (Internal Server Error): Error en el servidor
+    {
+        'status': 'error'
+        'message': "descripción del error"
+    }
+
+    \"\"\"
+    {permisos_list} 
+    serializer_class = {modeloSerializer_list}
+    filter_backends = [DjangoFilterBackend,
+                       SearchFilter,
+                       OrderingFilter,
+                       ]
+    {atributosExtra} 
+    
+
+class {modelo}_Retrieve(Base_Retrieve):
+    \"\"\"
+    {permisos_descripcion_retrieve}
+    
+    Endpoint para la obtención de una entidad de {modelo_labelSingular} específica.
+    
+    Parámetros de entrada:
+    
+    - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+    
+    GET:
+    Obtiene la entidad de {modelo_labelSingular} con el id proporcionado.
+    
+    - 404 (Not Found):
+    - 400 (Bad Request): Los datos de entrada no son válidos
+    - 500 (Internal Server Error): Error en el servidor
+    {
+        'status': 'error'
+        'message': "descripción del error"
+    }
+
+
+    \"\"\"
+    {permisos_retrieve} 
+    serializer_class = {modeloSerializer_retrieve}
+
+"""
+
+plantilla_serializer_list_retrieve = """
+
+class {modelo}Serializer_Representation(serializers.ModelSerializer):
+    {parametrosSerializer}
+    class Meta:
+        model = {modelo}
+        fields = '__all__'
+    
+class {modelo}Serializer_List(serializers.ModelSerializer):
+    class Meta:
+        model = {modelo}
+        fields = '__all__'
+    def to_representation(self, value):
+        return {modelo}Serializer_Representation(value).data
+class {modelo}Serializer_Retrieve(serializers.ModelSerializer):
+    class Meta:
+        model = {modelo}
+        fields = '__all__'
+    def to_representation(self, value):
+        return {modelo}Serializer_Representation(value).data
+
+"""
+
+plantilla_doc_list_retrieve = """
+        ----------------------------------------------------------------------------
+
+        {modelo}
+
+        ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        {modeloLower}/list/
+
+        GET:
+
+        {permisos_descripcion_list} 
+
+       Endpoint para el listado de {modelo_labelPlurar}.
+
+
+       Obtiene una lista de todas las entidades de {modelo_labelSingular} existentes, opcionalmente filtradas y ordenadas.
+
+        Ejemplo de salida de solicitud GET:
+           {
+            "count": "cantidad de elementos en la lista",
+            "next": "url del siguiente conjunto de elementos en la paginacion o null si no hay un siguinete conjunto de elementos",
+            "previous": url del  conjunto anterior de elementos en la paginacion o null si no hay un conjunto anterior de elementos,
+            "results": [
+                    {
+                        {parametros_salida_get_elmento_lista}
+                    },
+
+                    ...
+
+                ]
+            }
+
+       Parámetros de filtro:
+                Ejemplo: &parametro de filtor1=valor a buscar1&parametro de filtor2=valor a buscar2
+       {paremetros_get_filtro_lista} 
+
+       Parámetros de busqueda:
+            No utilizar junto a los parámetros de filtro  
+           Parametro Principial: "search", busca cualquier coincidencia que incluye el valor pasado en el parametro secundario
+                Ejemplo: &search=valor a buscar
+           Parametro Secundarios por los que busca:
+           {paremetros_get_search_lista} 
+
+       Parámetros de ordenamiento: 
+           Parametro Principial: "ordering", incluir un "-" delante del parametro secundario si se desea ordenar de forma desendiente
+                Ejemplo: &ordering=-parametro secundario
+           Parametro Secundarios:
+           {paremetros_get_ordenamiento_lista} 
+
+        Paginación:
+            Para el paginado, se puede utilizar el parámetro "page" en la URL para especificar la página que se desea mostrar. Por ejemplo, "/entidad?page=2" mostrará la segunda página de productos.
+            El primer índice de la lista es ‘page=1’.
+            Además para definir el tamaño del paginado se puede utilizar a el parámetro “page_size”. Por ejemplo, "/entidad? page_size=3"
+            En la respuesta el parámetro "count" representa la cantidad total de elementos resultantes (no la cantidad de elementos en la lista productos del page_size )
+
+        Rangos numéricos y cronológicos:
+            "/entidad?nombre=nombreABuscar&atributo__gte=10& atributo__lt=16&ordering=nombre"
+            "/entidad?nombre=nombreABuscar&atributo__gte=2024-01-09T20:16:01.825736Z& atributo__lt=2024-01-10T16:02:25.432273Z&ordering=nombre"
+            Usar 'gte', 'lte','gt', 'lt'
+
+        +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+        {modeloLower}/findById/<int:pk>/
+
+        GET:
+
+
+        {permisos_descripcion_retrieve}
+
+        Endpoint para la obtención de una entidad de {modelo_labelSingular} específica.
+
+        Parámetros de entrada:
+        - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+
+        - 404 (Not Found):
+        - 400 (Bad Request): Los datos de entrada no son válidos
+        - 500 (Internal Server Error): Error en el servidor
+        {
+            'status': 'error'
+            'message': "descripción del error"
+        }
+
+
+        Obtiene la entidad de {modelo_labelSingular} con el id proporcionado.
+
+            Ejemplo de salida de solicitud GET:
+            {
+                {parametros_salida_get_RUD}
+            }
+
+
+
+        ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+"""
+
+plantilla_resennas_serializable="""
+class {modelo}RepresentationSerializer(serializers.ModelSerializer):
+    {parametrosSerializer}
+    class Meta:
+        model = {modelo}
+        fields = '__all__'
+class {modelo}Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = {modelo}
+        fields = '__all__'
+    def to_representation(self, instance):
+        request = get_current_request()
+        return {modelo}RepresentationSerializer(instance, context={'request': request}).data
+    
+class {modelo}UpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = {modelo}
+        fields = ('texto','puntuacion',)
+    def to_representation(self, instance):
+        request = get_current_request()
+        return {modelo}RepresentationSerializer(instance, context={'request': request}).data
+"""
+
+plantilla_views_serializer_update = """
+
+class {modelo}_List(Base_List):
+    \"\"\"
+        {permisos_descripcion_list} 
+
+       Endpoint para el listado de {modelo_labelPlurar}.
+
+       GET:
+       Obtiene una lista de todas las entidades de {modelo_labelSingular} existentes, opcionalmente filtradas y ordenadas.
+
+        
+        Paginación:
+            Para el paginado, se puede utilizar el parámetro "page" en la URL para especificar la página que se desea mostrar. Por ejemplo, "/entidad?page=2" mostrará la segunda página de productos.
+            El primer índice de la lista es ‘page=1’.
+            Además para definir el tamaño del paginado se puede utilizar a el parámetro “page_size”. Por ejemplo, "/entidad? page_size=3"
+            En la respuesta el parámetro "count" representa la cantidad total de elementos resultantes (no la cantidad de elementos en la lista productos del page_size )
+
+        Rangos numéricos y cronológicos:
+            "/entidad?nombre=nombreABuscar&atributo__gte=10& atributo__lt=16&ordering=nombre"
+            "/entidad?nombre=nombreABuscar&atributo__gte=2024-01-09T20:16:01.825736Z& atributo__lt=2024-01-10T16:02:25.432273Z&ordering=nombre"
+            Usar 'gte', 'lte','gt', 'lt'
+
+    \"\"\"
+    {permisos_list} 
+    serializer_class = {modelo}RepresentationSerializer
+    filter_backends = [DjangoFilterBackend,
+                       SearchFilter,
+                       OrderingFilter,
+                       ]
+    {atributosExtra}
+     
+
+class {modelo}_Retrieve(Base_Retrieve):
+    \"\"\"
+        {permisos_descripcion_retrieve}
+
+        Endpoint para la obtención de una entidad de {modelo_labelSingular} específica.
+
+        Parámetros de entrada:
+        - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+
+
+
+        GET:
+        Obtiene la entidad de {modelo_labelSingular} con el id proporcionado.
+
+            
+
+
+    \"\"\"
+    {permisos_retrieve} 
+    serializer_class = {modelo}RepresentationSerializer
+
+class {modelo}_Create(Base_Create):
+    \"\"\"
+        {permisos_descripcion_create}
+
+       Endpoint para la creación de {modelo_labelSingular}.
+
+       POST:
+       Crea una nueva entidad de {modelo_labelSingular} con los datos proporcionados en el cuerpo de la solicitud.
+       
+
+
+    \"\"\"
+    {permisos_create} 
+    serializer_class = {modelo}Serializer
+
+    {save_create}
+    @extend_schema(
+        responses={201: {modelo}RepresentationSerializer},
+    )
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+class {modelo}_Update(Base_Update):
+    \"\"\"
+        {permisos_descripcion_update}
+
+        Endpoint para la actualización de una entidad de {modelo_labelSingular} específica.
+
+        Parámetros de entrada:
+        - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+
+        Actualiza la entidad de {modelo_labelSingular} con el id proporcionado con los datos proporcionados en el cuerpo de la solicitud.
+
+        
+    \"\"\"
+
+    serializer_class = {modelo}UpdateSerializer
+    {permisos_update} 
+    {save_update}
+    @extend_schema(
+        responses={200: {modelo}RepresentationSerializer},
+    )
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    @extend_schema(
+        responses={200: {modelo}RepresentationSerializer},
+    )
+    def patch(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+
+class {modelo}_Destroy(Base_Destroy):
+    \"\"\"
+        {permisos_descripcion_destroy}
+
+        Endpoint para la eliminación de una entidad de {modelo_labelSingular} específica.
+
+        Parámetros de entrada:
+        - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+
+
+        DELETE:
+        Elimina la entidad de {modelo_labelSingular} con el id proporcionado.
+
+        
+    \"\"\"
+    {permisos_destroy} 
+    serializer_class = {modelo}Serializer
+    {save_destroy}
+
+
+
+
+"""
+
+plantilla_views_serializer_update_resennas = """
+
+class {modelo}_List(Base_List):
+    \"\"\"
+        {permisos_descripcion_list} 
+
+       Endpoint para el listado de {modelo_labelPlurar}.
+
+       GET:
+       Obtiene una lista de todas las entidades de {modelo_labelSingular} existentes, opcionalmente filtradas y ordenadas.
+
+
+        Paginación:
+            Para el paginado, se puede utilizar el parámetro "page" en la URL para especificar la página que se desea mostrar. Por ejemplo, "/entidad?page=2" mostrará la segunda página de productos.
+            El primer índice de la lista es ‘page=1’.
+            Además para definir el tamaño del paginado se puede utilizar a el parámetro “page_size”. Por ejemplo, "/entidad? page_size=3"
+            En la respuesta el parámetro "count" representa la cantidad total de elementos resultantes (no la cantidad de elementos en la lista productos del page_size )
+
+        Rangos numéricos y cronológicos:
+            "/entidad?nombre=nombreABuscar&atributo__gte=10& atributo__lt=16&ordering=nombre"
+            "/entidad?nombre=nombreABuscar&atributo__gte=2024-01-09T20:16:01.825736Z& atributo__lt=2024-01-10T16:02:25.432273Z&ordering=nombre"
+            Usar 'gte', 'lte','gt', 'lt'
+
+    \"\"\"
+    {permisos_list} 
+    serializer_class = {modelo}RepresentationSerializer
+    filter_backends = [DjangoFilterBackend,
+                       SearchFilter,
+                       OrderingFilter,
+                       ]
+    {atributosExtra}
+
+
+class {modelo}_Retrieve(Base_Retrieve):
+    \"\"\"
+        {permisos_descripcion_retrieve}
+
+        Endpoint para la obtención de una entidad de {modelo_labelSingular} específica.
+
+        Parámetros de entrada:
+        - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+
+
+
+        GET:
+        Obtiene la entidad de {modelo_labelSingular} con el id proporcionado.
+
+
+
+
+    \"\"\"
+    {permisos_retrieve} 
+    serializer_class = {modelo}RepresentationSerializer
+
+class {modelo}_Create(Base_Create):
+    \"\"\"
+        {permisos_descripcion_create}
+
+       Endpoint para la creación de {modelo_labelSingular}.
+
+       POST:
+       Crea una nueva entidad de {modelo_labelSingular} con los datos proporcionados en el cuerpo de la solicitud.
+
+
+
+    \"\"\"
+    permission_classes = (IsAuthenticated, IsItTheOwner,)
+    serializer_class = {modelo}Serializer
+
+    {save_create}
+    @extend_schema(
+        responses={201: {modelo}RepresentationSerializer},
+    )
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+class {modelo}_Update(Base_Update):
+    \"\"\"
+        {permisos_descripcion_update}
+
+        Endpoint para la actualización de una entidad de {modelo_labelSingular} específica.
+
+        Parámetros de entrada:
+        - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+
+        Actualiza la entidad de {modelo_labelSingular} con el id proporcionado con los datos proporcionados en el cuerpo de la solicitud.
+
+
+    \"\"\"
+
+    serializer_class = {modelo}UpdateSerializer
+    permission_classes = (IsAuthenticated, IsItTheOwnerObj,)
+    {save_update}
+    @extend_schema(
+        responses={200: {modelo}RepresentationSerializer},
+    )
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    @extend_schema(
+        responses={200: {modelo}RepresentationSerializer},
+    )
+    def patch(self, request, *args, **kwargs):
+        return self.partial_update(request, *args, **kwargs)
+
+class {modelo}_Destroy(Base_Destroy):
+    \"\"\"
+        {permisos_descripcion_destroy}
+
+        Endpoint para la eliminación de una entidad de {modelo_labelSingular} específica.
+
+        Parámetros de entrada:
+        - id: Identificador único de la entidad a obtener, actualizar o eliminar.
+
+
+        DELETE:
+        Elimina la entidad de {modelo_labelSingular} con el id proporcionado.
+
+
+    \"\"\"
+    permission_classes = (IsAuthenticated, IsItTheOwnerObj,)
+    serializer_class = {modelo}Serializer
+    {save_destroy}
+
+
+
+
+"""
+
+
+plantilla_serializer_Representation = """
+
+class {modelo}Serializer_Representation(serializers.ModelSerializer):
+    {parametrosSerializer}
+    class Meta:
+        model = {modelo}
+        fields = '__all__'
+
 """

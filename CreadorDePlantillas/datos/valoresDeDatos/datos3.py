@@ -1,4 +1,4 @@
-datos={
+datos = {
     "models": {
         "Permission": {
             "campos": [
@@ -8,7 +8,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "name",
@@ -16,7 +16,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "content_type",
@@ -24,7 +24,7 @@ datos={
                     "related_model": "ContentType",
                     "descripcion_entrada": "tipo de contenido",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "codename",
@@ -32,7 +32,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre en c\u00f3digo",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "permissions",
@@ -40,7 +40,7 @@ datos={
                     "related_model": "Group",
                     "descripcion_entrada": "Relacion Group",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -48,8 +48,8 @@ datos={
                     "related_model": "User",
                     "descripcion_entrada": "Relacion User",
                     "descripcion_salida": "",
-                    "related_name": "user_set"
-                }
+                    "related_name": "user_set",
+                },
             ],
             "modeloLower": "permission",
             "modelo_labelSingular": "Permission",
@@ -59,35 +59,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PermissionSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "PermissionSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PermissionSerializer_List"
+                    "serializer": "PermissionSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PermissionSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "PermissionSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PermissionSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "PermissionSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PermissionSerializer_Retrieve"
-                }
-            }
+                    "serializer": "PermissionSerializer_Retrieve",
+                },
+            },
         },
         "Group": {
             "campos": [
@@ -97,7 +97,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "name",
@@ -105,7 +105,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "permissions",
@@ -113,7 +113,7 @@ datos={
                     "related_model": "Permission",
                     "descripcion_entrada": "permisos",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -121,7 +121,7 @@ datos={
                     "related_model": "User",
                     "descripcion_entrada": "Relacion User",
                     "descripcion_salida": "",
-                    "related_name": "user_set"
+                    "related_name": "user_set",
                 },
                 {
                     "name": "rol",
@@ -129,8 +129,8 @@ datos={
                     "related_model": "RolNegocio",
                     "descripcion_entrada": "Relacion RolNegocio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "group",
             "modelo_labelSingular": "Group",
@@ -140,35 +140,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "GroupSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "GroupSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "GroupSerializer_List"
+                    "serializer": "GroupSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "GroupSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "GroupSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "GroupSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "GroupSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "GroupSerializer_Retrieve"
-                }
-            }
+                    "serializer": "GroupSerializer_Retrieve",
+                },
+            },
         },
         "ContentType": {
             "campos": [
@@ -178,7 +178,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "app_label",
@@ -186,7 +186,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "app label",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "model",
@@ -194,7 +194,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre de la clase Python del modelo",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "content_type",
@@ -202,8 +202,8 @@ datos={
                     "related_model": "Permission",
                     "descripcion_entrada": "Relacion Permission",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "contenttype",
             "modelo_labelSingular": "ContentType",
@@ -213,35 +213,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContentTypeSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ContentTypeSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ContentTypeSerializer_List"
+                    "serializer": "ContentTypeSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContentTypeSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ContentTypeSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContentTypeSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ContentTypeSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ContentTypeSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ContentTypeSerializer_Retrieve",
+                },
+            },
         },
         "User": {
             "campos": [
@@ -251,7 +251,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "password",
@@ -259,7 +259,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "contrase\u00f1a",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "last_login",
@@ -267,7 +267,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "\u00faltimo ingreso",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "is_superuser",
@@ -275,7 +275,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "es superusuario",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "username",
@@ -283,7 +283,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "username",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "email",
@@ -291,7 +291,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Correo Electr\u00f3nico",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "first_name",
@@ -299,7 +299,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Nombres",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "last_name",
@@ -307,7 +307,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Apellidos",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "image",
@@ -315,7 +315,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Imagen de perfil",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "phone",
@@ -323,7 +323,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "phone",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "is_active",
@@ -331,7 +331,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "is active",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "is_staff",
@@ -339,7 +339,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "is staff",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "created",
@@ -347,7 +347,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "created",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "edited",
@@ -355,7 +355,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "edited",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "useAppBusiness",
@@ -363,7 +363,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "useAppBusiness",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "groups",
@@ -371,7 +371,7 @@ datos={
                     "related_model": "Group",
                     "descripcion_entrada": "grupos",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user_permissions",
@@ -379,15 +379,15 @@ datos={
                     "related_model": "Permission",
                     "descripcion_entrada": "permisos de usuario",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
-                    "name": "user",
+                    "name": "user_BlackListedTokenAccess",
                     "type": "Extra_ForeignKey",
-                    "related_model": "PalabraClave",
-                    "descripcion_entrada": "Relacion PalabraClave",
+                    "related_model": "BlackListedTokenAccess",
+                    "descripcion_entrada": "Relacion BlackListedTokenAccess",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": "user_BlackListedTokenAccess",
                 },
                 {
                     "name": "user",
@@ -395,7 +395,7 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Relacion Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -403,7 +403,7 @@ datos={
                     "related_model": "RolNegocio",
                     "descripcion_entrada": "Relacion RolNegocio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -411,7 +411,7 @@ datos={
                     "related_model": "CategoriaDeServicio",
                     "descripcion_entrada": "Relacion CategoriaDeServicio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -419,15 +419,31 @@ datos={
                     "related_model": "CategoriaDeProducto",
                     "descripcion_entrada": "Relacion CategoriaDeProducto",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
                     "type": "Extra_ForeignKey",
-                    "related_model": "Resenna",
-                    "descripcion_entrada": "Relacion Resenna",
+                    "related_model": "ResennaDeNegocio",
+                    "descripcion_entrada": "Relacion ResennaDeNegocio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
+                },
+                {
+                    "name": "user",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "ResennaDeProducto",
+                    "descripcion_entrada": "Relacion ResennaDeProducto",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "user",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "ResennaDeServicio",
+                    "descripcion_entrada": "Relacion ResennaDeServicio",
+                    "descripcion_salida": "",
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -435,7 +451,7 @@ datos={
                     "related_model": "Favorito",
                     "descripcion_entrada": "Relacion Favorito",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -443,8 +459,8 @@ datos={
                     "related_model": "RegisteredUserData",
                     "descripcion_entrada": "Relacion RegisteredUserData",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "user",
             "modelo_labelSingular": "User",
@@ -454,37 +470,37 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "UserSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "UserSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "UserSerializer_List"
+                    "serializer": "UserSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "UserSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "UserSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "UserSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "UserSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "UserSerializer_Retrieve"
-                }
-            }
+                    "serializer": "UserSerializer_Retrieve",
+                },
+            },
         },
-        "PalabraClave": {
+        "BlackListedTokenAccess": {
             "campos": [
                 {
                     "name": "id",
@@ -492,15 +508,15 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
-                    "name": "nombre",
+                    "name": "token",
                     "type": "CharField",
                     "related_model": "",
-                    "descripcion_entrada": "nombre",
+                    "descripcion_entrada": "token",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -508,62 +524,111 @@ datos={
                     "related_model": "User",
                     "descripcion_entrada": "user",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
-                    "name": "esPublica",
-                    "type": "BooleanField",
+                    "name": "timestamp",
+                    "type": "DateTimeField",
                     "related_model": "",
-                    "descripcion_entrada": "esPublica",
+                    "descripcion_entrada": "timestamp",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
-                {
-                    "name": "PalabrasClave",
-                    "type": "Extra_ManyToManyField",
-                    "related_model": "Negocio",
-                    "descripcion_entrada": "Relacion Negocio",
-                    "descripcion_salida": "",
-                    "related_name": None
-                }
             ],
-            "modeloLower": "palabraclave",
-            "modelo_labelSingular": "PalabraClave",
-            "modelo_labelPlurar": "PalabraClave",
-            "modeloLower_labelSingular": "PalabraClave",
-            "modeloLower_labelPlurar": "PalabraClave",
+            "modeloLower": "blacklistedtokenaccess",
+            "modelo_labelSingular": "BlackListedTokenAccess",
+            "modelo_labelPlurar": "BlackListedTokenAccess",
+            "modeloLower_labelSingular": "BlackListedTokenAccess",
+            "modeloLower_labelPlurar": "BlackListedTokenAccess",
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PalabraClaveSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "BlackListedTokenAccessSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PalabraClaveSerializer_List"
+                    "serializer": "BlackListedTokenAccessSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PalabraClaveSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "BlackListedTokenAccessSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PalabraClaveSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "BlackListedTokenAccessSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PalabraClaveSerializer_Retrieve"
-                }
-            }
+                    "serializer": "BlackListedTokenAccessSerializer_Retrieve",
+                },
+            },
+        },
+        "PalabraClavePublica": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "BigAutoField",
+                    "related_model": "",
+                    "descripcion_entrada": "ID",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "nombre",
+                    "type": "CharField",
+                    "related_model": "",
+                    "descripcion_entrada": "nombre",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "palabraclavepublica",
+            "modelo_labelSingular": "PalabraClavePublica",
+            "modelo_labelPlurar": "PalabraClavePublica",
+            "modeloLower_labelSingular": "PalabraClavePublica",
+            "modeloLower_labelPlurar": "PalabraClavePublica",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "PalabraClavePublicaSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "PalabraClavePublicaSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "PalabraClavePublicaSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "PalabraClavePublicaSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "PalabraClavePublicaSerializer_Retrieve",
+                },
+            },
         },
         "TipoDeGestion": {
             "campos": [
@@ -573,7 +638,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "nombre",
@@ -581,7 +646,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "esPublica",
@@ -589,7 +654,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "esPublica",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "TipoDeGestion",
@@ -597,8 +662,8 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Relacion Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "tipodegestion",
             "modelo_labelSingular": "TipoDeGestion",
@@ -608,35 +673,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeGestionSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "TipoDeGestionSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TipoDeGestionSerializer_List"
+                    "serializer": "TipoDeGestionSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeGestionSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "TipoDeGestionSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeGestionSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "TipoDeGestionSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TipoDeGestionSerializer_Retrieve"
-                }
-            }
+                    "serializer": "TipoDeGestionSerializer_Retrieve",
+                },
+            },
         },
         "CategoriaDeNegocio": {
             "campos": [
@@ -646,7 +711,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "nombre",
@@ -654,7 +719,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "esPublica",
@@ -662,7 +727,15 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "esPublica",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
+                },
+                {
+                    "name": "categoriaDeNegocioPrincipal",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "Negocio",
+                    "descripcion_entrada": "Relacion Negocio",
+                    "descripcion_salida": "",
+                    "related_name": "categoriaDeNegocioPrincipal",
                 },
                 {
                     "name": "CategoriasDeNegocio",
@@ -670,8 +743,8 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Relacion Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "categoriadenegocio",
             "modelo_labelSingular": "CategoriaDeNegocio",
@@ -681,35 +754,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CategoriaDeNegocioSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "CategoriaDeNegocioSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CategoriaDeNegocioSerializer_List"
+                    "serializer": "CategoriaDeNegocioSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CategoriaDeNegocioSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "CategoriaDeNegocioSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CategoriaDeNegocioSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "CategoriaDeNegocioSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CategoriaDeNegocioSerializer_Retrieve"
-                }
-            }
+                    "serializer": "CategoriaDeNegocioSerializer_Retrieve",
+                },
+            },
         },
         "Negocio": {
             "campos": [
@@ -719,7 +792,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "nombre",
@@ -727,7 +800,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "logo",
@@ -735,7 +808,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "logo",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "slogan",
@@ -743,7 +816,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "slogan",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "direccion",
@@ -751,7 +824,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "direccion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "descripcion",
@@ -759,7 +832,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "descripcion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "TipoDeGestion",
@@ -767,7 +840,7 @@ datos={
                     "related_model": "TipoDeGestion",
                     "descripcion_entrada": "TipoDeGestion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -775,15 +848,47 @@ datos={
                     "related_model": "User",
                     "descripcion_entrada": "user",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
-                    "name": "PalabrasClave",
-                    "type": "ManyToManyField",
-                    "related_model": "PalabraClave",
-                    "descripcion_entrada": "PalabrasClave",
+                    "name": "categoriaPrincipal",
+                    "type": "ForeignKey",
+                    "related_model": "CategoriaDeNegocio",
+                    "descripcion_entrada": "categoriaPrincipal",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
+                },
+                {
+                    "name": "fecha_creacion",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha creacion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "promedio_de_resennas",
+                    "type": "FloatField",
+                    "related_model": "",
+                    "descripcion_entrada": "promedio de resennas",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "cantidad_de_resennas",
+                    "type": "IntegerField",
+                    "related_model": "",
+                    "descripcion_entrada": "cantidad de resennas",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "search_vector",
+                    "type": "SearchVectorField",
+                    "related_model": "",
+                    "descripcion_entrada": "search vector",
+                    "descripcion_salida": "",
+                    "related_name": None,
                 },
                 {
                     "name": "CategoriasDeNegocio",
@@ -791,7 +896,15 @@ datos={
                     "related_model": "CategoriaDeNegocio",
                     "descripcion_entrada": "CategoriasDeNegocio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
+                },
+                {
+                    "name": "palabraclavenegocio",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "PalabraClaveDeNegocio",
+                    "descripcion_entrada": "Relacion PalabraClaveDeNegocio",
+                    "descripcion_salida": "",
+                    "related_name": "palabraclavenegocio",
                 },
                 {
                     "name": "rolnegocio",
@@ -799,7 +912,7 @@ datos={
                     "related_model": "RolNegocio",
                     "descripcion_entrada": "Relacion RolNegocio",
                     "descripcion_salida": "",
-                    "related_name": "rolnegocio"
+                    "related_name": "rolnegocio",
                 },
                 {
                     "name": "Negocio",
@@ -807,7 +920,7 @@ datos={
                     "related_model": "Contacto",
                     "descripcion_entrada": "Relacion Contacto",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -815,7 +928,7 @@ datos={
                     "related_model": "CategoriaDeServicio",
                     "descripcion_entrada": "Relacion CategoriaDeServicio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -823,7 +936,7 @@ datos={
                     "related_model": "CategoriaDeProducto",
                     "descripcion_entrada": "Relacion CategoriaDeProducto",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -831,7 +944,7 @@ datos={
                     "related_model": "Producto",
                     "descripcion_entrada": "Relacion Producto",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -839,15 +952,15 @@ datos={
                     "related_model": "Servicio",
                     "descripcion_entrada": "Relacion Servicio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
                     "type": "Extra_ForeignKey",
-                    "related_model": "Resenna",
-                    "descripcion_entrada": "Relacion Resenna",
+                    "related_model": "ResennaDeNegocio",
+                    "descripcion_entrada": "Relacion ResennaDeNegocio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -855,7 +968,7 @@ datos={
                     "related_model": "Favorito",
                     "descripcion_entrada": "Relacion Favorito",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -863,8 +976,16 @@ datos={
                     "related_model": "Imagen_Negocio",
                     "descripcion_entrada": "Relacion Imagen_Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
+                {
+                    "name": "negocios",
+                    "type": "Extra_ManyToManyField",
+                    "related_model": "Evento",
+                    "descripcion_entrada": "Relacion Evento",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
             ],
             "modeloLower": "negocio",
             "modelo_labelSingular": "Negocio",
@@ -874,35 +995,100 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "NegocioSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "NegocioSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "NegocioSerializer_List"
+                    "serializer": "NegocioSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "NegocioSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "NegocioSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "NegocioSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "NegocioSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "NegocioSerializer_Retrieve"
-                }
-            }
+                    "serializer": "NegocioSerializer_Retrieve",
+                },
+            },
+        },
+        "PalabraClaveDeNegocio": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "BigAutoField",
+                    "related_model": "",
+                    "descripcion_entrada": "ID",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "nombre",
+                    "type": "CharField",
+                    "related_model": "",
+                    "descripcion_entrada": "nombre",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "Negocio",
+                    "type": "ForeignKey",
+                    "related_model": "Negocio",
+                    "descripcion_entrada": "Negocio",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "palabraclavedenegocio",
+            "modelo_labelSingular": "PalabraClaveDeNegocio",
+            "modelo_labelPlurar": "PalabraClaveDeNegocio",
+            "modeloLower_labelSingular": "PalabraClaveDeNegocio",
+            "modeloLower_labelPlurar": "PalabraClaveDeNegocio",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "PalabraClaveDeNegocioSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "PalabraClaveDeNegocioSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "PalabraClaveDeNegocioSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "PalabraClaveDeNegocioSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "PalabraClaveDeNegocioSerializer_Retrieve",
+                },
+            },
         },
         "RolNegocio": {
             "campos": [
@@ -912,7 +1098,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "rol",
@@ -920,7 +1106,7 @@ datos={
                     "related_model": "Group",
                     "descripcion_entrada": "rol",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -928,7 +1114,7 @@ datos={
                     "related_model": "User",
                     "descripcion_entrada": "user",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -936,8 +1122,8 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "rolnegocio",
             "modelo_labelSingular": "RolNegocio",
@@ -947,35 +1133,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RolNegocioSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "RolNegocioSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RolNegocioSerializer_List"
+                    "serializer": "RolNegocioSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RolNegocioSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "RolNegocioSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RolNegocioSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "RolNegocioSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RolNegocioSerializer_Retrieve"
-                }
-            }
+                    "serializer": "RolNegocioSerializer_Retrieve",
+                },
+            },
         },
         "TipoDeContacto": {
             "campos": [
@@ -985,7 +1171,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "nombre",
@@ -993,7 +1179,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "TipoDeContacto",
@@ -1001,8 +1187,16 @@ datos={
                     "related_model": "Contacto",
                     "descripcion_entrada": "Relacion Contacto",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
+                {
+                    "name": "TipoDeContacto",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "ContactoDeEvento",
+                    "descripcion_entrada": "Relacion ContactoDeEvento",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
             ],
             "modeloLower": "tipodecontacto",
             "modelo_labelSingular": "TipoDeContacto",
@@ -1012,35 +1206,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeContactoSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "TipoDeContactoSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TipoDeContactoSerializer_List"
+                    "serializer": "TipoDeContactoSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeContactoSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "TipoDeContactoSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeContactoSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "TipoDeContactoSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TipoDeContactoSerializer_Retrieve"
-                }
-            }
+                    "serializer": "TipoDeContactoSerializer_Retrieve",
+                },
+            },
         },
         "Contacto": {
             "campos": [
@@ -1050,15 +1244,15 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
-                    "name": "nombre",
+                    "name": "valor",
                     "type": "CharField",
                     "related_model": "",
-                    "descripcion_entrada": "nombre",
+                    "descripcion_entrada": "valor",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "TipoDeContacto",
@@ -1066,7 +1260,7 @@ datos={
                     "related_model": "TipoDeContacto",
                     "descripcion_entrada": "TipoDeContacto",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -1074,8 +1268,24 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
+                {
+                    "name": "esPrincipal",
+                    "type": "BooleanField",
+                    "related_model": "",
+                    "descripcion_entrada": "esPrincipal",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "esWhatsapp",
+                    "type": "BooleanField",
+                    "related_model": "",
+                    "descripcion_entrada": "esWhatsapp",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
             ],
             "modeloLower": "contacto",
             "modelo_labelSingular": "Contacto",
@@ -1085,35 +1295,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContactoSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ContactoSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ContactoSerializer_List"
+                    "serializer": "ContactoSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContactoSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ContactoSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContactoSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ContactoSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ContactoSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ContactoSerializer_Retrieve",
+                },
+            },
         },
         "CategoriaDeServicio": {
             "campos": [
@@ -1123,7 +1333,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "nombre",
@@ -1131,7 +1341,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -1139,7 +1349,7 @@ datos={
                     "related_model": "User",
                     "descripcion_entrada": "user",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -1147,15 +1357,55 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
-                    "name": "esPublica",
+                    "name": "es_visible",
                     "type": "BooleanField",
                     "related_model": "",
-                    "descripcion_entrada": "esPublica",
+                    "descripcion_entrada": "es visible",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
+                },
+                {
+                    "name": "es_general",
+                    "type": "BooleanField",
+                    "related_model": "",
+                    "descripcion_entrada": "es general",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "categoria_padre_general",
+                    "type": "ForeignKey",
+                    "related_model": "CategoriaDeServicio",
+                    "descripcion_entrada": "categoria padre general",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "categoria_padre_particular",
+                    "type": "ForeignKey",
+                    "related_model": "CategoriaDeServicio",
+                    "descripcion_entrada": "categoria padre particular",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "servicio_categoria_padre_general",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "CategoriaDeServicio",
+                    "descripcion_entrada": "Relacion CategoriaDeServicio",
+                    "descripcion_salida": "",
+                    "related_name": "servicio_categoria_padre_general",
+                },
+                {
+                    "name": "servicio_categoria_padre_particular",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "CategoriaDeServicio",
+                    "descripcion_entrada": "Relacion CategoriaDeServicio",
+                    "descripcion_salida": "",
+                    "related_name": "servicio_categoria_padre_particular",
                 },
                 {
                     "name": "Categoria",
@@ -1163,8 +1413,8 @@ datos={
                     "related_model": "Servicio",
                     "descripcion_entrada": "Relacion Servicio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "categoriadeservicio",
             "modelo_labelSingular": "CategoriaDeServicio",
@@ -1174,35 +1424,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CategoriaDeServicioSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "CategoriaDeServicioSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CategoriaDeServicioSerializer_List"
+                    "serializer": "CategoriaDeServicioSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CategoriaDeServicioSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "CategoriaDeServicioSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CategoriaDeServicioSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "CategoriaDeServicioSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CategoriaDeServicioSerializer_Retrieve"
-                }
-            }
+                    "serializer": "CategoriaDeServicioSerializer_Retrieve",
+                },
+            },
         },
         "CategoriaDeProducto": {
             "campos": [
@@ -1212,7 +1462,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "nombre",
@@ -1220,7 +1470,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -1228,7 +1478,7 @@ datos={
                     "related_model": "User",
                     "descripcion_entrada": "user",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -1236,15 +1486,55 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
-                    "name": "esPublica",
+                    "name": "es_visible",
                     "type": "BooleanField",
                     "related_model": "",
-                    "descripcion_entrada": "esPublica",
+                    "descripcion_entrada": "es visible",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
+                },
+                {
+                    "name": "es_general",
+                    "type": "BooleanField",
+                    "related_model": "",
+                    "descripcion_entrada": "es general",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "categoria_padre_general",
+                    "type": "ForeignKey",
+                    "related_model": "CategoriaDeProducto",
+                    "descripcion_entrada": "categoria padre general",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "categoria_padre_particular",
+                    "type": "ForeignKey",
+                    "related_model": "CategoriaDeProducto",
+                    "descripcion_entrada": "categoria padre particular",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "producto_categoria_padre_general",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "CategoriaDeProducto",
+                    "descripcion_entrada": "Relacion CategoriaDeProducto",
+                    "descripcion_salida": "",
+                    "related_name": "producto_categoria_padre_general",
+                },
+                {
+                    "name": "producto_categoria_padre_particular",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "CategoriaDeProducto",
+                    "descripcion_entrada": "Relacion CategoriaDeProducto",
+                    "descripcion_salida": "",
+                    "related_name": "producto_categoria_padre_particular",
                 },
                 {
                     "name": "Categoria",
@@ -1252,8 +1542,8 @@ datos={
                     "related_model": "Producto",
                     "descripcion_entrada": "Relacion Producto",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "categoriadeproducto",
             "modelo_labelSingular": "CategoriaDeProducto",
@@ -1263,35 +1553,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CategoriaDeProductoSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "CategoriaDeProductoSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CategoriaDeProductoSerializer_List"
+                    "serializer": "CategoriaDeProductoSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CategoriaDeProductoSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "CategoriaDeProductoSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CategoriaDeProductoSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "CategoriaDeProductoSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CategoriaDeProductoSerializer_Retrieve"
-                }
-            }
+                    "serializer": "CategoriaDeProductoSerializer_Retrieve",
+                },
+            },
         },
         "Producto": {
             "campos": [
@@ -1301,7 +1591,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Nombre",
@@ -1309,7 +1599,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Disponibilidad",
@@ -1317,7 +1607,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Disponibilidad",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Precio_actual",
@@ -1325,7 +1615,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Precio actual",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Precio_anterior",
@@ -1333,7 +1623,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Precio anterior",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Descripcion",
@@ -1341,7 +1631,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Descripcion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Categoria",
@@ -1349,7 +1639,7 @@ datos={
                     "related_model": "CategoriaDeProducto",
                     "descripcion_entrada": "Categoria",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -1357,15 +1647,47 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
+                },
+                {
+                    "name": "fecha_creacion",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha creacion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "promedio_de_resennas",
+                    "type": "FloatField",
+                    "related_model": "",
+                    "descripcion_entrada": "promedio de resennas",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "cantidad_de_resennas",
+                    "type": "IntegerField",
+                    "related_model": "",
+                    "descripcion_entrada": "cantidad de resennas",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "search_vector",
+                    "type": "SearchVectorField",
+                    "related_model": "",
+                    "descripcion_entrada": "search vector",
+                    "descripcion_salida": "",
+                    "related_name": None,
                 },
                 {
                     "name": "Producto",
                     "type": "Extra_ForeignKey",
-                    "related_model": "Resenna",
-                    "descripcion_entrada": "Relacion Resenna",
+                    "related_model": "ResennaDeProducto",
+                    "descripcion_entrada": "Relacion ResennaDeProducto",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Producto",
@@ -1373,7 +1695,7 @@ datos={
                     "related_model": "Favorito",
                     "descripcion_entrada": "Relacion Favorito",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Producto",
@@ -1381,8 +1703,16 @@ datos={
                     "related_model": "Imagen_Producto",
                     "descripcion_entrada": "Relacion Imagen_Producto",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
+                {
+                    "name": "producto",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "ValorProducto",
+                    "descripcion_entrada": "Relacion ValorProducto",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
             ],
             "modeloLower": "producto",
             "modelo_labelSingular": "Producto",
@@ -1392,35 +1722,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ProductoSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ProductoSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ProductoSerializer_List"
+                    "serializer": "ProductoSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ProductoSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ProductoSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ProductoSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ProductoSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ProductoSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ProductoSerializer_Retrieve",
+                },
+            },
         },
         "Servicio": {
             "campos": [
@@ -1430,7 +1760,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Nombre",
@@ -1438,7 +1768,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Disponibilidad",
@@ -1446,7 +1776,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Disponibilidad",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Precio_actual",
@@ -1454,7 +1784,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Precio actual",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Precio_anterior",
@@ -1462,7 +1792,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Precio anterior",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Descripcion",
@@ -1470,7 +1800,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Descripcion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Categoria",
@@ -1478,7 +1808,7 @@ datos={
                     "related_model": "CategoriaDeServicio",
                     "descripcion_entrada": "Categoria",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -1486,15 +1816,47 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
+                },
+                {
+                    "name": "fecha_creacion",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha creacion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "promedio_de_resennas",
+                    "type": "FloatField",
+                    "related_model": "",
+                    "descripcion_entrada": "promedio de resennas",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "cantidad_de_resennas",
+                    "type": "IntegerField",
+                    "related_model": "",
+                    "descripcion_entrada": "cantidad de resennas",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "search_vector",
+                    "type": "SearchVectorField",
+                    "related_model": "",
+                    "descripcion_entrada": "search vector",
+                    "descripcion_salida": "",
+                    "related_name": None,
                 },
                 {
                     "name": "Servicio",
                     "type": "Extra_ForeignKey",
-                    "related_model": "Resenna",
-                    "descripcion_entrada": "Relacion Resenna",
+                    "related_model": "ResennaDeServicio",
+                    "descripcion_entrada": "Relacion ResennaDeServicio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Servicio",
@@ -1502,7 +1864,7 @@ datos={
                     "related_model": "Favorito",
                     "descripcion_entrada": "Relacion Favorito",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Servicio",
@@ -1510,8 +1872,8 @@ datos={
                     "related_model": "Imagen_Servicio",
                     "descripcion_entrada": "Relacion Imagen_Servicio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "servicio",
             "modelo_labelSingular": "Servicio",
@@ -1521,35 +1883,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ServicioSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ServicioSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ServicioSerializer_List"
+                    "serializer": "ServicioSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ServicioSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ServicioSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ServicioSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ServicioSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ServicioSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ServicioSerializer_Retrieve",
+                },
+            },
         },
         "TipoDeResenna": {
             "campos": [
@@ -1559,7 +1921,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "nombre",
@@ -1567,16 +1929,32 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "TipoDeResenna",
                     "type": "Extra_ForeignKey",
-                    "related_model": "Resenna",
-                    "descripcion_entrada": "Relacion Resenna",
+                    "related_model": "ResennaDeNegocio",
+                    "descripcion_entrada": "Relacion ResennaDeNegocio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
+                {
+                    "name": "TipoDeResenna",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "ResennaDeProducto",
+                    "descripcion_entrada": "Relacion ResennaDeProducto",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "TipoDeResenna",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "ResennaDeServicio",
+                    "descripcion_entrada": "Relacion ResennaDeServicio",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
             ],
             "modeloLower": "tipoderesenna",
             "modelo_labelSingular": "TipoDeResenna",
@@ -1586,37 +1964,37 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeResennaSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "TipoDeResennaSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TipoDeResennaSerializer_List"
+                    "serializer": "TipoDeResennaSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeResennaSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "TipoDeResennaSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeResennaSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "TipoDeResennaSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TipoDeResennaSerializer_Retrieve"
-                }
-            }
+                    "serializer": "TipoDeResennaSerializer_Retrieve",
+                },
+            },
         },
-        "Resenna": {
+        "ResennaDeNegocio": {
             "campos": [
                 {
                     "name": "id",
@@ -1624,7 +2002,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "texto",
@@ -1632,7 +2010,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "texto",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "puntuacion",
@@ -1640,7 +2018,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "puntuacion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "fecha_creacion",
@@ -1648,7 +2026,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "fecha creacion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "fecha_edicion",
@@ -1656,7 +2034,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "fecha edicion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -1664,23 +2042,7 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
-                },
-                {
-                    "name": "Producto",
-                    "type": "ForeignKey",
-                    "related_model": "Producto",
-                    "descripcion_entrada": "Producto",
-                    "descripcion_salida": "",
-                    "related_name": None
-                },
-                {
-                    "name": "Servicio",
-                    "type": "ForeignKey",
-                    "related_model": "Servicio",
-                    "descripcion_entrada": "Servicio",
-                    "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -1688,7 +2050,7 @@ datos={
                     "related_model": "User",
                     "descripcion_entrada": "user",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "TipoDeResenna",
@@ -1696,46 +2058,256 @@ datos={
                     "related_model": "TipoDeResenna",
                     "descripcion_entrada": "TipoDeResenna",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
-            "modeloLower": "resenna",
-            "modelo_labelSingular": "Resenna",
-            "modelo_labelPlurar": "Resenna",
-            "modeloLower_labelSingular": "Resenna",
-            "modeloLower_labelPlurar": "Resenna",
+            "modeloLower": "resennadenegocio",
+            "modelo_labelSingular": "ResennaDeNegocio",
+            "modelo_labelPlurar": "ResennaDeNegocio",
+            "modeloLower_labelSingular": "ResennaDeNegocio",
+            "modeloLower_labelPlurar": "ResennaDeNegocio",
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ResennaSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ResennaDeNegocioSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ResennaSerializer_List"
+                    "serializer": "ResennaDeNegocioSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ResennaSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ResennaDeNegocioSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ResennaSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ResennaDeNegocioSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ResennaSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ResennaDeNegocioSerializer_Retrieve",
+                },
+            },
+        },
+        "ResennaDeProducto": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "BigAutoField",
+                    "related_model": "",
+                    "descripcion_entrada": "ID",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "texto",
+                    "type": "TextField",
+                    "related_model": "",
+                    "descripcion_entrada": "texto",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "puntuacion",
+                    "type": "IntegerField",
+                    "related_model": "",
+                    "descripcion_entrada": "puntuacion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "fecha_creacion",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha creacion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "fecha_edicion",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha edicion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "Producto",
+                    "type": "ForeignKey",
+                    "related_model": "Producto",
+                    "descripcion_entrada": "Producto",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "user",
+                    "type": "ForeignKey",
+                    "related_model": "User",
+                    "descripcion_entrada": "user",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "TipoDeResenna",
+                    "type": "ForeignKey",
+                    "related_model": "TipoDeResenna",
+                    "descripcion_entrada": "TipoDeResenna",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "resennadeproducto",
+            "modelo_labelSingular": "ResennaDeProducto",
+            "modelo_labelPlurar": "ResennaDeProducto",
+            "modeloLower_labelSingular": "ResennaDeProducto",
+            "modeloLower_labelPlurar": "ResennaDeProducto",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ResennaDeProductoSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "ResennaDeProductoSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ResennaDeProductoSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ResennaDeProductoSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "ResennaDeProductoSerializer_Retrieve",
+                },
+            },
+        },
+        "ResennaDeServicio": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "BigAutoField",
+                    "related_model": "",
+                    "descripcion_entrada": "ID",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "texto",
+                    "type": "TextField",
+                    "related_model": "",
+                    "descripcion_entrada": "texto",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "puntuacion",
+                    "type": "IntegerField",
+                    "related_model": "",
+                    "descripcion_entrada": "puntuacion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "fecha_creacion",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha creacion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "fecha_edicion",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha edicion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "Servicio",
+                    "type": "ForeignKey",
+                    "related_model": "Servicio",
+                    "descripcion_entrada": "Servicio",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "user",
+                    "type": "ForeignKey",
+                    "related_model": "User",
+                    "descripcion_entrada": "user",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "TipoDeResenna",
+                    "type": "ForeignKey",
+                    "related_model": "TipoDeResenna",
+                    "descripcion_entrada": "TipoDeResenna",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "resennadeservicio",
+            "modelo_labelSingular": "ResennaDeServicio",
+            "modelo_labelPlurar": "ResennaDeServicio",
+            "modeloLower_labelSingular": "ResennaDeServicio",
+            "modeloLower_labelPlurar": "ResennaDeServicio",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ResennaDeServicioSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "ResennaDeServicioSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ResennaDeServicioSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ResennaDeServicioSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "ResennaDeServicioSerializer_Retrieve",
+                },
+            },
         },
         "TipoDeFavorito": {
             "campos": [
@@ -1745,7 +2317,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "nombre",
@@ -1753,7 +2325,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "TipoDeFavorito",
@@ -1761,8 +2333,8 @@ datos={
                     "related_model": "Favorito",
                     "descripcion_entrada": "Relacion Favorito",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "tipodefavorito",
             "modelo_labelSingular": "TipoDeFavorito",
@@ -1772,35 +2344,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeFavoritoSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "TipoDeFavoritoSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TipoDeFavoritoSerializer_List"
+                    "serializer": "TipoDeFavoritoSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeFavoritoSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "TipoDeFavoritoSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TipoDeFavoritoSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "TipoDeFavoritoSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TipoDeFavoritoSerializer_Retrieve"
-                }
-            }
+                    "serializer": "TipoDeFavoritoSerializer_Retrieve",
+                },
+            },
         },
         "Favorito": {
             "campos": [
@@ -1810,7 +2382,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "fecha_creacion",
@@ -1818,7 +2390,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "fecha creacion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "fecha_edicion",
@@ -1826,7 +2398,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "fecha edicion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -1834,7 +2406,7 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Producto",
@@ -1842,7 +2414,7 @@ datos={
                     "related_model": "Producto",
                     "descripcion_entrada": "Producto",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Servicio",
@@ -1850,7 +2422,7 @@ datos={
                     "related_model": "Servicio",
                     "descripcion_entrada": "Servicio",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -1858,7 +2430,7 @@ datos={
                     "related_model": "User",
                     "descripcion_entrada": "user",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "TipoDeFavorito",
@@ -1866,8 +2438,8 @@ datos={
                     "related_model": "TipoDeFavorito",
                     "descripcion_entrada": "TipoDeFavorito",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "favorito",
             "modelo_labelSingular": "Favorito",
@@ -1877,35 +2449,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "FavoritoSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "FavoritoSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "FavoritoSerializer_List"
+                    "serializer": "FavoritoSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "FavoritoSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "FavoritoSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "FavoritoSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "FavoritoSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "FavoritoSerializer_Retrieve"
-                }
-            }
+                    "serializer": "FavoritoSerializer_Retrieve",
+                },
+            },
         },
         "Imagen_Negocio": {
             "campos": [
@@ -1915,7 +2487,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "fecha_creacion",
@@ -1923,7 +2495,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "fecha creacion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Imagen",
@@ -1931,7 +2503,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Imagen",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Negocio",
@@ -1939,8 +2511,8 @@ datos={
                     "related_model": "Negocio",
                     "descripcion_entrada": "Negocio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "imagen_negocio",
             "modelo_labelSingular": "Imagen_Negocio",
@@ -1950,35 +2522,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "Imagen_NegocioSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "Imagen_NegocioSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "Imagen_NegocioSerializer_List"
+                    "serializer": "Imagen_NegocioSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "Imagen_NegocioSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "Imagen_NegocioSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "Imagen_NegocioSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "Imagen_NegocioSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "Imagen_NegocioSerializer_Retrieve"
-                }
-            }
+                    "serializer": "Imagen_NegocioSerializer_Retrieve",
+                },
+            },
         },
         "Imagen_Producto": {
             "campos": [
@@ -1988,7 +2560,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "fecha_creacion",
@@ -1996,7 +2568,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "fecha creacion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Imagen",
@@ -2004,7 +2576,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Imagen",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Producto",
@@ -2012,8 +2584,8 @@ datos={
                     "related_model": "Producto",
                     "descripcion_entrada": "Producto",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "imagen_producto",
             "modelo_labelSingular": "Imagen_Producto",
@@ -2023,35 +2595,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "Imagen_ProductoSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "Imagen_ProductoSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "Imagen_ProductoSerializer_List"
+                    "serializer": "Imagen_ProductoSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "Imagen_ProductoSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "Imagen_ProductoSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "Imagen_ProductoSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "Imagen_ProductoSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "Imagen_ProductoSerializer_Retrieve"
-                }
-            }
+                    "serializer": "Imagen_ProductoSerializer_Retrieve",
+                },
+            },
         },
         "Imagen_Servicio": {
             "campos": [
@@ -2061,7 +2633,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "fecha_creacion",
@@ -2069,7 +2641,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "fecha creacion",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Imagen",
@@ -2077,7 +2649,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Imagen",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "Servicio",
@@ -2085,8 +2657,8 @@ datos={
                     "related_model": "Servicio",
                     "descripcion_entrada": "Servicio",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "imagen_servicio",
             "modelo_labelSingular": "Imagen_Servicio",
@@ -2096,35 +2668,610 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "Imagen_ServicioSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "Imagen_ServicioSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "Imagen_ServicioSerializer_List"
+                    "serializer": "Imagen_ServicioSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "Imagen_ServicioSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "Imagen_ServicioSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "Imagen_ServicioSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "Imagen_ServicioSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "Imagen_ServicioSerializer_Retrieve"
-                }
-            }
+                    "serializer": "Imagen_ServicioSerializer_Retrieve",
+                },
+            },
+        },
+        "CategoriaDeEvento": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "IntegerField",
+                    "related_model": "",
+                    "descripcion_entrada": "id",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "nombre",
+                    "type": "CharField",
+                    "related_model": "",
+                    "descripcion_entrada": "nombre",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "categoria_padre",
+                    "type": "ForeignKey",
+                    "related_model": "CategoriaDeEvento",
+                    "descripcion_entrada": "Categoria Padre",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "categoria_padre",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "CategoriaDeEvento",
+                    "descripcion_entrada": "Relacion CategoriaDeEvento",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "categoria",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "Evento",
+                    "descripcion_entrada": "Relacion Evento",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "categoriadeevento",
+            "modelo_labelSingular": "CategoriaDeEvento",
+            "modelo_labelPlurar": "CategoriaDeEvento",
+            "modeloLower_labelSingular": "CategoriaDeEvento",
+            "modeloLower_labelPlurar": "CategoriaDeEvento",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "CategoriaDeEventoSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "CategoriaDeEventoSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "CategoriaDeEventoSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "CategoriaDeEventoSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "CategoriaDeEventoSerializer_Retrieve",
+                },
+            },
+        },
+        "Evento": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "BigAutoField",
+                    "related_model": "",
+                    "descripcion_entrada": "ID",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "nombre",
+                    "type": "CharField",
+                    "related_model": "",
+                    "descripcion_entrada": "nombre",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "fecha",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "categoria",
+                    "type": "ForeignKey",
+                    "related_model": "CategoriaDeEvento",
+                    "descripcion_entrada": "categoria",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "direccion",
+                    "type": "TextField",
+                    "related_model": "",
+                    "descripcion_entrada": "direccion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "descripcion",
+                    "type": "TextField",
+                    "related_model": "",
+                    "descripcion_entrada": "descripcion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "search_vector",
+                    "type": "SearchVectorField",
+                    "related_model": "",
+                    "descripcion_entrada": "search vector",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "negocios",
+                    "type": "ManyToManyField",
+                    "related_model": "Negocio",
+                    "descripcion_entrada": "negocios",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "evento",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "Imagen_Evento",
+                    "descripcion_entrada": "Relacion Imagen_Evento",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "evento",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "ContactoDeEvento",
+                    "descripcion_entrada": "Relacion ContactoDeEvento",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "evento",
+            "modelo_labelSingular": "Evento",
+            "modelo_labelPlurar": "Evento",
+            "modeloLower_labelSingular": "Evento",
+            "modeloLower_labelPlurar": "Evento",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "EventoSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "EventoSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "EventoSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "EventoSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "EventoSerializer_Retrieve",
+                },
+            },
+        },
+        "Imagen_Evento": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "BigAutoField",
+                    "related_model": "",
+                    "descripcion_entrada": "ID",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "fecha_creacion",
+                    "type": "DateTimeField",
+                    "related_model": "",
+                    "descripcion_entrada": "fecha creacion",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "Imagen",
+                    "type": "ImageField",
+                    "related_model": "",
+                    "descripcion_entrada": "Imagen",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "evento",
+                    "type": "ForeignKey",
+                    "related_model": "Evento",
+                    "descripcion_entrada": "evento",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "imagen_evento",
+            "modelo_labelSingular": "Imagen_Evento",
+            "modelo_labelPlurar": "Imagen_Evento",
+            "modeloLower_labelSingular": "Imagen_Evento",
+            "modeloLower_labelPlurar": "Imagen_Evento",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "Imagen_EventoSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "Imagen_EventoSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "Imagen_EventoSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "Imagen_EventoSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "Imagen_EventoSerializer_Retrieve",
+                },
+            },
+        },
+        "Moneda": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "IntegerField",
+                    "related_model": "",
+                    "descripcion_entrada": "id",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "nombre",
+                    "type": "CharField",
+                    "related_model": "",
+                    "descripcion_entrada": "nombre",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "tasa_moneda_nacional",
+                    "type": "FloatField",
+                    "related_model": "",
+                    "descripcion_entrada": "tasa moneda nacional",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "moneda",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "ValorProducto",
+                    "descripcion_entrada": "Relacion ValorProducto",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "moneda",
+            "modelo_labelSingular": "Moneda",
+            "modelo_labelPlurar": "Moneda",
+            "modeloLower_labelSingular": "Moneda",
+            "modeloLower_labelPlurar": "Moneda",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "MonedaSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "MonedaSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "MonedaSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "MonedaSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "MonedaSerializer_Retrieve",
+                },
+            },
+        },
+        "ValorProducto": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "BigAutoField",
+                    "related_model": "",
+                    "descripcion_entrada": "ID",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "valor",
+                    "type": "FloatField",
+                    "related_model": "",
+                    "descripcion_entrada": "valor",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "es_base",
+                    "type": "BooleanField",
+                    "related_model": "",
+                    "descripcion_entrada": "es base",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "producto",
+                    "type": "ForeignKey",
+                    "related_model": "Producto",
+                    "descripcion_entrada": "producto",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "moneda",
+                    "type": "ForeignKey",
+                    "related_model": "Moneda",
+                    "descripcion_entrada": "moneda",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "valorproducto",
+            "modelo_labelSingular": "ValorProducto",
+            "modelo_labelPlurar": "ValorProducto",
+            "modeloLower_labelSingular": "ValorProducto",
+            "modeloLower_labelPlurar": "ValorProducto",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ValorProductoSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "ValorProductoSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ValorProductoSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ValorProductoSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "ValorProductoSerializer_Retrieve",
+                },
+            },
+        },
+        "ContactoDeEvento": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "BigAutoField",
+                    "related_model": "",
+                    "descripcion_entrada": "ID",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "valor",
+                    "type": "CharField",
+                    "related_model": "",
+                    "descripcion_entrada": "valor",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "TipoDeContacto",
+                    "type": "ForeignKey",
+                    "related_model": "TipoDeContacto",
+                    "descripcion_entrada": "Tipo De Contacto",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "evento",
+                    "type": "ForeignKey",
+                    "related_model": "Evento",
+                    "descripcion_entrada": "evento",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "esPrincipal",
+                    "type": "BooleanField",
+                    "related_model": "",
+                    "descripcion_entrada": "Es Principal",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "esWhatsapp",
+                    "type": "BooleanField",
+                    "related_model": "",
+                    "descripcion_entrada": "Es Whatsapp",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "contactodeevento",
+            "modelo_labelSingular": "ContactoDeEvento",
+            "modelo_labelPlurar": "ContactoDeEvento",
+            "modeloLower_labelSingular": "ContactoDeEvento",
+            "modeloLower_labelPlurar": "ContactoDeEvento",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ContactoDeEventoSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "ContactoDeEventoSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ContactoDeEventoSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ContactoDeEventoSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "ContactoDeEventoSerializer_Retrieve",
+                },
+            },
+        },
+        "EstadoDeNegocio": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "IntegerField",
+                    "related_model": "",
+                    "descripcion_entrada": "id",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "nombre",
+                    "type": "CharField",
+                    "related_model": "",
+                    "descripcion_entrada": "nombre",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "estadodenegocio",
+            "modelo_labelSingular": "EstadoDeNegocio",
+            "modelo_labelPlurar": "EstadoDeNegocio",
+            "modeloLower_labelSingular": "EstadoDeNegocio",
+            "modeloLower_labelPlurar": "EstadoDeNegocio",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "EstadoDeNegocioSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "EstadoDeNegocioSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "EstadoDeNegocioSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "EstadoDeNegocioSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "EstadoDeNegocioSerializer_Retrieve",
+                },
+            },
         },
         "ZdsmsSessions": {
             "campos": [
@@ -2134,7 +3281,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "token",
@@ -2142,7 +3289,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "token",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "type",
@@ -2150,7 +3297,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "type",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "expire",
@@ -2158,8 +3305,8 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "expire",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "zdsmssessions",
             "modelo_labelSingular": "ZdsmsSessions",
@@ -2169,45 +3316,45 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ZdsmsSessionsSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ZdsmsSessionsSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ZdsmsSessionsSerializer_List"
+                    "serializer": "ZdsmsSessionsSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ZdsmsSessionsSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ZdsmsSessionsSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ZdsmsSessionsSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ZdsmsSessionsSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ZdsmsSessionsSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ZdsmsSessionsSerializer_Retrieve",
+                },
+            },
         },
         "ValidationType": {
             "campos": [
                 {
                     "name": "id",
-                    "type": "BigIntegerField",
+                    "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "id",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "name",
@@ -2215,7 +3362,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Nombre",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "validation_type",
@@ -2223,8 +3370,8 @@ datos={
                     "related_model": "ValidationRequest",
                     "descripcion_entrada": "Relacion ValidationRequest",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "validationtype",
             "modelo_labelSingular": "ValidationType",
@@ -2234,35 +3381,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ValidationTypeSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ValidationTypeSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ValidationTypeSerializer_List"
+                    "serializer": "ValidationTypeSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ValidationTypeSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ValidationTypeSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ValidationTypeSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ValidationTypeSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ValidationTypeSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ValidationTypeSerializer_Retrieve",
+                },
+            },
         },
         "ValidationRequest": {
             "campos": [
@@ -2272,7 +3419,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "phone",
@@ -2280,7 +3427,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Telefono",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "expiration_date",
@@ -2288,7 +3435,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Fecha de Expiraci\u00f3n",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "code",
@@ -2296,7 +3443,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "C\u00f3digo",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "checked",
@@ -2304,7 +3451,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Verificado",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "defeated",
@@ -2312,7 +3459,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "Vencido",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "validation_type",
@@ -2320,7 +3467,7 @@ datos={
                     "related_model": "ValidationType",
                     "descripcion_entrada": "Tipo de Validaci\u00f3n",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "validation_request",
@@ -2328,8 +3475,8 @@ datos={
                     "related_model": "RegisteredUserData",
                     "descripcion_entrada": "Relacion RegisteredUserData",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "validationrequest",
             "modelo_labelSingular": "ValidationRequest",
@@ -2339,35 +3486,35 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ValidationRequestSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "ValidationRequestSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ValidationRequestSerializer_List"
+                    "serializer": "ValidationRequestSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ValidationRequestSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ValidationRequestSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ValidationRequestSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "ValidationRequestSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ValidationRequestSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ValidationRequestSerializer_Retrieve",
+                },
+            },
         },
         "RegisteredUserData": {
             "campos": [
@@ -2377,7 +3524,7 @@ datos={
                     "related_model": "",
                     "descripcion_entrada": "ID",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "validation_request",
@@ -2385,7 +3532,7 @@ datos={
                     "related_model": "ValidationRequest",
                     "descripcion_entrada": "Validaci\u00f3n SMS",
                     "descripcion_salida": "",
-                    "related_name": None
+                    "related_name": None,
                 },
                 {
                     "name": "user",
@@ -2393,8 +3540,8 @@ datos={
                     "related_model": "User",
                     "descripcion_entrada": "user",
                     "descripcion_salida": "",
-                    "related_name": None
-                }
+                    "related_name": None,
+                },
             ],
             "modeloLower": "registereduserdata",
             "modelo_labelSingular": "RegisteredUserData",
@@ -2404,36 +3551,36 @@ datos={
             "codigos": {
                 "create": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RegisteredUserDataSerializer_Create"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "RegisteredUserDataSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RegisteredUserDataSerializer_List"
+                    "serializer": "RegisteredUserDataSerializer_List",
                 },
                 "edit": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RegisteredUserDataSerializer_Update"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "RegisteredUserDataSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RegisteredUserDataSerializer_Destroy"
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "RegisteredUserDataSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RegisteredUserDataSerializer_Retrieve"
-                }
-            }
-        }
+                    "serializer": "RegisteredUserDataSerializer_Retrieve",
+                },
+            },
+        },
     },
     "attribute_types": [
         "AutoField",
@@ -2450,7 +3597,6 @@ datos={
         "TextField",
         "FloatField",
         "IntegerField",
-        "BigIntegerField"
-    ]
+        "SearchVectorField",
+    ],
 }
-

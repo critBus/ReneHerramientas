@@ -1,0 +1,10 @@
+*/.venv
+*/idea
+*/__pycache__
+*.pyc
+CreadorDePlantillas/.idea/CreadorDePlantillas.iml
+CreadorDePlantillas/.idea/misc.xml
+CreadorDePlantillas/datos/__pycache__/datos.cpython-311.pyc
+CreadorDePlantillas/datos/__pycache__/datosComplejos.cpython-311.pyc
+CreadorDePlantillas/datos/__pycache__/funcionesCreadoras.cpython-311.pyc
+CreadorDePlantillas/datos/__pycache__/plantillas.cpython-311.pyc
