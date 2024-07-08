@@ -1,19 +1,20 @@
-from datos.datos import *
-from datos.plantillas import *
-from datos.datosComplejos import *
-from datos.datos_internos import *
-from datos.funcionesCreadoras import *
 from typing import (
     TYPE_CHECKING,
+    ClassVar,
     Dict,
     List,
     NoReturn,
     Optional,
-    Union,
     Tuple,
+    Union,
     cast,
-    ClassVar,
 )
+
+from datos.datos import *
+from datos.datos_internos import *
+from datos.datosComplejos import *
+from datos.funcionesCreadoras import *
+from datos.plantillas import *
 
 
 def procesar_lineas(texto, funcion):

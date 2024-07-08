@@ -29,7 +29,7 @@ datos_negocio = {
                     "related_model": "Negocio",
                     "descripcion_entrada": "id del negocio",
                     "descripcion_salida": "",
-                }
+                },
             ],
             "modeloLower": "rolnegocio",
             "modelo_labelSingular": "RolNegocio",
@@ -54,8 +54,7 @@ datos_negocio = {
             return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
                     """,
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- PuedeCrear_RolNegocio -}",
-                    "permisos": "permission_classes = (IsAuthenticated, PuedeCrear_RolNegocio,)"
-
+                    "permisos": "permission_classes = (IsAuthenticated, PuedeCrear_RolNegocio,)",
                 },
                 "list": {
                     "save": """
@@ -90,8 +89,7 @@ datos_negocio = {
 
                         """,
                     "permisos_descripcion": "",
-                    "permisos": ""
-
+                    "permisos": "",
                 },
                 "edit": {
                     "save": """
@@ -110,12 +108,12 @@ datos_negocio = {
             return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
                         """,
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- PuedeModificar_RolNegocio -}",
-                    "permisos": "permission_classes = (IsAuthenticated, PuedeModificar_RolNegocio,)"
+                    "permisos": "permission_classes = (IsAuthenticated, PuedeModificar_RolNegocio,)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuperusuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, PuedeEliminar_RolNegocio,)  #"
+                    "permisos": "permission_classes = (IsAuthenticated, PuedeEliminar_RolNegocio,)  #",
                 },
                 "view": {
                     "save": """
@@ -148,10 +146,9 @@ datos_negocio = {
 
                     """,
                     "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                    "permisos": "",
+                },
+            },
         },
         "PalabraClave": {
             "campos": [
@@ -168,14 +165,15 @@ datos_negocio = {
                     "related_model": "",
                     "descripcion_entrada": "palabra clave",
                     "descripcion_salida": "",
-                }, {
+                },
+                {
                     "name": "user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "usuario que al pertenece esta entidad",
                     "descripcion_salida": "",
-                }
-                , {
+                },
+                {
                     "name": "esPublica",
                     "type": "BooleanField",
                     "related_model": "",
@@ -192,33 +190,23 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}",
-                    "permisos": "permission_classes = (IsAuthenticated,)"
-
+                    "permisos": "permission_classes = (IsAuthenticated,)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
-                    "permisos": "permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuDuenno_User,)"
+                    + "{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuDuenno_User,)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
-                    "permisos": "permission_classes = (IsAuthenticated, SoloPuedeModificarseElMismo_OEsSuDuenno_User,)"
+                    + "{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated, SoloPuedeModificarseElMismo_OEsSuDuenno_User,)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "TipoDeGestion": {
             "campos": [
@@ -253,33 +241,23 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
-
+                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+                    + "\n{- EsSuperUsuario -}",
+                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+                    + "\n{- EsSuperUsuario -}",
+                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "CategoriaDeNegocio": {
             "campos": [
@@ -296,7 +274,8 @@ datos_negocio = {
                     "related_model": "",
                     "descripcion_entrada": "categoria del negocio",
                     "descripcion_salida": "",
-                }, {
+                },
+                {
                     "name": "esPublica",
                     "type": "BooleanField",
                     "related_model": "",
@@ -313,35 +292,25 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"  #
-
+                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",  #
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+                    + "\n{- EsSuperUsuario -}",
+                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
                     # SoloPuedeModificarseElMismo_OEsSuDuenno_User,
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+                    + "\n{- EsSuperUsuario -}",
+                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
                     # SoloPuedeModificarseElMismo_OEsSuDuenno_User,
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "Negocio": {
             "campos": [
@@ -414,7 +383,7 @@ datos_negocio = {
                     "related_model": "User",
                     "descripcion_entrada": "usuario que al pertenece esta entidad",
                     "descripcion_salida": "",
-                }
+                },
             ],
             "modeloLower": "negocio",
             "modelo_labelSingular": "Negocio",
@@ -470,9 +439,8 @@ datos_negocio = {
 
 
                     """,
-                    "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "",
-                    "permisos": "permission_classes = (IsAuthenticated,)"
+                    "permisos_descripcion": "{- IsAuthenticated -}" + "",
+                    "permisos": "permission_classes = (IsAuthenticated,)",
                 },
                 "list": {
                     "save": """
@@ -506,7 +474,7 @@ datos_negocio = {
                 return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
                         """,
                     "permisos_descripcion": "",
-                    "permisos": ""
+                    "permisos": "",
                 },
                 "edit": {
                     "save": """
@@ -525,14 +493,14 @@ datos_negocio = {
             return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
                         """,
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "{- getPermisoEnEndpointEntidad_Can_GET editado -}",
-                    "permisos": "permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    + "{- getPermisoEnEndpointEntidad_Can_GET editado -}",
+                    "permisos": "permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('change'),)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "{- getPermisoEnEndpointEntidad_Can_GET delete -}",
-                    "permisos": "permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    + "{- getPermisoEnEndpointEntidad_Can_GET delete -}",
+                    "permisos": "permission_classes = (IsAuthenticated,getPermisoEnEndpointEntidad_Can_GET('delete'),)",
                 },
                 "view": {
                     "save": """
@@ -566,10 +534,9 @@ datos_negocio = {
 
                     """,
                     "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                    "permisos": "",
+                },
+            },
         },
         "TipoDeContacto": {
             "campos": [
@@ -586,7 +553,7 @@ datos_negocio = {
                     "related_model": "",
                     "descripcion_entrada": "tipo de contacto",
                     "descripcion_salida": "",
-                }
+                },
             ],
             "modeloLower": "tipodecontacto",
             "modelo_labelSingular": "TipoDeContacto",
@@ -597,31 +564,21 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
-
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "Contacto": {
             "campos": [
@@ -652,7 +609,7 @@ datos_negocio = {
                     "related_model": "Negocio",
                     "descripcion_entrada": "id del negocio",
                     "descripcion_salida": "",
-                }
+                },
             ],
             "modeloLower": "contacto",
             "modelo_labelSingular": "Contacto",
@@ -663,31 +620,21 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(Contacto),)"
-
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(Contacto),)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET delete -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "CategoriaDeServicio": {
             "campos": [
@@ -718,7 +665,8 @@ datos_negocio = {
                     "related_model": "Negocio",
                     "descripcion_entrada": "id del negocio",
                     "descripcion_salida": "",
-                }, {
+                },
+                {
                     "name": "esPublica",
                     "type": "BooleanField",
                     "related_model": "",
@@ -769,32 +717,22 @@ datos_negocio = {
 
                     """,
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(CategoriaDeServicio),)"
-
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(CategoriaDeServicio),)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)#getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'change'),)"
-                    , "serializer": "CategoriaDeServicio_Update_Serializer"
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)#getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'change'),)",
+                    "serializer": "CategoriaDeServicio_Update_Serializer",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET delete -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)#getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'delete'),)"
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)#getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'delete'),)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "CategoriaDeProducto": {
             "campos": [
@@ -825,7 +763,8 @@ datos_negocio = {
                     "related_model": "Negocio",
                     "descripcion_entrada": "id del negocio",
                     "descripcion_salida": "",
-                }, {
+                },
+                {
                     "name": "esPublica",
                     "type": "BooleanField",
                     "related_model": "",
@@ -875,32 +814,22 @@ datos_negocio = {
         return response
                     """,
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(CategoriaDeProducto),)"
-
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(CategoriaDeProducto),)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)#getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'change'),)"
-                    , "serializer": "CategoriaDeProducto_Update_Serializer"
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)#getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'change'),)",
+                    "serializer": "CategoriaDeProducto_Update_Serializer",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET delete -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)#getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'delete'),)"
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)#getPermiso_puedeModificarlo_suDuenno_oElQueTengaPermiso_CategoriaServicio(CategoriaDeServicio,'delete'),)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "Producto": {
             "campos": [
@@ -959,7 +888,7 @@ datos_negocio = {
                     "related_model": "Negocio",
                     "descripcion_entrada": "id del negocio",
                     "descripcion_salida": "",
-                }
+                },
             ],
             "modeloLower": "producto",
             "modelo_labelSingular": "Producto",
@@ -985,8 +914,7 @@ datos_negocio = {
 
                     """,
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(Producto),)"
-
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(Producto),)",
                 },
                 "list": {
                     "save": """
@@ -1021,7 +949,7 @@ datos_negocio = {
 
                         """,
                     "permisos_descripcion": "",
-                    "permisos": ""
+                    "permisos": "",
                 },
                 "edit": {
                     "save": """
@@ -1040,12 +968,12 @@ datos_negocio = {
             return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
                         """,
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET delete -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)",
                 },
                 "view": {
                     "save": """
@@ -1066,10 +994,9 @@ datos_negocio = {
             return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
                     """,
                     "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                    "permisos": "",
+                },
+            },
         },
         "TipoDeImagen": {
             "campos": [
@@ -1086,7 +1013,7 @@ datos_negocio = {
                     "related_model": "",
                     "descripcion_entrada": "tipo de imagen",
                     "descripcion_salida": "",
-                }
+                },
             ],
             "modeloLower": "tipodeimagen",
             "modelo_labelSingular": "TipoDeImagen",
@@ -1097,31 +1024,21 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
-
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "Servicio": {
             "campos": [
@@ -1180,7 +1097,7 @@ datos_negocio = {
                     "related_model": "Negocio",
                     "descripcion_entrada": "id del negocio",
                     "descripcion_salida": "",
-                }
+                },
             ],
             "modeloLower": "servicio",
             "modelo_labelSingular": "Servicio",
@@ -1205,8 +1122,7 @@ datos_negocio = {
             return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
                     """,
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET add -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(Servicio),)"
-
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoPuedeModificarANegocio_idDirecto(Servicio),)",
                 },
                 "list": {
                     "save": """
@@ -1241,7 +1157,7 @@ datos_negocio = {
 
                         """,
                     "permisos_descripcion": "",
-                    "permisos": ""
+                    "permisos": "",
                 },
                 "edit": {
                     "save": """
@@ -1260,12 +1176,12 @@ datos_negocio = {
             return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
                         """,
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET editado -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)"
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('change'),)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- getPermisoEnEndpointEntidad_Can_GET delete -}",
-                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)"
+                    "permisos": "permission_classes = (IsAuthenticated,  getPermisoEnEndpointEntidad_Can_GET('delete'),)",
                 },
                 "view": {
                     "save": """
@@ -1286,10 +1202,9 @@ datos_negocio = {
             return JsonResponse({'status': 'error', 'message': 'Error de en servidor'}, status=500)
                     """,
                     "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                    "permisos": "",
+                },
+            },
         },
         "Imagen": {
             "campos": [
@@ -1334,7 +1249,7 @@ datos_negocio = {
                     "related_model": "Servicio",
                     "descripcion_entrada": "id del servicio, incluir si esta imagen pretenece a un servicio",
                     "descripcion_salida": "id del servicio, si esta imagen pretenece a un servicio si no es null",
-                }
+                },
             ],
             "modeloLower": "imagen",
             "modelo_labelSingular": "Imagen",
@@ -1345,34 +1260,24 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- Puede_Manipular_Imagenes_De_Negocio -}",
-                    "permisos": "permission_classes = (IsAuthenticated,Puede_Manipular_Imagenes_De_Negocio,)"
-
+                    + "\n{- Puede_Manipular_Imagenes_De_Negocio -}",
+                    "permisos": "permission_classes = (IsAuthenticated,Puede_Manipular_Imagenes_De_Negocio,)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- Puede_Manipular_Imagenes_De_Negocio -}",
-                    "permisos": "permission_classes = (IsAuthenticated,Puede_Manipular_Imagenes_De_Negocio,)"
+                    + "\n{- Puede_Manipular_Imagenes_De_Negocio -}",
+                    "permisos": "permission_classes = (IsAuthenticated,Puede_Manipular_Imagenes_De_Negocio,)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- Puede_Manipular_Imagenes_De_Negocio -}",
-                    "permisos": "permission_classes = (IsAuthenticated,Puede_Eliminar_Imagenes_De_Negocio,)"
+                    + "\n{- Puede_Manipular_Imagenes_De_Negocio -}",
+                    "permisos": "permission_classes = (IsAuthenticated,Puede_Eliminar_Imagenes_De_Negocio,)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "TipoDeResenna": {
             "campos": [
@@ -1389,7 +1294,7 @@ datos_negocio = {
                     "related_model": "",
                     "descripcion_entrada": "tipo de reseña",
                     "descripcion_salida": "",
-                }
+                },
             ],
             "modeloLower": "tipoderesenna",
             "modelo_labelSingular": "TipoDeResenna",
@@ -1400,31 +1305,21 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
-
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "Resenna": {
             "campos": [
@@ -1476,7 +1371,8 @@ datos_negocio = {
                     "related_model": "TipoDeResenna",
                     "descripcion_entrada": "id del tipo de reseña",
                     "descripcion_salida": "",
-                }, {
+                },
+                {
                     "name": "puntuacion",
                     "type": "IntegerField",
                     "related_model": "",
@@ -1493,14 +1389,10 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
-                                            + "Requiere que el usuario tenga permitido realizar esta acción ",
-                    "permisos": "permission_classes = (IsAuthenticated,)"
+                    + "Requiere que el usuario tenga permitido realizar esta acción ",
+                    "permisos": "permission_classes = (IsAuthenticated,)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": """
     def put(self, request, *args, **kwargs):
@@ -1553,22 +1445,17 @@ datos_negocio = {
 
                         """,
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
-                    "permisos": "permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuDuenno_User,)"
+                    + "\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuDuenno_User,)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
-                    "permisos": "permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuDuenno_User,)"
+                    + "\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuDuenno_User,)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "TipoDeFavorito": {
             "campos": [
@@ -1585,7 +1472,7 @@ datos_negocio = {
                     "related_model": "",
                     "descripcion_entrada": "tipo de favorito",
                     "descripcion_salida": "",
-                }
+                },
             ],
             "modeloLower": "tipodefavorito",
             "modelo_labelSingular": "TipoDeFavorito",
@@ -1596,31 +1483,21 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
-
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)"
+                    "permisos": "permission_classes = (IsAuthenticated, EsSuperUsuario,)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
         "Favorito": {
             "campos": [
@@ -1665,7 +1542,7 @@ datos_negocio = {
                     "related_model": "TipoDeFavorito",
                     "descripcion_entrada": "id del tipo de favorito",
                     "descripcion_salida": "",
-                }
+                },
             ],
             "modeloLower": "favorito",
             "modelo_labelSingular": "Favorito",
@@ -1676,35 +1553,24 @@ datos_negocio = {
                 "create": {
                     "save": "",
                     "permisos_descripcion": "Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
-                                            + "Requiere que el usuario tenga permitido realizar esta acción ",
-                    "permisos": "permission_classes = (IsAuthenticated,)"
+                    + "Requiere que el usuario tenga permitido realizar esta acción ",
+                    "permisos": "permission_classes = (IsAuthenticated,)",
                 },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-                },
+                "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+                    + "\n{- EsSuperUsuario -}",
+                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}"
-                                            + "\n{- EsSuperUsuario -}",
-                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+                    + "\n{- EsSuperUsuario -}",
+                    "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
                 },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": ""
-
-                }
-            }
+                "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+            },
         },
-
     },
-
 }

@@ -1,16 +1,16 @@
-datos_internos={
-    "EsSuperUsuario":"Para utilizar este endpoint el usuario debe de tener permisos de super usuario"
-    ,"IsAuthenticated":"Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado."
-    ,"SoloPuedeModificarseElMismo_OEsSuperusuario":"Para utilizar este endpoint el usuario debe ser el mismo que esta relacionado con la entidad o tener permisos de super usuario"
-    ,"getPermisoEnEndpointEntidad_Can_GET add":"Solo puede ser agregado por el creador del negocio u otro usuario que tengo un Rol de Negocio asociado a esta entidad con este permiso "
-    ,"getPermisoEnEndpointEntidad_Can_GET editado":"Solo puede ser editado por su creador u otro usuario que tengo un Rol de Negocio asociado a esta entidad con este permiso "
-    ,"getPermisoEnEndpointEntidad_Can_GET delete":"Solo puede ser eliminado por su creador u otro usuario que tengo un Rol de Negocio asociado a esta entidad con este permiso "
-    ,"SoloPuedeModificarseElMismo_OEsSuDuenno_User":"Para utilizar este endpoint el usuario debe ser el mismo que esta relacionado con la entidad o tener permisos de super usuario"
-    ,"Es Publica salida":"True o False, representando si es visible para todos los usuarios, por defectos las creadas por usuarios que no sean superusuarios deberian de ser privadas."
-    ,"Es Publica entrada":"True o False, representando si es visible para todos los usuarios, por defectos las creadas por usuarios que no sean superusuarios deberian de ser privadas."
-    ,"getPermiso_PuedeAgregar_Modelo":"Puede agregar esta entidad solo si tiene los permisos adecuados "
-    ,"PuedeCrear_RolNegocio":"Solo puede utilizar este endpoint para crear roles que no sean propietarios y donde el usuario autenticado sea el creador del negocio relacionado, a excepción del superusuario el que si puede manipular este tipo de roles"
-    ,"PuedeModificar_RolNegocio":"Solo puede utilizar este endpoint para modificar roles que no sean propietarios y donde el usuario autenticado sea el creador del negocio relacionado, a excepción del superusuario el que si puede manipular este tipo de roles"
-    ,"PuedeEliminar_RolNegocio":"Solo puede utilizar este endpoint para eliminar roles que no sean propietarios y donde el usuario autenticado sea el creador del negocio relacionado, a excepción del superusuario el que si puede manipular este tipo de roles"
-    ,"Puede_Manipular_Imagenes_De_Negocio":"Solo puede manipular las imágenes relacionadas a una entidad en la cual el usuario autenticado tenga permisos para modificar la entidad relacionada  "
+datos_internos = {
+    "EsSuperUsuario": "Para utilizar este endpoint el usuario debe de tener permisos de super usuario",
+    "IsAuthenticated": "Este método requiere que el usuario esté autenticado para poder ser utilizado. La autenticación se realiza mediante el uso de una JWT (JSON Web Token) que se incluye en la cabecera de la solicitud HTTP. La JWT incluye información sobre el usuario autenticado, como su identidad y los permisos que se le han otorgado.",
+    "SoloPuedeModificarseElMismo_OEsSuperusuario": "Para utilizar este endpoint el usuario debe ser el mismo que esta relacionado con la entidad o tener permisos de super usuario",
+    "getPermisoEnEndpointEntidad_Can_GET add": "Solo puede ser agregado por el creador del negocio u otro usuario que tengo un Rol de Negocio asociado a esta entidad con este permiso ",
+    "getPermisoEnEndpointEntidad_Can_GET editado": "Solo puede ser editado por su creador u otro usuario que tengo un Rol de Negocio asociado a esta entidad con este permiso ",
+    "getPermisoEnEndpointEntidad_Can_GET delete": "Solo puede ser eliminado por su creador u otro usuario que tengo un Rol de Negocio asociado a esta entidad con este permiso ",
+    "SoloPuedeModificarseElMismo_OEsSuDuenno_User": "Para utilizar este endpoint el usuario debe ser el mismo que esta relacionado con la entidad o tener permisos de super usuario",
+    "Es Publica salida": "True o False, representando si es visible para todos los usuarios, por defectos las creadas por usuarios que no sean superusuarios deberian de ser privadas.",
+    "Es Publica entrada": "True o False, representando si es visible para todos los usuarios, por defectos las creadas por usuarios que no sean superusuarios deberian de ser privadas.",
+    "getPermiso_PuedeAgregar_Modelo": "Puede agregar esta entidad solo si tiene los permisos adecuados ",
+    "PuedeCrear_RolNegocio": "Solo puede utilizar este endpoint para crear roles que no sean propietarios y donde el usuario autenticado sea el creador del negocio relacionado, a excepción del superusuario el que si puede manipular este tipo de roles",
+    "PuedeModificar_RolNegocio": "Solo puede utilizar este endpoint para modificar roles que no sean propietarios y donde el usuario autenticado sea el creador del negocio relacionado, a excepción del superusuario el que si puede manipular este tipo de roles",
+    "PuedeEliminar_RolNegocio": "Solo puede utilizar este endpoint para eliminar roles que no sean propietarios y donde el usuario autenticado sea el creador del negocio relacionado, a excepción del superusuario el que si puede manipular este tipo de roles",
+    "Puede_Manipular_Imagenes_De_Negocio": "Solo puede manipular las imágenes relacionadas a una entidad en la cual el usuario autenticado tenga permisos para modificar la entidad relacionada  ",
 }

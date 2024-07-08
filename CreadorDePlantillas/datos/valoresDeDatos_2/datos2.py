@@ -1,4 +1,4 @@
-datos={
+datos = {
     "models": {
         "Permission": {
             "campos": [
@@ -7,43 +7,43 @@ datos={
                     "type": "AutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "nombre",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "content_type",
                     "type": "ForeignKey",
                     "related_model": "ContentType",
                     "descripcion_entrada": "tipo de contenido",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "codename",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "nombre en c\u00f3digo",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ManyToManyField",
                     "related_model": "Group",
                     "descripcion_entrada": "Relacion Group",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user_set",
                     "type": "Extra_ManyToManyField",
                     "related_model": "User",
                     "descripcion_entrada": "Relacion User",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "permission",
             "modelo_labelSingular": "Permission",
@@ -55,33 +55,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PermissionSerializer_Create"
+                    "serializer": "PermissionSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PermissionSerializer_List"
+                    "serializer": "PermissionSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PermissionSerializer_Update"
+                    "serializer": "PermissionSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PermissionSerializer_Destroy"
+                    "serializer": "PermissionSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PermissionSerializer_Retrieve"
-                }
-            }
+                    "serializer": "PermissionSerializer_Retrieve",
+                },
+            },
         },
         "Group": {
             "campos": [
@@ -90,29 +90,29 @@ datos={
                     "type": "AutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "nombre",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "permissions",
                     "type": "ManyToManyField",
                     "related_model": "Permission",
                     "descripcion_entrada": "permisos",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user_set",
                     "type": "Extra_ManyToManyField",
                     "related_model": "User",
                     "descripcion_entrada": "Relacion User",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "group",
             "modelo_labelSingular": "Group",
@@ -124,33 +124,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "GroupSerializer_Create"
+                    "serializer": "GroupSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "GroupSerializer_List"
+                    "serializer": "GroupSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "GroupSerializer_Update"
+                    "serializer": "GroupSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "GroupSerializer_Destroy"
+                    "serializer": "GroupSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "GroupSerializer_Retrieve"
-                }
-            }
+                    "serializer": "GroupSerializer_Retrieve",
+                },
+            },
         },
         "ContentType": {
             "campos": [
@@ -159,29 +159,29 @@ datos={
                     "type": "AutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "app_label",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "app label",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "model",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "nombre de la clase Python del modelo",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "Permission",
                     "descripcion_entrada": "Relacion Permission",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "contenttype",
             "modelo_labelSingular": "ContentType",
@@ -193,33 +193,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContentTypeSerializer_Create"
+                    "serializer": "ContentTypeSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ContentTypeSerializer_List"
+                    "serializer": "ContentTypeSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContentTypeSerializer_Update"
+                    "serializer": "ContentTypeSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContentTypeSerializer_Destroy"
+                    "serializer": "ContentTypeSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ContentTypeSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ContentTypeSerializer_Retrieve",
+                },
+            },
         },
         "HistoricalUser": {
             "campos": [
@@ -228,134 +228,134 @@ datos={
                     "type": "BigIntegerField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "password",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "contrase\u00f1a",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "last_login",
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "\u00faltimo ingreso",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "is_superuser",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "es superusuario",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "username",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "username",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "email",
                     "type": "EmailField",
                     "related_model": "",
                     "descripcion_entrada": "email",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "first_name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "first name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "last_name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "last name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "phone",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "phone",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "address",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "address",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "postal_code",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "postal code",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "is_active",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "is active",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "is_staff",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "is staff",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "confirmed_email",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "confirmed email",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "history_id",
                     "type": "AutoField",
                     "related_model": "",
                     "descripcion_entrada": "history id",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "history_date",
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "history date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "history_change_reason",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "history change reason",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "history_type",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "history type",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "history_user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "history user",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "historicaluser",
             "modelo_labelSingular": "HistoricalUser",
@@ -367,33 +367,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "HistoricalUserSerializer_Create"
+                    "serializer": "HistoricalUserSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "HistoricalUserSerializer_List"
+                    "serializer": "HistoricalUserSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "HistoricalUserSerializer_Update"
+                    "serializer": "HistoricalUserSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "HistoricalUserSerializer_Destroy"
+                    "serializer": "HistoricalUserSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "HistoricalUserSerializer_Retrieve"
-                }
-            }
+                    "serializer": "HistoricalUserSerializer_Retrieve",
+                },
+            },
         },
         "User": {
             "campos": [
@@ -402,239 +402,239 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "password",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "contrase\u00f1a",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "last_login",
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "\u00faltimo ingreso",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "is_superuser",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "es superusuario",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "username",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "username",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "email",
                     "type": "EmailField",
                     "related_model": "",
                     "descripcion_entrada": "email",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "first_name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "first name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "last_name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "last name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "phone",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "phone",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "address",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "address",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "postal_code",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "postal code",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "is_active",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "is active",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "is_staff",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "is staff",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "confirmed_email",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "confirmed email",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "groups",
                     "type": "ManyToManyField",
                     "related_model": "Group",
                     "descripcion_entrada": "grupos",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user_permissions",
                     "type": "ManyToManyField",
                     "related_model": "Permission",
                     "descripcion_entrada": "permisos de usuario",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "+",
                     "type": "Extra_ForeignKey",
                     "related_model": "HistoricalUser",
                     "descripcion_entrada": "Relacion HistoricalUser",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "token_user",
                     "type": "Extra_ForeignKey",
                     "related_model": "BlackListedTokenAccess",
                     "descripcion_entrada": "Relacion BlackListedTokenAccess",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "email_token_user",
                     "type": "Extra_ForeignKey",
                     "related_model": "EmailConfirmationToken",
                     "descripcion_entrada": "Relacion EmailConfirmationToken",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "email_change_password_token_user",
                     "type": "Extra_ForeignKey",
                     "related_model": "EmailChangePasswordToken",
                     "descripcion_entrada": "Relacion EmailChangePasswordToken",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "Card",
                     "descripcion_entrada": "Relacion Card",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "OwnCard",
                     "descripcion_entrada": "Relacion OwnCard",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "Contact",
                     "descripcion_entrada": "Relacion Contact",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "TypeRemittance",
                     "descripcion_entrada": "Relacion TypeRemittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceOffer",
                     "descripcion_entrada": "Relacion RemittanceOffer",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "sender_id_in_planned_remittance",
                     "type": "Extra_ForeignKey",
                     "related_model": "PlannedRemittance",
                     "descripcion_entrada": "Relacion PlannedRemittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reseller_id_in_planned_remittance",
                     "type": "Extra_ForeignKey",
                     "related_model": "PlannedRemittance",
                     "descripcion_entrada": "Relacion PlannedRemittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "origin_user_in_card_transaction",
                     "type": "Extra_ForeignKey",
                     "related_model": "CardTransaction",
                     "descripcion_entrada": "Relacion CardTransaction",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination_user_in_card_transaction",
                     "type": "Extra_ForeignKey",
                     "related_model": "CardTransaction",
                     "descripcion_entrada": "Relacion CardTransaction",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reseller_id_in_made_remittance",
                     "type": "Extra_ForeignKey",
                     "related_model": "MadeRemittance",
                     "descripcion_entrada": "Relacion MadeRemittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "sender_id_in_made_remittance",
                     "type": "Extra_ForeignKey",
                     "related_model": "MadeRemittance",
                     "descripcion_entrada": "Relacion MadeRemittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reseller_id_in_payment_made",
                     "type": "Extra_ForeignKey",
                     "related_model": "PaymentMade",
                     "descripcion_entrada": "Relacion PaymentMade",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "ResellerApplication",
                     "descripcion_entrada": "Relacion ResellerApplication",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceRefund",
                     "descripcion_entrada": "Relacion RemittanceRefund",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "user",
             "modelo_labelSingular": "User",
@@ -646,33 +646,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "UserSerializer_Create"
+                    "serializer": "UserSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "UserSerializer_List"
+                    "serializer": "UserSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "UserSerializer_Update"
+                    "serializer": "UserSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "UserSerializer_Destroy"
+                    "serializer": "UserSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "UserSerializer_Retrieve"
-                }
-            }
+                    "serializer": "UserSerializer_Retrieve",
+                },
+            },
         },
         "BlackListedTokenAccess": {
             "campos": [
@@ -681,29 +681,29 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "token",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "token",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "user",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "timestamp",
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "timestamp",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "blacklistedtokenaccess",
             "modelo_labelSingular": "BlackListedTokenAccess",
@@ -715,33 +715,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "BlackListedTokenAccessSerializer_Create"
+                    "serializer": "BlackListedTokenAccessSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "BlackListedTokenAccessSerializer_List"
+                    "serializer": "BlackListedTokenAccessSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "BlackListedTokenAccessSerializer_Update"
+                    "serializer": "BlackListedTokenAccessSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "BlackListedTokenAccessSerializer_Destroy"
+                    "serializer": "BlackListedTokenAccessSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "BlackListedTokenAccessSerializer_Retrieve"
-                }
-            }
+                    "serializer": "BlackListedTokenAccessSerializer_Retrieve",
+                },
+            },
         },
         "EmailConfirmationToken": {
             "campos": [
@@ -750,43 +750,43 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "token",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "token",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "user",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "email",
                     "type": "EmailField",
                     "related_model": "",
                     "descripcion_entrada": "email",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "created",
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "created",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "banned",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "banned",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "emailconfirmationtoken",
             "modelo_labelSingular": "EmailConfirmationToken",
@@ -798,33 +798,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "EmailConfirmationTokenSerializer_Create"
+                    "serializer": "EmailConfirmationTokenSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "EmailConfirmationTokenSerializer_List"
+                    "serializer": "EmailConfirmationTokenSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "EmailConfirmationTokenSerializer_Update"
+                    "serializer": "EmailConfirmationTokenSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "EmailConfirmationTokenSerializer_Destroy"
+                    "serializer": "EmailConfirmationTokenSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "EmailConfirmationTokenSerializer_Retrieve"
-                }
-            }
+                    "serializer": "EmailConfirmationTokenSerializer_Retrieve",
+                },
+            },
         },
         "EmailChangePasswordToken": {
             "campos": [
@@ -833,43 +833,43 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "token",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "token",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "user",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "email",
                     "type": "EmailField",
                     "related_model": "",
                     "descripcion_entrada": "email",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "created",
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "created",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "banned",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "banned",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "emailchangepasswordtoken",
             "modelo_labelSingular": "EmailChangePasswordToken",
@@ -881,33 +881,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "EmailChangePasswordTokenSerializer_Create"
+                    "serializer": "EmailChangePasswordTokenSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "EmailChangePasswordTokenSerializer_List"
+                    "serializer": "EmailChangePasswordTokenSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "EmailChangePasswordTokenSerializer_Update"
+                    "serializer": "EmailChangePasswordTokenSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "EmailChangePasswordTokenSerializer_Destroy"
+                    "serializer": "EmailChangePasswordTokenSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "EmailChangePasswordTokenSerializer_Retrieve"
-                }
-            }
+                    "serializer": "EmailChangePasswordTokenSerializer_Retrieve",
+                },
+            },
         },
         "TypeCard": {
             "campos": [
@@ -916,29 +916,29 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "type",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "type",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "description",
                     "type": "TextField",
                     "related_model": "",
                     "descripcion_entrada": "description",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "Card",
                     "descripcion_entrada": "Relacion Card",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "typecard",
             "modelo_labelSingular": "TypeCard",
@@ -950,33 +950,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TypeCardSerializer_Create"
+                    "serializer": "TypeCardSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TypeCardSerializer_List"
+                    "serializer": "TypeCardSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TypeCardSerializer_Update"
+                    "serializer": "TypeCardSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TypeCardSerializer_Destroy"
+                    "serializer": "TypeCardSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TypeCardSerializer_Retrieve"
-                }
-            }
+                    "serializer": "TypeCardSerializer_Retrieve",
+                },
+            },
         },
         "Card": {
             "campos": [
@@ -985,92 +985,92 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "type",
                     "type": "ForeignKey",
                     "related_model": "TypeCard",
                     "descripcion_entrada": "type",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "bank",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "bank",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "description",
                     "type": "TextField",
                     "related_model": "",
                     "descripcion_entrada": "description",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "user",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "banned",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "banned",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "card_number",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "card number",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "OwnCard",
                     "descripcion_entrada": "Relacion OwnCard",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "CardContact",
                     "descripcion_entrada": "Relacion CardContact",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ManyToManyField",
                     "related_model": "RemittanceOffer",
                     "descripcion_entrada": "Relacion RemittanceOffer",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "origin_card_in_card_transaction",
                     "type": "Extra_ForeignKey",
                     "related_model": "CardTransaction",
                     "descripcion_entrada": "Relacion CardTransaction",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination_card_in_card_transaction",
                     "type": "Extra_ForeignKey",
                     "related_model": "CardTransaction",
                     "descripcion_entrada": "Relacion CardTransaction",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "card",
             "modelo_labelSingular": "Card",
@@ -1082,33 +1082,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CardSerializer_Create"
+                    "serializer": "CardSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CardSerializer_List"
+                    "serializer": "CardSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CardSerializer_Update"
+                    "serializer": "CardSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CardSerializer_Destroy"
+                    "serializer": "CardSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CardSerializer_Retrieve"
-                }
-            }
+                    "serializer": "CardSerializer_Retrieve",
+                },
+            },
         },
         "OwnCard": {
             "campos": [
@@ -1117,22 +1117,22 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "user",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "card",
                     "type": "ForeignKey",
                     "related_model": "Card",
                     "descripcion_entrada": "card",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "owncard",
             "modelo_labelSingular": "OwnCard",
@@ -1144,33 +1144,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "OwnCardSerializer_Create"
+                    "serializer": "OwnCardSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "OwnCardSerializer_List"
+                    "serializer": "OwnCardSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "OwnCardSerializer_Update"
+                    "serializer": "OwnCardSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "OwnCardSerializer_Destroy"
+                    "serializer": "OwnCardSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "OwnCardSerializer_Retrieve"
-                }
-            }
+                    "serializer": "OwnCardSerializer_Retrieve",
+                },
+            },
         },
         "Contact": {
             "campos": [
@@ -1179,50 +1179,50 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "full_name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "full name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "address",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "address",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "postal_code",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "postal code",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "phone",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "phone",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "user",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "CardContact",
                     "descripcion_entrada": "Relacion CardContact",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "contact",
             "modelo_labelSingular": "Contact",
@@ -1234,33 +1234,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContactSerializer_Create"
+                    "serializer": "ContactSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ContactSerializer_List"
+                    "serializer": "ContactSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContactSerializer_Update"
+                    "serializer": "ContactSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ContactSerializer_Destroy"
+                    "serializer": "ContactSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ContactSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ContactSerializer_Retrieve",
+                },
+            },
         },
         "CardContact": {
             "campos": [
@@ -1269,22 +1269,22 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "card",
                     "type": "ForeignKey",
                     "related_model": "Card",
                     "descripcion_entrada": "card",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "contact",
                     "type": "ForeignKey",
                     "related_model": "Contact",
                     "descripcion_entrada": "contact",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "cardcontact",
             "modelo_labelSingular": "CardContact",
@@ -1296,33 +1296,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CardContactSerializer_Create"
+                    "serializer": "CardContactSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CardContactSerializer_List"
+                    "serializer": "CardContactSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CardContactSerializer_Update"
+                    "serializer": "CardContactSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CardContactSerializer_Destroy"
+                    "serializer": "CardContactSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CardContactSerializer_Retrieve"
-                }
-            }
+                    "serializer": "CardContactSerializer_Retrieve",
+                },
+            },
         },
         "TypeRemittance": {
             "campos": [
@@ -1331,92 +1331,92 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "description",
                     "type": "TextField",
                     "related_model": "",
                     "descripcion_entrada": "description",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "remittance_type",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "remittance type",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "destination",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "currency",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "currency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "minimum_amount",
                     "type": "IntegerField",
                     "related_model": "",
                     "descripcion_entrada": "minimum amount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "maximum_amount",
                     "type": "IntegerField",
                     "related_model": "",
                     "descripcion_entrada": "maximum amount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "commission",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "commission",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "due_date",
                     "type": "DateField",
                     "related_model": "",
                     "descripcion_entrada": "due date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "user",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "CommissionTypePercentage",
                     "descripcion_entrada": "Relacion CommissionTypePercentage",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "CommissionTypeAmount",
                     "descripcion_entrada": "Relacion CommissionTypeAmount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceOffer",
                     "descripcion_entrada": "Relacion RemittanceOffer",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "typeremittance",
             "modelo_labelSingular": "TypeRemittance",
@@ -1428,33 +1428,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TypeRemittanceSerializer_Create"
+                    "serializer": "TypeRemittanceSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TypeRemittanceSerializer_List"
+                    "serializer": "TypeRemittanceSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TypeRemittanceSerializer_Update"
+                    "serializer": "TypeRemittanceSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "TypeRemittanceSerializer_Destroy"
+                    "serializer": "TypeRemittanceSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "TypeRemittanceSerializer_Retrieve"
-                }
-            }
+                    "serializer": "TypeRemittanceSerializer_Retrieve",
+                },
+            },
         },
         "CommissionTypePercentage": {
             "campos": [
@@ -1463,22 +1463,22 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "percentage",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "percentage",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "type_remittance",
                     "type": "ForeignKey",
                     "related_model": "TypeRemittance",
                     "descripcion_entrada": "type remittance",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "commissiontypepercentage",
             "modelo_labelSingular": "CommissionTypePercentage",
@@ -1490,33 +1490,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CommissionTypePercentageSerializer_Create"
+                    "serializer": "CommissionTypePercentageSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CommissionTypePercentageSerializer_List"
+                    "serializer": "CommissionTypePercentageSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CommissionTypePercentageSerializer_Update"
+                    "serializer": "CommissionTypePercentageSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CommissionTypePercentageSerializer_Destroy"
+                    "serializer": "CommissionTypePercentageSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CommissionTypePercentageSerializer_Retrieve"
-                }
-            }
+                    "serializer": "CommissionTypePercentageSerializer_Retrieve",
+                },
+            },
         },
         "CommissionTypeAmount": {
             "campos": [
@@ -1525,29 +1525,29 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "ammount",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "ammount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "currency",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "currency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "type_remittance",
                     "type": "ForeignKey",
                     "related_model": "TypeRemittance",
                     "descripcion_entrada": "type remittance",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "commissiontypeamount",
             "modelo_labelSingular": "CommissionTypeAmount",
@@ -1559,33 +1559,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CommissionTypeAmountSerializer_Create"
+                    "serializer": "CommissionTypeAmountSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CommissionTypeAmountSerializer_List"
+                    "serializer": "CommissionTypeAmountSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CommissionTypeAmountSerializer_Update"
+                    "serializer": "CommissionTypeAmountSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CommissionTypeAmountSerializer_Destroy"
+                    "serializer": "CommissionTypeAmountSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CommissionTypeAmountSerializer_Retrieve"
-                }
-            }
+                    "serializer": "CommissionTypeAmountSerializer_Retrieve",
+                },
+            },
         },
         "RemittanceOffer": {
             "campos": [
@@ -1594,43 +1594,43 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "user",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "type_remittance",
                     "type": "ForeignKey",
                     "related_model": "TypeRemittance",
                     "descripcion_entrada": "type remittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "cards",
                     "type": "ManyToManyField",
                     "related_model": "Card",
                     "descripcion_entrada": "cards",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceOfferDiscount",
                     "descripcion_entrada": "Relacion RemittanceOfferDiscount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "PlannedRemittance",
                     "descripcion_entrada": "Relacion PlannedRemittance",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "remittanceoffer",
             "modelo_labelSingular": "RemittanceOffer",
@@ -1642,33 +1642,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferSerializer_Create"
+                    "serializer": "RemittanceOfferSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferSerializer_List"
+                    "serializer": "RemittanceOfferSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferSerializer_Update"
+                    "serializer": "RemittanceOfferSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferSerializer_Destroy"
+                    "serializer": "RemittanceOfferSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferSerializer_Retrieve"
-                }
-            }
+                    "serializer": "RemittanceOfferSerializer_Retrieve",
+                },
+            },
         },
         "RemittanceOfferDiscount": {
             "campos": [
@@ -1677,71 +1677,71 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "description",
                     "type": "TextField",
                     "related_model": "",
                     "descripcion_entrada": "description",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "remittance_offer",
                     "type": "ForeignKey",
                     "related_model": "RemittanceOffer",
                     "descripcion_entrada": "remittance offer",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "only_automatic_remittances",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "only automatic remittances",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceOfferDiscountTypePercentage",
                     "descripcion_entrada": "Relacion RemittanceOfferDiscountTypePercentage",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceOfferDiscountAmount",
                     "descripcion_entrada": "Relacion RemittanceOfferDiscountAmount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceDiscountTypeThresholdAmount",
                     "descripcion_entrada": "Relacion RemittanceDiscountTypeThresholdAmount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceOfferDiscountFrequency",
                     "descripcion_entrada": "Relacion RemittanceOfferDiscountFrequency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceOfferDiscountSchedule",
                     "descripcion_entrada": "Relacion RemittanceOfferDiscountSchedule",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "remittanceofferdiscount",
             "modelo_labelSingular": "RemittanceOfferDiscount",
@@ -1753,33 +1753,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountSerializer_Create"
+                    "serializer": "RemittanceOfferDiscountSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferDiscountSerializer_List"
+                    "serializer": "RemittanceOfferDiscountSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountSerializer_Update"
+                    "serializer": "RemittanceOfferDiscountSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountSerializer_Destroy"
+                    "serializer": "RemittanceOfferDiscountSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferDiscountSerializer_Retrieve"
-                }
-            }
+                    "serializer": "RemittanceOfferDiscountSerializer_Retrieve",
+                },
+            },
         },
         "RemittanceOfferDiscountTypePercentage": {
             "campos": [
@@ -1788,22 +1788,22 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "percentage",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "percentage",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "remittance_offer_discount",
                     "type": "ForeignKey",
                     "related_model": "RemittanceOfferDiscount",
                     "descripcion_entrada": "remittance offer discount",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "remittanceofferdiscounttypepercentage",
             "modelo_labelSingular": "RemittanceOfferDiscountTypePercentage",
@@ -1815,33 +1815,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountTypePercentageSerializer_Create"
+                    "serializer": "RemittanceOfferDiscountTypePercentageSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferDiscountTypePercentageSerializer_List"
+                    "serializer": "RemittanceOfferDiscountTypePercentageSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountTypePercentageSerializer_Update"
+                    "serializer": "RemittanceOfferDiscountTypePercentageSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountTypePercentageSerializer_Destroy"
+                    "serializer": "RemittanceOfferDiscountTypePercentageSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferDiscountTypePercentageSerializer_Retrieve"
-                }
-            }
+                    "serializer": "RemittanceOfferDiscountTypePercentageSerializer_Retrieve",
+                },
+            },
         },
         "RemittanceOfferDiscountAmount": {
             "campos": [
@@ -1850,29 +1850,29 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "ammount",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "ammount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "currency",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "currency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "remittance_offer_discount",
                     "type": "ForeignKey",
                     "related_model": "RemittanceOfferDiscount",
                     "descripcion_entrada": "remittance offer discount",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "remittanceofferdiscountamount",
             "modelo_labelSingular": "RemittanceOfferDiscountAmount",
@@ -1884,33 +1884,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountAmountSerializer_Create"
+                    "serializer": "RemittanceOfferDiscountAmountSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferDiscountAmountSerializer_List"
+                    "serializer": "RemittanceOfferDiscountAmountSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountAmountSerializer_Update"
+                    "serializer": "RemittanceOfferDiscountAmountSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountAmountSerializer_Destroy"
+                    "serializer": "RemittanceOfferDiscountAmountSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferDiscountAmountSerializer_Retrieve"
-                }
-            }
+                    "serializer": "RemittanceOfferDiscountAmountSerializer_Retrieve",
+                },
+            },
         },
         "RemittanceDiscountTypeThresholdAmount": {
             "campos": [
@@ -1919,36 +1919,36 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "ammount",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "ammount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "threshold_currency",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "threshold currency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "threshold_amount",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "threshold amount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "remittance_offer_discount",
                     "type": "ForeignKey",
                     "related_model": "RemittanceOfferDiscount",
                     "descripcion_entrada": "remittance offer discount",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "remittancediscounttypethresholdamount",
             "modelo_labelSingular": "RemittanceDiscountTypeThresholdAmount",
@@ -1960,33 +1960,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceDiscountTypeThresholdAmountSerializer_Create"
+                    "serializer": "RemittanceDiscountTypeThresholdAmountSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceDiscountTypeThresholdAmountSerializer_List"
+                    "serializer": "RemittanceDiscountTypeThresholdAmountSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceDiscountTypeThresholdAmountSerializer_Update"
+                    "serializer": "RemittanceDiscountTypeThresholdAmountSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceDiscountTypeThresholdAmountSerializer_Destroy"
+                    "serializer": "RemittanceDiscountTypeThresholdAmountSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceDiscountTypeThresholdAmountSerializer_Retrieve"
-                }
-            }
+                    "serializer": "RemittanceDiscountTypeThresholdAmountSerializer_Retrieve",
+                },
+            },
         },
         "RemittanceOfferDiscountFrequency": {
             "campos": [
@@ -1995,22 +1995,22 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "frequency",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "frequency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "remittance_offer_discount",
                     "type": "ForeignKey",
                     "related_model": "RemittanceOfferDiscount",
                     "descripcion_entrada": "remittance offer discount",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "remittanceofferdiscountfrequency",
             "modelo_labelSingular": "RemittanceOfferDiscountFrequency",
@@ -2022,33 +2022,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountFrequencySerializer_Create"
+                    "serializer": "RemittanceOfferDiscountFrequencySerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferDiscountFrequencySerializer_List"
+                    "serializer": "RemittanceOfferDiscountFrequencySerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountFrequencySerializer_Update"
+                    "serializer": "RemittanceOfferDiscountFrequencySerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountFrequencySerializer_Destroy"
+                    "serializer": "RemittanceOfferDiscountFrequencySerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferDiscountFrequencySerializer_Retrieve"
-                }
-            }
+                    "serializer": "RemittanceOfferDiscountFrequencySerializer_Retrieve",
+                },
+            },
         },
         "RemittanceOfferDiscountSchedule": {
             "campos": [
@@ -2057,22 +2057,22 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "date",
                     "type": "DateField",
                     "related_model": "",
                     "descripcion_entrada": "date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "remittance_offer_discount",
                     "type": "ForeignKey",
                     "related_model": "RemittanceOfferDiscount",
                     "descripcion_entrada": "remittance offer discount",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "remittanceofferdiscountschedule",
             "modelo_labelSingular": "RemittanceOfferDiscountSchedule",
@@ -2084,33 +2084,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountScheduleSerializer_Create"
+                    "serializer": "RemittanceOfferDiscountScheduleSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferDiscountScheduleSerializer_List"
+                    "serializer": "RemittanceOfferDiscountScheduleSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountScheduleSerializer_Update"
+                    "serializer": "RemittanceOfferDiscountScheduleSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceOfferDiscountScheduleSerializer_Destroy"
+                    "serializer": "RemittanceOfferDiscountScheduleSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceOfferDiscountScheduleSerializer_Retrieve"
-                }
-            }
+                    "serializer": "RemittanceOfferDiscountScheduleSerializer_Retrieve",
+                },
+            },
         },
         "PlannedRemittance": {
             "campos": [
@@ -2119,120 +2119,120 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "sender_id",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "sender id",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reseller_id",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "reseller id",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "remittance_offer",
                     "type": "ForeignKey",
                     "related_model": "RemittanceOffer",
                     "descripcion_entrada": "remittance offer",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reciver_name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "reciver name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reciver_address",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "reciver address",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reciver_postal_code",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "reciver postal code",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reciver_phone",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "reciver phone",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reciver_card",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "reciver card",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "ammount",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "ammount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "description",
                     "type": "TextField",
                     "related_model": "",
                     "descripcion_entrada": "description",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "shipping_type",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "shipping type",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "delivery_type",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "delivery type",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "its_cancelled",
                     "type": "BooleanField",
                     "related_model": "",
                     "descripcion_entrada": "its cancelled",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "PlannedAutomaticRemittance",
                     "descripcion_entrada": "Relacion PlannedAutomaticRemittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "PlannedAutomaticAlarmRemittance",
                     "descripcion_entrada": "Relacion PlannedAutomaticAlarmRemittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "MadeRemittance",
                     "descripcion_entrada": "Relacion MadeRemittance",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "plannedremittance",
             "modelo_labelSingular": "PlannedRemittance",
@@ -2244,33 +2244,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedRemittanceSerializer_Create"
+                    "serializer": "PlannedRemittanceSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedRemittanceSerializer_List"
+                    "serializer": "PlannedRemittanceSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedRemittanceSerializer_Update"
+                    "serializer": "PlannedRemittanceSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedRemittanceSerializer_Destroy"
+                    "serializer": "PlannedRemittanceSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedRemittanceSerializer_Retrieve"
-                }
-            }
+                    "serializer": "PlannedRemittanceSerializer_Retrieve",
+                },
+            },
         },
         "PlannedAutomaticRemittance": {
             "campos": [
@@ -2279,43 +2279,43 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "planned_remittance",
                     "type": "ForeignKey",
                     "related_model": "PlannedRemittance",
                     "descripcion_entrada": "planned remittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "description",
                     "type": "TextField",
                     "related_model": "",
                     "descripcion_entrada": "description",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "PlannedAutomaticRemittanceFrequency",
                     "descripcion_entrada": "Relacion PlannedAutomaticRemittanceFrequency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "PlannedAutomaticRemittanceSchedule",
                     "descripcion_entrada": "Relacion PlannedAutomaticRemittanceSchedule",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "plannedautomaticremittance",
             "modelo_labelSingular": "PlannedAutomaticRemittance",
@@ -2327,33 +2327,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticRemittanceSerializer_Create"
+                    "serializer": "PlannedAutomaticRemittanceSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticRemittanceSerializer_List"
+                    "serializer": "PlannedAutomaticRemittanceSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticRemittanceSerializer_Update"
+                    "serializer": "PlannedAutomaticRemittanceSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticRemittanceSerializer_Destroy"
+                    "serializer": "PlannedAutomaticRemittanceSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticRemittanceSerializer_Retrieve"
-                }
-            }
+                    "serializer": "PlannedAutomaticRemittanceSerializer_Retrieve",
+                },
+            },
         },
         "PlannedAutomaticRemittanceFrequency": {
             "campos": [
@@ -2362,22 +2362,22 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "frequency",
                     "type": "DurationField",
                     "related_model": "",
                     "descripcion_entrada": "frequency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "planned_automatic_remittance",
                     "type": "ForeignKey",
                     "related_model": "PlannedAutomaticRemittance",
                     "descripcion_entrada": "planned automatic remittance",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "plannedautomaticremittancefrequency",
             "modelo_labelSingular": "PlannedAutomaticRemittanceFrequency",
@@ -2389,33 +2389,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticRemittanceFrequencySerializer_Create"
+                    "serializer": "PlannedAutomaticRemittanceFrequencySerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticRemittanceFrequencySerializer_List"
+                    "serializer": "PlannedAutomaticRemittanceFrequencySerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticRemittanceFrequencySerializer_Update"
+                    "serializer": "PlannedAutomaticRemittanceFrequencySerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticRemittanceFrequencySerializer_Destroy"
+                    "serializer": "PlannedAutomaticRemittanceFrequencySerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticRemittanceFrequencySerializer_Retrieve"
-                }
-            }
+                    "serializer": "PlannedAutomaticRemittanceFrequencySerializer_Retrieve",
+                },
+            },
         },
         "PlannedAutomaticRemittanceSchedule": {
             "campos": [
@@ -2424,22 +2424,22 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "date",
                     "type": "DateField",
                     "related_model": "",
                     "descripcion_entrada": "date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "planned_automatic_remittance",
                     "type": "ForeignKey",
                     "related_model": "PlannedAutomaticRemittance",
                     "descripcion_entrada": "planned automatic remittance",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "plannedautomaticremittanceschedule",
             "modelo_labelSingular": "PlannedAutomaticRemittanceSchedule",
@@ -2451,33 +2451,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticRemittanceScheduleSerializer_Create"
+                    "serializer": "PlannedAutomaticRemittanceScheduleSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticRemittanceScheduleSerializer_List"
+                    "serializer": "PlannedAutomaticRemittanceScheduleSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticRemittanceScheduleSerializer_Update"
+                    "serializer": "PlannedAutomaticRemittanceScheduleSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticRemittanceScheduleSerializer_Destroy"
+                    "serializer": "PlannedAutomaticRemittanceScheduleSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticRemittanceScheduleSerializer_Retrieve"
-                }
-            }
+                    "serializer": "PlannedAutomaticRemittanceScheduleSerializer_Retrieve",
+                },
+            },
         },
         "PlannedAutomaticAlarmRemittance": {
             "campos": [
@@ -2486,43 +2486,43 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "planned_remittance",
                     "type": "ForeignKey",
                     "related_model": "PlannedRemittance",
                     "descripcion_entrada": "planned remittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "description",
                     "type": "TextField",
                     "related_model": "",
                     "descripcion_entrada": "description",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "PlannedAutomaticAlarmRemittanceFrequency",
                     "descripcion_entrada": "Relacion PlannedAutomaticAlarmRemittanceFrequency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "PlannedAutomaticAlarmRemittanceSchedule",
                     "descripcion_entrada": "Relacion PlannedAutomaticAlarmRemittanceSchedule",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "plannedautomaticalarmremittance",
             "modelo_labelSingular": "PlannedAutomaticAlarmRemittance",
@@ -2534,33 +2534,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticAlarmRemittanceSerializer_Create"
+                    "serializer": "PlannedAutomaticAlarmRemittanceSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticAlarmRemittanceSerializer_List"
+                    "serializer": "PlannedAutomaticAlarmRemittanceSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticAlarmRemittanceSerializer_Update"
+                    "serializer": "PlannedAutomaticAlarmRemittanceSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticAlarmRemittanceSerializer_Destroy"
+                    "serializer": "PlannedAutomaticAlarmRemittanceSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticAlarmRemittanceSerializer_Retrieve"
-                }
-            }
+                    "serializer": "PlannedAutomaticAlarmRemittanceSerializer_Retrieve",
+                },
+            },
         },
         "PlannedAutomaticAlarmRemittanceFrequency": {
             "campos": [
@@ -2569,22 +2569,22 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "frequency",
                     "type": "DurationField",
                     "related_model": "",
                     "descripcion_entrada": "frequency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "planned_automatic_alarm_remittance",
                     "type": "ForeignKey",
                     "related_model": "PlannedAutomaticAlarmRemittance",
                     "descripcion_entrada": "planned automatic alarm remittance",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "plannedautomaticalarmremittancefrequency",
             "modelo_labelSingular": "PlannedAutomaticAlarmRemittanceFrequency",
@@ -2596,33 +2596,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticAlarmRemittanceFrequencySerializer_Create"
+                    "serializer": "PlannedAutomaticAlarmRemittanceFrequencySerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticAlarmRemittanceFrequencySerializer_List"
+                    "serializer": "PlannedAutomaticAlarmRemittanceFrequencySerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticAlarmRemittanceFrequencySerializer_Update"
+                    "serializer": "PlannedAutomaticAlarmRemittanceFrequencySerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticAlarmRemittanceFrequencySerializer_Destroy"
+                    "serializer": "PlannedAutomaticAlarmRemittanceFrequencySerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticAlarmRemittanceFrequencySerializer_Retrieve"
-                }
-            }
+                    "serializer": "PlannedAutomaticAlarmRemittanceFrequencySerializer_Retrieve",
+                },
+            },
         },
         "PlannedAutomaticAlarmRemittanceSchedule": {
             "campos": [
@@ -2631,22 +2631,22 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "date",
                     "type": "DateField",
                     "related_model": "",
                     "descripcion_entrada": "date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "planned_automatic_alarm_remittance",
                     "type": "ForeignKey",
                     "related_model": "PlannedAutomaticAlarmRemittance",
                     "descripcion_entrada": "planned automatic alarm remittance",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "plannedautomaticalarmremittanceschedule",
             "modelo_labelSingular": "PlannedAutomaticAlarmRemittanceSchedule",
@@ -2658,33 +2658,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticAlarmRemittanceScheduleSerializer_Create"
+                    "serializer": "PlannedAutomaticAlarmRemittanceScheduleSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticAlarmRemittanceScheduleSerializer_List"
+                    "serializer": "PlannedAutomaticAlarmRemittanceScheduleSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticAlarmRemittanceScheduleSerializer_Update"
+                    "serializer": "PlannedAutomaticAlarmRemittanceScheduleSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PlannedAutomaticAlarmRemittanceScheduleSerializer_Destroy"
+                    "serializer": "PlannedAutomaticAlarmRemittanceScheduleSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PlannedAutomaticAlarmRemittanceScheduleSerializer_Retrieve"
-                }
-            }
+                    "serializer": "PlannedAutomaticAlarmRemittanceScheduleSerializer_Retrieve",
+                },
+            },
         },
         "CardTransaction": {
             "campos": [
@@ -2693,176 +2693,176 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "date",
                     "type": "DateField",
                     "related_model": "",
                     "descripcion_entrada": "date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "amount",
                     "type": "DecimalField",
                     "related_model": "",
                     "descripcion_entrada": "amount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "currency",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "currency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "commission",
                     "type": "DecimalField",
                     "related_model": "",
                     "descripcion_entrada": "commission",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "status",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "status",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "origin_user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "origin user",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "origin_card",
                     "type": "ForeignKey",
                     "related_model": "Card",
                     "descripcion_entrada": "origin card",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "origin_card_number",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "origin card number",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "origin_card_bank",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "origin card bank",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "origin_full_name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "origin full name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "origin_telephone_number",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "origin telephone number",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "origin_address",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "origin address",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "origin_postal_code",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "origin postal code",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination_user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "destination user",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination_card",
                     "type": "ForeignKey",
                     "related_model": "Card",
                     "descripcion_entrada": "destination card",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination_card_number",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "destination card number",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination_card_bank",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "destination card bank",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination_full_name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "destination full name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination_telephone_number",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "destination telephone number",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination_address",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "destination address",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "destination_postal_code",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "destination postal code",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "MadeRemittance",
                     "descripcion_entrada": "Relacion MadeRemittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "PaymentMade",
                     "descripcion_entrada": "Relacion PaymentMade",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceRefund",
                     "descripcion_entrada": "Relacion RemittanceRefund",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "cardtransaction",
             "modelo_labelSingular": "CardTransaction",
@@ -2874,33 +2874,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CardTransactionSerializer_Create"
+                    "serializer": "CardTransactionSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CardTransactionSerializer_List"
+                    "serializer": "CardTransactionSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CardTransactionSerializer_Update"
+                    "serializer": "CardTransactionSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "CardTransactionSerializer_Destroy"
+                    "serializer": "CardTransactionSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "CardTransactionSerializer_Retrieve"
-                }
-            }
+                    "serializer": "CardTransactionSerializer_Retrieve",
+                },
+            },
         },
         "MadeRemittance": {
             "campos": [
@@ -2909,127 +2909,127 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "remittance_id",
                     "type": "UUIDField",
                     "related_model": "",
                     "descripcion_entrada": "remittance id",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "planned_remittance",
                     "type": "ForeignKey",
                     "related_model": "PlannedRemittance",
                     "descripcion_entrada": "planned remittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "card_transaction",
                     "type": "ForeignKey",
                     "related_model": "CardTransaction",
                     "descripcion_entrada": "card transaction",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reseller_id",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "reseller id",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "sender_id",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "sender id",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reciver_name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "reciver name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reciver_address",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "reciver address",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reciver_postal_code",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "reciver postal code",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reciver_phone",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "reciver phone",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reciver_card",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "reciver card",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "ammount",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "ammount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "description",
                     "type": "TextField",
                     "related_model": "",
                     "descripcion_entrada": "description",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "shipping_type",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "shipping type",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "delivery_type",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "delivery type",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "PaymentMade",
                     "descripcion_entrada": "Relacion PaymentMade",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceState",
                     "descripcion_entrada": "Relacion RemittanceState",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceRefund",
                     "descripcion_entrada": "Relacion RemittanceRefund",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "maderemittance",
             "modelo_labelSingular": "MadeRemittance",
@@ -3041,33 +3041,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "MadeRemittanceSerializer_Create"
+                    "serializer": "MadeRemittanceSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "MadeRemittanceSerializer_List"
+                    "serializer": "MadeRemittanceSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "MadeRemittanceSerializer_Update"
+                    "serializer": "MadeRemittanceSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "MadeRemittanceSerializer_Destroy"
+                    "serializer": "MadeRemittanceSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "MadeRemittanceSerializer_Retrieve"
-                }
-            }
+                    "serializer": "MadeRemittanceSerializer_Retrieve",
+                },
+            },
         },
         "PaymentMade": {
             "campos": [
@@ -3076,127 +3076,127 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "card_transaction",
                     "type": "ForeignKey",
                     "related_model": "CardTransaction",
                     "descripcion_entrada": "card transaction",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "made_remittance",
                     "type": "ForeignKey",
                     "related_model": "MadeRemittance",
                     "descripcion_entrada": "made remittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "date",
                     "type": "DateField",
                     "related_model": "",
                     "descripcion_entrada": "date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "total_payment_amount",
                     "type": "DecimalField",
                     "related_model": "",
                     "descripcion_entrada": "total payment amount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "beneficiary_card_number",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "beneficiary card number",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "beneficiary_address",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "beneficiary address",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "beneficiary_total_amount",
                     "type": "IntegerField",
                     "related_model": "",
                     "descripcion_entrada": "beneficiary total amount",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "beneficiary_full_name",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "beneficiary full name",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "beneficiary_telephone_number",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "beneficiary telephone number",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "currency",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "currency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "commission",
                     "type": "DecimalField",
                     "related_model": "",
                     "descripcion_entrada": "commission",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "status",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "status",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "shipping_type",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "shipping type",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "delivery_type",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "delivery type",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "exchange_rate",
                     "type": "IntegerField",
                     "related_model": "",
                     "descripcion_entrada": "exchange rate",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "reseller_id",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "reseller id",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "None",
                     "type": "Extra_ForeignKey",
                     "related_model": "RemittanceState",
                     "descripcion_entrada": "Relacion RemittanceState",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "paymentmade",
             "modelo_labelSingular": "PaymentMade",
@@ -3208,33 +3208,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PaymentMadeSerializer_Create"
+                    "serializer": "PaymentMadeSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PaymentMadeSerializer_List"
+                    "serializer": "PaymentMadeSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PaymentMadeSerializer_Update"
+                    "serializer": "PaymentMadeSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "PaymentMadeSerializer_Destroy"
+                    "serializer": "PaymentMadeSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "PaymentMadeSerializer_Retrieve"
-                }
-            }
+                    "serializer": "PaymentMadeSerializer_Retrieve",
+                },
+            },
         },
         "RemittanceState": {
             "campos": [
@@ -3243,71 +3243,71 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "made_remittance",
                     "type": "ForeignKey",
                     "related_model": "MadeRemittance",
                     "descripcion_entrada": "made remittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "payment_made",
                     "type": "ForeignKey",
                     "related_model": "PaymentMade",
                     "descripcion_entrada": "payment made",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "status",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "status",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "date",
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "shipping_date",
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "shipping date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "estimated_delivery_date",
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "estimated delivery date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "current_location_latitude",
                     "type": "DecimalField",
                     "related_model": "",
                     "descripcion_entrada": "current location latitude",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "current_location_longitude",
                     "type": "DecimalField",
                     "related_model": "",
                     "descripcion_entrada": "current location longitude",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "carrier_information",
                     "type": "TextField",
                     "related_model": "",
                     "descripcion_entrada": "carrier information",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "remittancestate",
             "modelo_labelSingular": "RemittanceState",
@@ -3319,33 +3319,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceStateSerializer_Create"
+                    "serializer": "RemittanceStateSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceStateSerializer_List"
+                    "serializer": "RemittanceStateSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceStateSerializer_Update"
+                    "serializer": "RemittanceStateSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceStateSerializer_Destroy"
+                    "serializer": "RemittanceStateSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceStateSerializer_Retrieve"
-                }
-            }
+                    "serializer": "RemittanceStateSerializer_Retrieve",
+                },
+            },
         },
         "ResellerApplication": {
             "campos": [
@@ -3354,29 +3354,29 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "date",
                     "type": "DateTimeField",
                     "related_model": "",
                     "descripcion_entrada": "date",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "status",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "status",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "user",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "user",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "resellerapplication",
             "modelo_labelSingular": "ResellerApplication",
@@ -3388,33 +3388,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ResellerApplicationSerializer_Create"
+                    "serializer": "ResellerApplicationSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ResellerApplicationSerializer_List"
+                    "serializer": "ResellerApplicationSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ResellerApplicationSerializer_Update"
+                    "serializer": "ResellerApplicationSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ResellerApplicationSerializer_Destroy"
+                    "serializer": "ResellerApplicationSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ResellerApplicationSerializer_Retrieve"
-                }
-            }
+                    "serializer": "ResellerApplicationSerializer_Retrieve",
+                },
+            },
         },
         "RemittanceRefund": {
             "campos": [
@@ -3423,29 +3423,29 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "admin",
                     "type": "ForeignKey",
                     "related_model": "User",
                     "descripcion_entrada": "admin",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "made_remittance",
                     "type": "ForeignKey",
                     "related_model": "MadeRemittance",
                     "descripcion_entrada": "made remittance",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "refund_card_transaction",
                     "type": "ForeignKey",
                     "related_model": "CardTransaction",
                     "descripcion_entrada": "refund card transaction",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "remittancerefund",
             "modelo_labelSingular": "RemittanceRefund",
@@ -3457,33 +3457,33 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceRefundSerializer_Create"
+                    "serializer": "RemittanceRefundSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceRefundSerializer_List"
+                    "serializer": "RemittanceRefundSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceRefundSerializer_Update"
+                    "serializer": "RemittanceRefundSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "RemittanceRefundSerializer_Destroy"
+                    "serializer": "RemittanceRefundSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "RemittanceRefundSerializer_Retrieve"
-                }
-            }
+                    "serializer": "RemittanceRefundSerializer_Retrieve",
+                },
+            },
         },
         "ExchangeRate": {
             "campos": [
@@ -3492,36 +3492,36 @@ datos={
                     "type": "BigAutoField",
                     "related_model": "",
                     "descripcion_entrada": "ID",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "amount_sent",
                     "type": "IntegerField",
                     "related_model": "",
                     "descripcion_entrada": "amount sent",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "sender_currency",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "sender currency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "target_currency",
                     "type": "CharField",
                     "related_model": "",
                     "descripcion_entrada": "target currency",
-                    "descripcion_salida": ""
+                    "descripcion_salida": "",
                 },
                 {
                     "name": "exchange_rate",
                     "type": "FloatField",
                     "related_model": "",
                     "descripcion_entrada": "exchange rate",
-                    "descripcion_salida": ""
-                }
+                    "descripcion_salida": "",
+                },
             ],
             "modeloLower": "exchangerate",
             "modelo_labelSingular": "ExchangeRate",
@@ -3533,34 +3533,34 @@ datos={
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ExchangeRateSerializer_Create"
+                    "serializer": "ExchangeRateSerializer_Create",
                 },
                 "list": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ExchangeRateSerializer_List"
+                    "serializer": "ExchangeRateSerializer_List",
                 },
                 "edit": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ExchangeRateSerializer_Update"
+                    "serializer": "ExchangeRateSerializer_Update",
                 },
                 "destroy": {
                     "save": "",
                     "permisos_descripcion": "{- IsAuthenticated -}\n{- EsSuperUsuario -}",
                     "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
-                    "serializer": "ExchangeRateSerializer_Destroy"
+                    "serializer": "ExchangeRateSerializer_Destroy",
                 },
                 "view": {
                     "save": "",
                     "permisos_descripcion": "",
                     "permisos": "",
-                    "serializer": "ExchangeRateSerializer_Retrieve"
-                }
-            }
-        }
+                    "serializer": "ExchangeRateSerializer_Retrieve",
+                },
+            },
+        },
     },
     "attribute_types": [
         "AutoField",
@@ -3580,7 +3580,6 @@ datos={
         "DateField",
         "DurationField",
         "DecimalField",
-        "UUIDField"
-    ]
+        "UUIDField",
+    ],
 }
-

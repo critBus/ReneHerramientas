@@ -1,24 +1,23 @@
 # from .valoresDeDatos.datosNegocio import datos_negocio
-#from .valoresDeDatos.datosVersiones import datos_versiones
+# from .valoresDeDatos.datosVersiones import datos_versiones
 # from .valoresDeDatos_Remesas.datos import datos_todo
 # from .valoresDeDatos_2.datos2 import datos
 from .valoresDeDatos.datos3 import datos
-key_valores=datos
+
+key_valores = datos
 
 
-key_valores["attribute_types"]=[
-        "BigAutoField",
-        "ForeignKey",
-        "CharField",
-        "ImageField",
-        "TextField",
-        "ManyToManyField",
-        "BooleanField",
-        "FloatField"
-    ]
-key_valores["descripcionesAutomaticas"]={
-        "id":"id de la entidad en la base de datos"
-    }
+key_valores["attribute_types"] = [
+    "BigAutoField",
+    "ForeignKey",
+    "CharField",
+    "ImageField",
+    "TextField",
+    "ManyToManyField",
+    "BooleanField",
+    "FloatField",
+]
+key_valores["descripcionesAutomaticas"] = {"id": "id de la entidad en la base de datos"}
 
 # "User": {
 #             "campos": [

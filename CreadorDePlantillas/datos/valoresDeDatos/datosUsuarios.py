@@ -1,6 +1,4 @@
-datos_usuarios={
-"models": {}
-}
+datos_usuarios = {"models": {}}
 
 datos_usuarios["models"]["User"] = {
     "campos": [
@@ -17,7 +15,6 @@ datos_usuarios["models"]["User"] = {
             "related_model": "",
             "descripcion_entrada": "contraseña",
             "descripcion_salida": "",
-
         },
         {
             "name": "last_login",
@@ -102,7 +99,7 @@ datos_usuarios["models"]["User"] = {
             "related_model": "Permission",
             "descripcion_entrada": "[enviar en vacio] id de permisos que puede tener por defecto",
             "descripcion_salida": "id de permisos que puede tener por defecto",
-        }
+        },
     ],
     "modeloLower": "user",
     "modelo_labelSingular": "User",
@@ -178,14 +175,13 @@ datos_usuarios["models"]["User"] = {
 
                     """,
             "permisos_descripcion": "",
-            "permisos": ""
-
+            "permisos": "",
         },
         "list": {
             "save": "",
             "permisos_descripcion": "",
-            "permisos": ""
-            , "serializer": "UserListSerializer"
+            "permisos": "",
+            "serializer": "UserListSerializer",
         },
         "edit": {
             "save": """
@@ -222,21 +218,21 @@ datos_usuarios["models"]["User"] = {
 
                         """,
             "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuperusuario -}",
-            "permisos": "permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuperusuario,)"
-            , "serializer": "UserUpdateSerializer"
+            "permisos": "permission_classes = (IsAuthenticated,SoloPuedeModificarseElMismo_OEsSuperusuario,)",
+            "serializer": "UserUpdateSerializer",
         },
         "destroy": {
             "save": "",
             "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuperusuario -}",
-            "permisos": "permission_classes = (IsAuthenticated, SoloPuedeModificarseElMismo_OEsSuperusuario,)"
+            "permisos": "permission_classes = (IsAuthenticated, SoloPuedeModificarseElMismo_OEsSuperusuario,)",
         },
         "view": {
             "save": "",
             "permisos_descripcion": "",
-            "permisos": ""
-            , "serializer": "UserRetrieveSerializer"
-        }
-    }
+            "permisos": "",
+            "serializer": "UserRetrieveSerializer",
+        },
+    },
 }
 datos_usuarios["models"]["Permission"] = {
     "campos": [
@@ -253,7 +249,7 @@ datos_usuarios["models"]["Permission"] = {
             "related_model": "",
             "descripcion_entrada": "nombre del permiso",
             "descripcion_salida": "",
-        }
+        },
     ],
     "modeloLower": "permission",
     "modelo_labelSingular": "Permission",
@@ -263,35 +259,22 @@ datos_usuarios["models"]["Permission"] = {
     "codigos": {
         "create": {
             "save": "",
-            "permisos_descripcion": "{- IsAuthenticated -}"
-                                    + "\n{- EsSuperUsuario -}",
-            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
-
+            "permisos_descripcion": "{- IsAuthenticated -}" + "\n{- EsSuperUsuario -}",
+            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
         },
-        "list": {
-            "save": "",
-            "permisos_descripcion": "",
-            "permisos": ""
-        },
+        "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
         "edit": {
             "save": "",
-            "permisos_descripcion": "{- IsAuthenticated -}"
-                                    + "\n{- EsSuperUsuario -}",
-            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+            "permisos_descripcion": "{- IsAuthenticated -}" + "\n{- EsSuperUsuario -}",
+            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
         },
         "destroy": {
             "save": "",
-            "permisos_descripcion": "{- IsAuthenticated -}"
-                                    + "\n{- EsSuperUsuario -}",
-            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+            "permisos_descripcion": "{- IsAuthenticated -}" + "\n{- EsSuperUsuario -}",
+            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
         },
-        "view": {
-            "save": "",
-            "permisos_descripcion": "",
-            "permisos": ""
-
-        }
-    }
+        "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+    },
 }
 datos_usuarios["models"]["Group"] = {
     "campos": [
@@ -315,7 +298,7 @@ datos_usuarios["models"]["Group"] = {
             "related_model": "Permission",
             "descripcion_entrada": "[#,#,#, ... ] lista de id de permisos realacionados a este rol",
             "descripcion_salida": "",
-        }
+        },
     ],
     "modeloLower": "group",
     "modelo_labelSingular": "Group",
@@ -325,34 +308,20 @@ datos_usuarios["models"]["Group"] = {
     "codigos": {
         "create": {
             "save": "",
-            "permisos_descripcion": "{- IsAuthenticated -}"
-                                    + "\n{- EsSuperUsuario -}",
-            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
-
+            "permisos_descripcion": "{- IsAuthenticated -}" + "\n{- EsSuperUsuario -}",
+            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
         },
-        "list": {
-            "save": "",
-            "permisos_descripcion": "",
-            "permisos": ""
-        },
+        "list": {"save": "", "permisos_descripcion": "", "permisos": ""},
         "edit": {
             "save": "",
-            "permisos_descripcion": "{- IsAuthenticated -}"
-                                    + "\n{- EsSuperUsuario -}",
-            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+            "permisos_descripcion": "{- IsAuthenticated -}" + "\n{- EsSuperUsuario -}",
+            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
         },
         "destroy": {
             "save": "",
-            "permisos_descripcion": "{- IsAuthenticated -}"
-                                    + "\n{- EsSuperUsuario -}",
-            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)"
+            "permisos_descripcion": "{- IsAuthenticated -}" + "\n{- EsSuperUsuario -}",
+            "permisos": "permission_classes = (IsAuthenticated,EsSuperUsuario,)",
         },
-        "view": {
-            "save": "",
-            "permisos_descripcion": "",
-            "permisos": ""
-
-        }
-    }
+        "view": {"save": "", "permisos_descripcion": "", "permisos": ""},
+    },
 }
-
