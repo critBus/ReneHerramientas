@@ -573,6 +573,71 @@ datos = {
                 },
             },
         },
+        "EstadoDeNegocio": {
+            "campos": [
+                {
+                    "name": "id",
+                    "type": "IntegerField",
+                    "related_model": "",
+                    "descripcion_entrada": "id",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "nombre",
+                    "type": "CharField",
+                    "related_model": "",
+                    "descripcion_entrada": "nombre",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "estado",
+                    "type": "Extra_ForeignKey",
+                    "related_model": "Negocio",
+                    "descripcion_entrada": "Relacion Negocio",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+            ],
+            "modeloLower": "estadodenegocio",
+            "modelo_labelSingular": "EstadoDeNegocio",
+            "modelo_labelPlurar": "EstadoDeNegocio",
+            "modeloLower_labelSingular": "EstadoDeNegocio",
+            "modeloLower_labelPlurar": "EstadoDeNegocio",
+            "codigos": {
+                "create": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n",
+                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
+                    "serializer": "EstadoDeNegocioSerializer_Create",
+                },
+                "list": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "EstadoDeNegocioSerializer_List",
+                },
+                "edit": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "EstadoDeNegocioSerializer_Update",
+                },
+                "destroy": {
+                    "save": "",
+                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
+                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
+                    "serializer": "EstadoDeNegocioSerializer_Destroy",
+                },
+                "view": {
+                    "save": "",
+                    "permisos_descripcion": "",
+                    "permisos": "",
+                    "serializer": "EstadoDeNegocioSerializer_Retrieve",
+                },
+            },
+        },
         "PalabraClavePublica": {
             "campos": [
                 {
@@ -887,6 +952,14 @@ datos = {
                     "type": "SearchVectorField",
                     "related_model": "",
                     "descripcion_entrada": "search vector",
+                    "descripcion_salida": "",
+                    "related_name": None,
+                },
+                {
+                    "name": "estado",
+                    "type": "ForeignKey",
+                    "related_model": "EstadoDeNegocio",
+                    "descripcion_entrada": "estado",
                     "descripcion_salida": "",
                     "related_name": None,
                 },
@@ -3216,63 +3289,6 @@ datos = {
                 },
             },
         },
-        "EstadoDeNegocio": {
-            "campos": [
-                {
-                    "name": "id",
-                    "type": "IntegerField",
-                    "related_model": "",
-                    "descripcion_entrada": "id",
-                    "descripcion_salida": "",
-                    "related_name": None,
-                },
-                {
-                    "name": "nombre",
-                    "type": "CharField",
-                    "related_model": "",
-                    "descripcion_entrada": "nombre",
-                    "descripcion_salida": "",
-                    "related_name": None,
-                },
-            ],
-            "modeloLower": "estadodenegocio",
-            "modelo_labelSingular": "EstadoDeNegocio",
-            "modelo_labelPlurar": "EstadoDeNegocio",
-            "modeloLower_labelSingular": "EstadoDeNegocio",
-            "modeloLower_labelPlurar": "EstadoDeNegocio",
-            "codigos": {
-                "create": {
-                    "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n",
-                    "permisos": "permission_classes = (IsAuthenticated,IsItTheOwnerEntidad,)",
-                    "serializer": "EstadoDeNegocioSerializer_Create",
-                },
-                "list": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": "",
-                    "serializer": "EstadoDeNegocioSerializer_List",
-                },
-                "edit": {
-                    "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
-                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
-                    "serializer": "EstadoDeNegocioSerializer_Update",
-                },
-                "destroy": {
-                    "save": "",
-                    "permisos_descripcion": "{- IsAuthenticated -}\n{- SoloPuedeModificarseElMismo_OEsSuDuenno_User -}",
-                    "permisos": "permission_classes = (IsAuthenticated,IsSuperUserOrIsItTheOwnerObj,)",
-                    "serializer": "EstadoDeNegocioSerializer_Destroy",
-                },
-                "view": {
-                    "save": "",
-                    "permisos_descripcion": "",
-                    "permisos": "",
-                    "serializer": "EstadoDeNegocioSerializer_Retrieve",
-                },
-            },
-        },
         "ZdsmsSessions": {
             "campos": [
                 {
@@ -3594,9 +3610,9 @@ datos = {
         "BooleanField",
         "EmailField",
         "ImageField",
+        "IntegerField",
         "TextField",
         "FloatField",
-        "IntegerField",
         "SearchVectorField",
     ],
 }

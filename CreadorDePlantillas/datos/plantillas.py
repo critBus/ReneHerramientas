@@ -1,4 +1,4 @@
-a="""
+a = """
 
 class {modelo}List(APIView):
     permission_classes = (IsAuthenticated,)
@@ -66,19 +66,19 @@ class {modelo}Detail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 """
 
-b="""
+b = """
     path('{modeloLower}/', {modelo}List.as_view(), name='{modeloLower}-list'),
     path('{modeloLower}/<int:pk>/', {modelo}Detail.as_view(), name='{modeloLower}-detail'),
 """
 
-c="""
+c = """
 class {modelo}Serializer(serializers.ModelSerializer):
     class Meta:
         model = {modelo}
         fields = '__all__'
 """
 
-d="""
+d = """
 class {modelo}_ListCreate(Base_ListCreate):
     \"\"\"
        Endpoint para la creación y listado de {modelo_labelPlurar}.
@@ -192,12 +192,12 @@ class {modelo}_RUD(Base_RUD):
     serializer_class = {modelo}Serializer
 """
 
-e="""
+e = """
     path('{modeloLower}/', {modelo}_ListCreate.as_view(), name='{modeloLower}-list'),
     path('{modeloLower}/<int:pk>/', {modelo}_RUD.as_view(), name='{modeloLower}-detail'),
 """
 
-f="""
+f = """
 
 class {modelo}_List(Base_List):
     \"\"\"
@@ -378,7 +378,7 @@ class {modelo}_Destroy(Base_Destroy):
 
 """
 
-urls="""
+urls = """
     path('{modeloLower}/findById/<int:pk>/', {modelo}_Retrieve.as_view()),
     path('{modeloLower}/delete/<int:pk>/', {modelo}_Destroy.as_view()),
     path('{modeloLower}/update/<int:pk>/', {modelo}_Update.as_view()),
@@ -387,7 +387,7 @@ urls="""
 
 """
 
-h="""
+h = """
         ----------------------------------------------------------------------------
 
         {modelo}
@@ -571,14 +571,14 @@ h="""
 
 """
 
-ij="""
+ij = """
 {modelo}
 
 {atributosExtra} 
 
 """
 
-filtros_doc="""
+filtros_doc = """
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         {modelo}  
     
@@ -593,7 +593,7 @@ filtros_doc="""
 --------------------------------------------------------------------------
 """
 
-plantilla_serializer="""
+plantilla_serializer = """
 class {modelo}Serializer(serializers.ModelSerializer):
     {parametrosSerializer}
     class Meta:
@@ -640,7 +640,7 @@ class {modelo}Serializer_Destroy(serializers.ModelSerializer):
         return {modelo}Serializer_Representation(value).data
 """
 
-plantilla_views="""
+plantilla_views = """
 
 class {modelo}_List(Base_List):
     \"\"\"
@@ -1065,7 +1065,7 @@ plantilla_doc = """
 """
 
 
-plantilla_viewSets="""
+plantilla_viewSets = """
 
 class {modelo}_ViewSet(Base_List):
     
@@ -1093,7 +1093,7 @@ class {modelo}Serializer(serializers.ModelSerializer):
 
 """
 
-plantilla_viewset_own="""
+plantilla_viewset_own = """
 class {modelo}ViewSet(viewsets.ModelViewSet):
     serializer_class = {modelo}_Serializer
     filter_backends = [DjangoFilterBackend,
@@ -1337,7 +1337,7 @@ plantilla_doc_parametros_list = """
 
 """
 
-plantillas_filtros="""
+plantillas_filtros = """
 {modelo} ============================================================================================
 
     {atributosExtra}
@@ -1410,7 +1410,7 @@ class {modelo}_List(Base_List):
 
     \"\"\"
     {permisos_list} 
-    serializer_class = {modeloSerializer_list}
+    serializer_class = {modelo}RepresentationSerializer
     filter_backends = [DjangoFilterBackend,
                        SearchFilter,
                        OrderingFilter,
@@ -1442,7 +1442,7 @@ class {modelo}_Retrieve(Base_Retrieve):
 
     \"\"\"
     {permisos_retrieve} 
-    serializer_class = {modeloSerializer_retrieve}
+    serializer_class = {modelo}RepresentationSerializer
 
 """
 
@@ -1570,7 +1570,7 @@ plantilla_doc_list_retrieve = """
 
 """
 
-plantilla_resennas_serializable="""
+plantilla_resennas_serializable = """
 class {modelo}RepresentationSerializer(serializers.ModelSerializer):
     {parametrosSerializer}
     class Meta:

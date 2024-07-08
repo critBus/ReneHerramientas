@@ -80,7 +80,7 @@ def imprimir_linea(kv, i, linea):
 
 # listAPintar=[plantilla_doc_parametros_list]#[plantillas_filtros]#[urls]#[plantilla_serializer_list_retrieve]#[plantilla_views_list_retrieve]#[plantilla_serializer]#[plantilla_views]#[plantillas_filtros]#[plantilla_viewset_own]#[plantilla_doc]#[g]#[plantilla_serializer_imagen]#[plantilla_viewSets]#[plantilla_doc]
 listAPintar = [
-    plantilla_views_list_retrieve  # plantillas_filtros  # plantilla_doc_list_retrieve  # urls  #   #
+    plantilla_doc_list_retrieve  # urls  # plantilla_views_list_retrieve  # plantillas_filtros  #   #   #
 ]  # [urls]#[plantilla_views_serializer_update]#[plantilla_resennas_serializable]#[plantilla_doc_list_retrieve]#[plantillas_filtros]
 
 
