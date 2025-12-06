@@ -1,7 +1,6 @@
 import re
 
 
-
 def getS(cant):
 	se="\n"
 	for i in range(cant):

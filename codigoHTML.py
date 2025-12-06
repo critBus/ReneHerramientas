@@ -1,5 +1,6 @@
 import re
 
+
 def escape_html(text):
     map = {
         '&': '&amp;',

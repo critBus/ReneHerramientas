@@ -1,7 +1,6 @@
 import re
 
 
-
 def getS(cant):
 	se="\n"
 	for i in range(cant):
@@ -73,5 +72,5 @@ def r4(metodo):
 
 
 def mostrar():
-	global r;
+	global r
 	print(r)

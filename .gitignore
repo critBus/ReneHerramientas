@@ -8,3 +8,8 @@ CreadorDePlantillas/datos/__pycache__/datos.cpython-311.pyc
 CreadorDePlantillas/datos/__pycache__/datosComplejos.cpython-311.pyc
 CreadorDePlantillas/datos/__pycache__/funcionesCreadoras.cpython-311.pyc
 CreadorDePlantillas/datos/__pycache__/plantillas.cpython-311.pyc
+
+__pycache__/
+**/__pycache__/
+*.pyc
+CreadorDePlantillas/datos/valoresDeDatos/__pycache__/datos3.cpython-311.pyc

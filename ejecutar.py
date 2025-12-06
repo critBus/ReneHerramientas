@@ -1,9 +1,5 @@
 from ReneRegexConsola.ReneRegexConsolaBasicos import *
 
-
-
-
-
 setP(r"[,](\w+)")
 class MngPatrones:
 	def __init__(self,f):
@@ -18,7 +14,7 @@ setA("""
                    ,Descripcion
                    ,CantidadDeImagenes
                    ,Fruto
-	""");
+	""")
 
 #r0(lambda mng:",%s=%s"%(mng.texto,mng.texto))
 #r0(lambda mng:"let %s=r.content.%s;"%(mng.texto,mng.texto))
